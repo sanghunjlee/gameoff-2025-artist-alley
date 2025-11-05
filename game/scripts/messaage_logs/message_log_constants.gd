@@ -1,4 +1,4 @@
-class_name LogConstants extends RefCounted
+class_name MLConstants extends RefCounted
 
 enum LogType {
     Normal,
