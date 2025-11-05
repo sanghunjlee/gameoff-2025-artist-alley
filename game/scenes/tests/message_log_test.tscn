@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://ngojrr53gffb"]
+
+[ext_resource type="Script" uid="uid://cqgiflt48xsis" path="res://game/scripts/messaage_logs/message_log_label.gd" id="1_escpl"]
+[ext_resource type="Script" uid="uid://dh2e1f58qhr76" path="res://game/scenes/tests/message_log_test.gd" id="1_udyt0"]
+
+[node name="MessageLogTest" type="Node2D"]
+script = ExtResource("1_udyt0")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MessageLogLabel" type="RichTextLabel" parent="Control/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+scroll_following = true
+vertical_alignment = 2
+script = ExtResource("1_escpl")
+metadata/_custom_type_script = "uid://cqgiflt48xsis"
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Create Log"
+
+[connection signal="pressed" from="Control/VBoxContainer/Button" to="." method="_on_button_pressed"]
