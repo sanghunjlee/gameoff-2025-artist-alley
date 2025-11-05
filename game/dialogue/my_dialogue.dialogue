@@ -1,0 +1,31 @@
+~ start
+Nathan: What would you like to do?
+- Research Conventions => research_conventions
+	Nathan: You picked the first one.
+- Order Merch => order_merch
+	Nathan: You picked the second one.
+- Check Inventory => check_inventory
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END
+
+~ research_conventions
+Mini Craft Market is happening on Day 15.
+Booth fee $0
+Sign up?
+- Yes
+	You are signed up.
+- No
+=> start
+
+~ order_merch
+- Posters
+	Which vendor?
+	- Baples
+	- Nevermind
+- Nevermind
+=> start
+
+~ check_inventory
+You don't have any merch.
+=> start
