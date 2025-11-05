@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=4 uid="uid://djlyva08u52mw"]
+
+[ext_resource type="TileSet" uid="uid://dp50pvjg0js34" path="res://assets/tilesets/background_tile_set.tres" id="2_0grwd"]
+
+[node name="Bedroom" type="Node2D"]
+
+[node name="FloorTileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAA=")
+tile_set = ExtResource("2_0grwd")
+
+[node name="WallsTileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAEAP//AAABAAAAAAADAP//AAABAAAAAAACAP//AAABAAAAAAABAP//AAABAAAAAAAAAAEAAAABAAAAAAA=")
+tile_set = ExtResource("2_0grwd")
+
+[node name="FurnitureTileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAP//AQADAAAAAAAEAAAAAQAGAAEAAAAAAAMAAQAAAAEAAAABAAMAAQABAAEAAAAEAAMAAQABAAAAAAADAP//AQAFAAEAAAACAP//AQAHAAAAAAAEAP//AQAIAAAAAAAAAAEAAQADAAEAAAA=")
+tile_set = ExtResource("2_0grwd")
