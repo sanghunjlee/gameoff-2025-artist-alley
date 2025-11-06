@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cfpmbqethbul4"]
+
+[ext_resource type="FontFile" uid="uid://dubdjkwl2ye3s" path="res://assets/fonts/MunroSmall-wPZw.ttf" id="1_17jwk"]
+
+[resource]
+font = ExtResource("1_17jwk")
+font_size = 10
