@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg7n6n8xjwkxp"]
+
+[ext_resource type="PackedScene" uid="uid://q0ggh5y0bofo" path="res://game/ui/hud/date_time_clock.tscn" id="1_tmwwy"]
+
+[node name="Home" type="Control"]
+custom_minimum_size = Vector2(900, 600)
+layout_mode = 3
+anchors_preset = 0
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="DateTimeClock" parent="HBoxContainer/VBoxContainer" instance=ExtResource("1_tmwwy")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Make Merch"
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Get Inspiration"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="GameViewport" type="SubViewport" parent="HBoxContainer/VBoxContainer2/MarginContainer/SubViewportContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(556, 476)
+render_target_update_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
