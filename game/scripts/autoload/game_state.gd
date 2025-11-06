@@ -1,5 +1,8 @@
 extends Node
 
+# Node reference
+@onready var player: Player = null
+
 # Pause state
 var is_paused: bool = false
 

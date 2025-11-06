@@ -1,0 +1,77 @@
+extends CharacterBody2D
+class_name Player
+
+# Represents the player character in the game world
+# Given a task to perform, player will navigate within BedroomScene's
+# NavigationRegion2D using its specified task position variables
+# and perform an interact animation for a specified duration until a signal is heard
+# Note that the character is not manually controlled via input, but automatically
+# moves in the world according to its assigned task
+
+enum Task {
+    NONE,
+    DRAW,
+    WATCH_TV,
+    USE_PC,
+    SLEEP
+}
+
+# task positions can be accessed via bedroom_scene.<task>_position
+@export var bedroom_scene: BedroomScene
+@export var speed: float = 100.0
+@export var starting_task: Task = Task.NONE
+@onready var current_task: Task = Task.NONE
+@onready var is_interacting: bool = false
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+
+func _ready() -> void:
+    GameState.player = self
+    navigation_agent.connect("navigation_finished", Callable(self, "_on_navigation_finished"))
+    navigation_agent.max_speed = speed
+    navigation_agent.target_desired_distance = 3.0
+    do_task(starting_task) # Start with drawing task
+
+func _physics_process(delta: float) -> void:
+    if !navigation_agent.is_navigation_finished():
+        move_toward_target(delta)
+    else:
+        velocity = Vector2.ZERO
+
+func move_toward_target(_delta):
+    var next_position = navigation_agent.get_next_path_position()
+    var direction = (next_position - global_position).normalized()
+    velocity = direction * speed
+    move_and_slide()
+
+func do_task(task: Task) -> void:
+    if is_interacting:
+        return # Already performing a task
+
+    current_task = task
+    var target_position: Vector2
+
+    match task:
+        Task.DRAW:
+            target_position = bedroom_scene.desk_position
+        Task.WATCH_TV:
+            target_position = bedroom_scene.tv_position
+        Task.USE_PC:
+            target_position = bedroom_scene.pc_position
+        Task.SLEEP:
+            target_position = bedroom_scene.bed_position
+        _:
+            return # Invalid task
+
+    navigation_agent.target_position = target_position
+
+func _on_navigation_finished() -> void:
+    match current_task:
+        Task.DRAW:
+            animated_sprite.face_direction("right")
+        Task.WATCH_TV:
+            animated_sprite.face_direction("up")
+        Task.USE_PC:
+            animated_sprite.face_direction("up")
+        Task.SLEEP:
+            animated_sprite.face_direction("down")
