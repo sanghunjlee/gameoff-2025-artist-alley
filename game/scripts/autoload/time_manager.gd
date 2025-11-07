@@ -26,3 +26,10 @@ func get_current_day() -> int:
 
 func get_current_hour() -> int:
     return int(GameState.time_count) % 24
+
+# preserve decimals when returning current hour
+func get_current_time() -> float:
+    var hour = int(GameState.time_count) % 24
+    var decimals = GameState.time_count - int(GameState.time_count)
+    return hour + decimals
+    

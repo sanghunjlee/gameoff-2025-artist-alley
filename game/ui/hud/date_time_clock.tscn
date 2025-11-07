@@ -1,15 +1,36 @@
-[gd_scene format=3 uid="uid://q0ggh5y0bofo"]
+[gd_scene load_steps=8 format=3 uid="uid://q0ggh5y0bofo"]
+
+[ext_resource type="Texture2D" uid="uid://btsmw413sl02e" path="res://assets/images/Clock face.png" id="1_0abx2"]
+[ext_resource type="Script" uid="uid://b51pallu8tjmw" path="res://game/ui/hud/date_time_clock.gd" id="1_6nhso"]
+[ext_resource type="Texture2D" uid="uid://erp18c4njgmr" path="res://assets/images/Hour hand.png" id="3_k5jop"]
+[ext_resource type="Texture2D" uid="uid://c0x6b7rbyuhkt" path="res://assets/images/media-control-play.png" id="4_6nhso"]
+[ext_resource type="Texture2D" uid="uid://v4iqunn5clj4" path="res://assets/images/media-control-pause.png" id="5_72ao1"]
+[ext_resource type="Texture2D" uid="uid://ccsoe5r501r1w" path="res://assets/images/media-control-ff.png" id="6_6x4co"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uyhe3"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
 
 [node name="DateTimeClock" type="Control"]
-custom_minimum_size = Vector2(300, 200)
+custom_minimum_size = Vector2(192, 128)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -852.0
-offset_bottom = -448.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 128.0
+script = ExtResource("1_6nhso")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -18,24 +39,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uyhe3")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,25 +63,81 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/TimeClock"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ClockBase" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/TimeClock"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 75.0
+offset_bottom = 72.0
+texture = ExtResource("1_0abx2")
+
+[node name="HourHand" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/TimeClock"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 75.0
+offset_bottom = 72.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("3_k5jop")
 
 [node name="DateSticker" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DateSticker"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DateSticker"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -32.0
+offset_right = 27.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.99999946, 0.86130464, 0.4568625, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DateSticker/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DateSticker/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MonthLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DateSticker/ColorRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.014267038, 0.030689912, 0.15312496, 1)
+theme_override_font_sizes/font_size = 16
+text = "Nov"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="DateLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DateSticker/ColorRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.014267038, 0.030689912, 0.15312496, 1)
+theme_override_font_sizes/font_size = 36
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -73,9 +147,12 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/ButtonsContainer"]
 layout_mode = 2
+icon = ExtResource("4_6nhso")
 
 [node name="Button2" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/ButtonsContainer"]
 layout_mode = 2
+icon = ExtResource("5_72ao1")
 
 [node name="Button3" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer/ButtonsContainer"]
 layout_mode = 2
+icon = ExtResource("6_6x4co")
