@@ -1,0 +1,138 @@
+[gd_scene load_steps=11 format=3 uid="uid://dw5wat5kpfgla"]
+
+[ext_resource type="Script" uid="uid://bf8x1x4bsyo7t" path="res://game/ui/hud/media_control.gd" id="1_8xrg6"]
+[ext_resource type="Texture2D" uid="uid://dx12gnuj7llhu" path="res://assets/images/media-control-play.png" id="1_rq6qd"]
+[ext_resource type="Texture2D" uid="uid://0c582fo1a3hk" path="res://assets/images/media-control-pause.png" id="2_8xrg6"]
+[ext_resource type="Texture2D" uid="uid://dbo82vgnlvxhu" path="res://assets/images/media-control-fast.png" id="3_rfcu7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72ao1"]
+bg_color = Color(0.58103293, 0.581033, 0.58103275, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42749333, 0.427493, 0.42749307, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilngl"]
+bg_color = Color(0.7058824, 0.7058824, 0.7058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.16206557, 0.1620656, 0.16206548, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbdj8"]
+bg_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3291585, 0.32915834, 0.3291584, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x4co"]
+bg_color = Color(0.58103293, 0.581033, 0.58103275, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.47788048, 0.47788006, 0.47788012, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4nl1"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_rfcu7"]
+
+[node name="MediaControl" type="HBoxContainer"]
+script = ExtResource("1_8xrg6")
+
+[node name="PlayButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.4)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.4)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.8)
+theme_override_styles/normal = SubResource("StyleBoxFlat_72ao1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ilngl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xbdj8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_6x4co")
+theme_override_styles/focus = SubResource("StyleBoxFlat_b4nl1")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_rfcu7")
+icon = ExtResource("1_rq6qd")
+
+[node name="PauseButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.4)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.4)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.8)
+theme_override_styles/normal = SubResource("StyleBoxFlat_72ao1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ilngl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xbdj8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_6x4co")
+theme_override_styles/focus = SubResource("StyleBoxFlat_b4nl1")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_rfcu7")
+icon = ExtResource("2_8xrg6")
+
+[node name="FastButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.4)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.4)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.8)
+theme_override_styles/normal = SubResource("StyleBoxFlat_72ao1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ilngl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xbdj8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_6x4co")
+theme_override_styles/focus = SubResource("StyleBoxFlat_b4nl1")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_rfcu7")
+icon = ExtResource("3_rfcu7")
+
+[connection signal="toggled" from="PlayButton" to="." method="_on_play_button_toggled"]
+[connection signal="toggled" from="PauseButton" to="." method="_on_pause_button_toggled"]
+[connection signal="toggled" from="FastButton" to="." method="_on_fast_button_toggled"]

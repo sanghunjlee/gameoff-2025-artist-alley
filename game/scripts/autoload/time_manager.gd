@@ -10,10 +10,16 @@ extends Node
 
 signal time_updated # Called outside of class when time_count changes
 
+signal time_control_updated # Callled when time state changes (e.g. play, pause, fast forward)
+
+var fast_forward_multiplier: float = 5.0
+
 # In-game time updates every second with respect to delta
 func _process(delta: float) -> void:
-    if not GameState.is_paused:
+    if GameState.time_state == GameState.TimeControlState.PLAY:
         GameState.time_count += delta
+    elif GameState.time_state == GameState.TimeControlState.FAST:
+        GameState.time_count += delta * fast_forward_multiplier
 
 func pass_hour() -> void:
     GameState.time_count += 1
@@ -26,3 +32,10 @@ func get_current_day() -> int:
 
 func get_current_hour() -> int:
     return int(GameState.time_count) % 24
+
+# preserve decimals when returning current hour
+func get_current_time() -> float:
+    var hour = int(GameState.time_count) % 24
+    var decimals = GameState.time_count - int(GameState.time_count)
+    return hour + decimals
+    

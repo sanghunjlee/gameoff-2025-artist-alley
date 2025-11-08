@@ -9,8 +9,10 @@
 [node name="Bedroom" parent="." instance=ExtResource("2_jyhfs")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(71, 43)
-zoom = Vector2(5, 5)
+z_index = 12
+z_as_relative = false
+position = Vector2(40, 43)
+zoom = Vector2(2, 2)
 
 [node name="Player" parent="." node_paths=PackedStringArray("bedroom_scene") instance=ExtResource("3_tbgi4")]
 z_index = 1
@@ -20,6 +22,7 @@ bedroom_scene = NodePath("../Bedroom")
 starting_task = 3
 
 [node name="MainUi" parent="." instance=ExtResource("1_o5qli")]
+visible = false
 top_level = true
 offset_left = -36.0
 offset_top = -17.0

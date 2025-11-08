@@ -9,8 +9,9 @@ func _init() -> void:
     vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 
 func _ready() -> void:
-    Engine.get_singleton("MessageLogManager").log_changed.connect(_on_log_changed)
-    load_logs()
+    if Engine.has_singleton("MessageLogManager"):
+        Engine.get_singleton("MessageLogManager").log_changed.connect(_on_log_changed)
+        load_logs()
 
 func _on_log_changed(new_log: MessageLogLine) -> void:
     append_log(new_log)
