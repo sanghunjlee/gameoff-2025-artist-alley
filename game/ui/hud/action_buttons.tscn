@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dstcm70jjmg6b"]
+
+[ext_resource type="Script" uid="uid://dpfcasa3iaq0b" path="res://game/ui/hud/action_buttons.gd" id="1_7gg4r"]
+
+[node name="ActionButtons" type="VBoxContainer"]
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+script = ExtResource("1_7gg4r")
+
+[node name="MakeMerchButton" type="Button" parent="."]
+layout_mode = 2
+text = "Make Merch"
+
+[node name="GetInspirationButton" type="Button" parent="."]
+layout_mode = 2
+text = "Get Inspiration"
+
+[connection signal="pressed" from="MakeMerchButton" to="." method="_on_make_merch_button_pressed"]
+[connection signal="pressed" from="GetInspirationButton" to="." method="_on_get_inspiration_button_pressed"]

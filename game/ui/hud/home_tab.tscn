@@ -1,11 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg7n6n8xjwkxp"]
+[gd_scene load_steps=7 format=3 uid="uid://dg7n6n8xjwkxp"]
 
 [ext_resource type="PackedScene" uid="uid://q0ggh5y0bofo" path="res://game/ui/hud/date_time_clock.tscn" id="1_tmwwy"]
+[ext_resource type="PackedScene" uid="uid://dstcm70jjmg6b" path="res://game/ui/hud/action_buttons.tscn" id="2_dfsxb"]
+[ext_resource type="PackedScene" uid="uid://hvccchi61w6c" path="res://game/ui/hud/inspiration_info.tscn" id="2_xxsk4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02tuw"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.44313726, 0.44313726, 0.44313726, 1)
+border_width_right = 1
+border_color = Color(1, 1, 1, 1)
+corner_detail = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfsxb"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.44313726, 0.44313726, 0.44313726, 1)
+border_color = Color(1, 1, 1, 1)
+corner_detail = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxsk4"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.44313726, 0.44313726, 0.44313726, 1)
+border_width_top = 1
+border_width_right = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 3
+corner_detail = 3
+anti_aliasing = false
 
 [node name="Home" type="Control"]
-custom_minimum_size = Vector2(900, 600)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -15,58 +54,74 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="DateTimeClock" parent="HBoxContainer/VBoxContainer" instance=ExtResource("1_tmwwy")]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_styles/panel = SubResource("StyleBoxFlat_02tuw")
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="DateTimeClock" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_tmwwy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 20
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer/ButtonsContainer"]
+[node name="ActionButtons" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("2_dfsxb")]
 layout_mode = 2
-text = "Make Merch"
 
-[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer/ButtonsContainer"]
+[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-text = "Get Inspiration"
+theme_override_styles/panel = SubResource("StyleBoxFlat_dfsxb")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_xxsk4")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer2"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer/VBoxContainer2/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-stretch = true
 
-[node name="GameViewport" type="SubViewport" parent="HBoxContainer/VBoxContainer2/MarginContainer/SubViewportContainer"]
-unique_name_in_owner = true
-handle_input_locally = false
-size = Vector2i(556, 476)
-render_target_update_mode = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 80)
+[node name="InspirationInfo" parent="HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_xxsk4")]
 layout_mode = 2
+
+[node name="MoneyInfo" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/MoneyInfo"]
+layout_mode = 2
+text = "Money:"
+
+[node name="Label2" type="Label" parent="HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/MoneyInfo"]
+layout_mode = 2
+text = "$0"
