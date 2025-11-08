@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccsoe5r501r1w"
-path="res://.godot/imported/media-control-ff.png-1abd5bfcd5fba61097d2e3b4e9161fbf.ctex"
+uid="uid://qexcdp5qhua"
+path="res://.godot/imported/hour-hand.png-3957f1ab344c48370b333390db84657d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/media-control-ff.png"
-dest_files=["res://.godot/imported/media-control-ff.png-1abd5bfcd5fba61097d2e3b4e9161fbf.ctex"]
+source_file="res://assets/images/hour-hand.png"
+dest_files=["res://.godot/imported/hour-hand.png-3957f1ab344c48370b333390db84657d.ctex"]
 
 [params]
 
