@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=4 uid="uid://djlyva08u52mw"]
+
+[ext_resource type="Script" uid="uid://bjtneh3k3a567" path="res://game/scenes/bedroom_scene.gd" id="1_50lqx"]
+[ext_resource type="TileSet" uid="uid://dp50pvjg0js34" path="res://assets/tilesets/background_tile_set.tres" id="2_0grwd"]
+[ext_resource type="SpriteFrames" uid="uid://5vbv6qfemxsm" path="res://assets/sprite_frames/bedroom.tres" id="2_5kyax"]
+[ext_resource type="Texture2D" uid="uid://bgdsviccf8a16" path="res://assets/images/rug.png" id="3_aaeym"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_aaeym"]
+vertices = PackedVector2Array(55.65625, 6, 100.171875, 9.2890625, 101.796875, 95.859375, 43.21875, 95.10156, 40.148438, 79.75781, 40.828125, 6, 7.890625, 80.703125, 7.09375, 5.6484375, 11.5625, 5.0234375)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 4, 6, 7, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(11, -5, 41, -4, 56, -4, 110, 0, 112, 106, 35, 105, 32, 90, -2, 91, -3, -3)])
+
+[node name="BedroomScene" type="Node2D"]
+script = ExtResource("1_50lqx")
+
+[node name="TileMapLayers" type="Node" parent="."]
+
+[node name="FloorTileMapLayer" type="TileMapLayer" parent="TileMapLayers"]
+tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAACAP//AQAIAAAAAAADAAAAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAABAAUAAAAAAAAAAAAAAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAA=")
+tile_set = ExtResource("2_0grwd")
+
+[node name="WallsTileMapLayer" type="TileMapLayer" parent="TileMapLayers"]
+tile_map_data = PackedByteArray("AAAEAP//AAABAAAAAAADAP//AAABAAAAAAACAP//AAABAAAAAAABAP//AAABAAAAAAAAAP//AAABAAAAAAAFAAAAAAABAAAAAAAGAAEAAAABAAAAAAA=")
+tile_set = ExtResource("2_0grwd")
+
+[node name="FurnitureTileMapLayer" type="TileMapLayer" parent="TileMapLayers"]
+tile_map_data = PackedByteArray("AAAGAAEAAQAFAAAAAAA=")
+tile_set = ExtResource("2_0grwd")
+
+[node name="Sprites" type="Node" parent="."]
+
+[node name="Rug" type="Sprite2D" parent="Sprites"]
+position = Vector2(55, 53)
+texture = ExtResource("3_aaeym")
+
+[node name="Window" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(8, -8)
+sprite_frames = ExtResource("2_5kyax")
+animation = &"window_night"
+
+[node name="MainDoor" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(24, -8)
+sprite_frames = ExtResource("2_5kyax")
+animation = &"main_door"
+
+[node name="PC" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(56, 8)
+sprite_frames = ExtResource("2_5kyax")
+animation = &"pc"
+
+[node name="ClosetDoor" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(88, 8)
+sprite_frames = ExtResource("2_5kyax")
+animation = &"closet_door"
+
+[node name="Poster1" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(40, -8)
+sprite_frames = ExtResource("2_5kyax")
+animation = &"poster"
+
+[node name="Poster2" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(72, -9)
+sprite_frames = ExtResource("2_5kyax")
+animation = &"poster"
+frame = 1
+
+[node name="TV" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(40, 8)
+sprite_frames = ExtResource("2_5kyax")
+animation = &"tv"
+
+[node name="Desk" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(104, 88)
+sprite_frames = ExtResource("2_5kyax")
+animation = &"desk"
+
+[node name="Books" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(104, 40)
+sprite_frames = ExtResource("2_5kyax")
+animation = &"books"
+
+[node name="Bed" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(19, 87)
+sprite_frames = ExtResource("2_5kyax")
+animation = &"new_animation"
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-2, -2)
+navigation_polygon = SubResource("NavigationPolygon_aaeym")
+
+[node name="Markers" type="Node" parent="."]
+
+[node name="Door" type="Marker2D" parent="Markers"]
+position = Vector2(24, 8)
+
+[node name="TV" type="Marker2D" parent="Markers"]
+position = Vector2(40, 20)
+
+[node name="PC" type="Marker2D" parent="Markers"]
+position = Vector2(57, 20)
+
+[node name="Desk" type="Marker2D" parent="Markers"]
+position = Vector2(89, 86)
+
+[node name="Closet" type="Marker2D" parent="Markers"]
+position = Vector2(88, 24)
+
+[node name="Bed" type="Marker2D" parent="Markers"]
+position = Vector2(19, 70)
+
+[node name="Books" type="Marker2D" parent="Markers"]
+position = Vector2(88, 40)

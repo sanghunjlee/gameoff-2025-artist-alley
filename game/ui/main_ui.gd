@@ -19,3 +19,18 @@ func update_day_and_time_labels():
 # Update money UI element
 func update_money_label():
     MoneyLabel.text = "$" + str(GameState.money)
+
+
+func _on_sleep_button_pressed() -> void:
+    GameState.player.do_task(GameState.player.Task.SLEEP)
+
+
+func _on_tv_button_pressed() -> void:
+    GameState.player.do_task(GameState.player.Task.WATCH_TV)
+
+func _on_pc_button_pressed() -> void:
+    GameState.player.do_task(GameState.player.Task.USE_PC)
+
+func _on_draw_button_pressed() -> void:
+    GameState.player.do_task(GameState.player.Task.DRAW)
+    pass # Replace with function body.

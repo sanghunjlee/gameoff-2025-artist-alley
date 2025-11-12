@@ -13,20 +13,18 @@
 >>>>>>> Stashed changes
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_0wfyh")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(48, 34)
-zoom = Vector2(5, 5)
 
 [node name="Bedroom" parent="." instance=ExtResource("2_jyhfs")]
 
-[node name="Player" parent="." instance=ExtResource("3_tbgi4")]
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 12
+z_as_relative = false
+position = Vector2(40, 43)
+zoom = Vector2(2, 2)
+
+[node name="Player" parent="." node_paths=PackedStringArray("bedroom_scene") instance=ExtResource("3_tbgi4")]
+z_index = 1
+z_as_relative = false
 position = Vector2(48, 34)
-<<<<<<< Updated upstream
 
 [node name="MainUi" parent="." instance=ExtResource("1_o5qli")]
-=======
-bedroom_scene = NodePath("../Bedroom")
-starting_task = 3
->>>>>>> Stashed changes

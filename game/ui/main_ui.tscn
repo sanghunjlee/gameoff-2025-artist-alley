@@ -134,3 +134,48 @@ text = "dwaw"
 [connection signal="pressed" from="SleepButton" to="." method="_on_sleep_button_pressed"]
 [connection signal="pressed" from="DrawButton" to="." method="_on_draw_button_pressed"]
 >>>>>>> Stashed changes
+
+[node name="PCButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 8.0
+offset_right = 209.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("2_3lvfr")
+theme_override_font_sizes/font_size = 10
+text = "use pc"
+
+[node name="TVButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 32.0
+offset_right = 210.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("2_3lvfr")
+theme_override_font_sizes/font_size = 10
+text = "teevee"
+
+[node name="SleepButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 80.0
+offset_right = 209.0
+offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("2_3lvfr")
+theme_override_font_sizes/font_size = 10
+text = "eep"
+
+[node name="DrawButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 56.0
+offset_right = 209.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("2_3lvfr")
+theme_override_font_sizes/font_size = 10
+text = "dwaw"
+
+[connection signal="pressed" from="PCButton" to="." method="_on_pc_button_pressed"]
+[connection signal="pressed" from="TVButton" to="." method="_on_tv_button_pressed"]
+[connection signal="pressed" from="SleepButton" to="." method="_on_sleep_button_pressed"]
+[connection signal="pressed" from="DrawButton" to="." method="_on_draw_button_pressed"]
