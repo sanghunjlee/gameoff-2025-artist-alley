@@ -33,7 +33,6 @@ corner_detail = 4
 anti_aliasing = false
 
 [node name="HUD" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_l7e5k")
 
 [node name="TabContainer" type="TabContainer" parent="."]
