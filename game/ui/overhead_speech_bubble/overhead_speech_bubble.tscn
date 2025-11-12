@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2vbmrv5tj786"]
+
+[ext_resource type="Texture2D" uid="uid://dptfly3h8ba54" path="res://assets/images/square_speech_bubble_24_24.png" id="1_3dba8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_asbfe"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[node name="OverheadSpeechBubble" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+top_level = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_right = 31.0
+offset_bottom = 19.0
+text = "23344234234123423423423"
+label_settings = SubResource("LabelSettings_asbfe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -5
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = -5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Label/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+texture = ExtResource("1_3dba8")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8

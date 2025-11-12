@@ -14,6 +14,27 @@ config/name="Artist Alley"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+<<<<<<< Updated upstream
+=======
+[autoload]
+
+MessageLogManager="*res://game/scripts/messaage_logs/message_log_manager.gd"
+GameState="*res://game/scripts/autoload/game_state.gd"
+StatsManager="*res://game/scripts/autoload/stats_manager.gd"
+TimeManager="*res://game/scripts/autoload/time_manager.gd"
+GlobalHud="res://game/ui/hud/hud.tscn"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=320
+window/stretch/mode="viewport"
+
+[gui]
+
+theme/custom_font="uid://dubdjkwl2ye3s"
+
+>>>>>>> Stashed changes
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
