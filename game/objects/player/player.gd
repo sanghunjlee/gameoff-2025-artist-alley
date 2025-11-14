@@ -16,9 +16,6 @@ enum Task {
     SLEEP
 }
 
-const TV_OFF_FRAME = 0
-const TV_ON_FRAME = 1
-
 # task positions can be accessed via bedroom_scene.<task>_position
 @export var bedroom_scene: BedroomScene
 @export var speed: float = 100.0
@@ -63,16 +60,25 @@ func do_task(task: Task) -> void:
     match task:
         Task.DRAW:
             target_position = bedroom_scene.desk_position
+
+            # Tablet should turn on when the player arrives
+            # Everything turns on too early though lol 
+            bedroom_scene.turn_on_object(bedroom_scene.desk_sprite)
+
         Task.WATCH_TV:
             target_position = bedroom_scene.tv_position
 
             # Tv should turn on when the player arrives
-            bedroom_scene.tv_sprite.frame = TV_ON_FRAME
+            bedroom_scene.turn_on_object(bedroom_scene.tv_sprite)
 
             # Player will emit little message bubbles every x seconds
             
         Task.USE_PC:
             target_position = bedroom_scene.pc_position
+
+            # PC should turn on when the player arrives
+            bedroom_scene.turn_on_object(bedroom_scene.pc_sprite)
+
         Task.SLEEP:
             target_position = bedroom_scene.bed_position
         _:
@@ -82,7 +88,7 @@ func do_task(task: Task) -> void:
 
 func reset_sprites() -> void:
     # Reset any sprites that may have changed during tasks
-    bedroom_scene.tv_sprite.frame = TV_OFF_FRAME
+    bedroom_scene.turn_off_everything()
 
 func _on_navigation_finished() -> void:
     match current_task:
