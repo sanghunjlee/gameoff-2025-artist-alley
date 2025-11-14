@@ -13,7 +13,8 @@ z_as_relative = false
 position = Vector2(40, 43)
 zoom = Vector2(2, 2)
 
-[node name="Player" parent="." instance=ExtResource("3_tbgi4")]
+[node name="Player" parent="." node_paths=PackedStringArray("bedroom_scene") instance=ExtResource("3_tbgi4")]
 z_index = 1
 z_as_relative = false
 position = Vector2(48, 34)
+bedroom_scene = NodePath("../Bedroom")

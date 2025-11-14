@@ -59,13 +59,13 @@ region = Rect2(112, 0, 16, 16)
 atlas = ExtResource("1_pkevi")
 region = Rect2(128, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wn304"]
-atlas = ExtResource("1_pkevi")
-region = Rect2(64, 16, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_javsp"]
 atlas = ExtResource("1_pkevi")
 region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn304"]
+atlas = ExtResource("1_pkevi")
+region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fipdc"]
 atlas = ExtResource("2_d178q")
@@ -241,10 +241,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wn304")
+"texture": SubResource("AtlasTexture_javsp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_javsp")
+"texture": SubResource("AtlasTexture_wn304")
 }],
 "loop": true,
 "name": &"tv",

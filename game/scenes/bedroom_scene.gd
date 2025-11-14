@@ -1,6 +1,18 @@
 extends Node2D
 class_name BedroomScene
-# Task positions
+
+# Bedroom sprites
+# example path: Sprites/Rug (animatedsprite2d)
+@export var window_sprite: AnimatedSprite2D
+@export var bed_sprite: AnimatedSprite2D
+@export var tv_sprite: AnimatedSprite2D
+@export var pc_sprite: AnimatedSprite2D
+@export var desk_sprite: AnimatedSprite2D
+@export var books_sprite: AnimatedSprite2D
+@export var closet_sprite: AnimatedSprite2D
+@export var door_sprite: AnimatedSprite2D
+
+# Where the player stands when performing a task
 @onready var bed_position: Vector2 = $Markers/Bed.position
 @onready var desk_position: Vector2 = $Markers/Desk.position
 @onready var main_door_position: Vector2 = $Markers/Door.position

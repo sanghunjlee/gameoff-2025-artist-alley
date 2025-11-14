@@ -10,8 +10,16 @@ vertices = PackedVector2Array(55.65625, 6, 100.171875, 9.2890625, 101.796875, 95
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 4, 6, 7, 8)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(11, -5, 41, -4, 56, -4, 110, 0, 112, 106, 35, 105, 32, 90, -2, 91, -3, -3)])
 
-[node name="BedroomScene" type="Node2D"]
+[node name="BedroomScene" type="Node2D" node_paths=PackedStringArray("window_sprite", "bed_sprite", "tv_sprite", "pc_sprite", "desk_sprite", "books_sprite", "closet_sprite", "door_sprite")]
 script = ExtResource("1_50lqx")
+window_sprite = NodePath("Sprites/Window")
+bed_sprite = NodePath("Sprites/Bed")
+tv_sprite = NodePath("Sprites/TV")
+pc_sprite = NodePath("Sprites/PC")
+desk_sprite = NodePath("Sprites/Desk")
+books_sprite = NodePath("Sprites/Books")
+closet_sprite = NodePath("Sprites/ClosetDoor")
+door_sprite = NodePath("Sprites/MainDoor")
 
 [node name="TileMapLayers" type="Node" parent="."]
 
@@ -106,6 +114,7 @@ position = Vector2(89, 86)
 position = Vector2(88, 24)
 
 [node name="Bed" type="Marker2D" parent="Markers"]
+unique_name_in_owner = true
 position = Vector2(19, 70)
 
 [node name="Books" type="Marker2D" parent="Markers"]
