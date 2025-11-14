@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dstcm70jjmg6b"]
+[gd_scene load_steps=4 format=3 uid="uid://dstcm70jjmg6b"]
 
 [ext_resource type="Script" uid="uid://dpfcasa3iaq0b" path="res://game/ui/hud/action_buttons.gd" id="1_7gg4r"]
+[ext_resource type="Texture2D" uid="uid://dywnm44fl3lhr" path="res://assets/images/main action button.png" id="2_jvh65"]
 [ext_resource type="FontFile" uid="uid://dubdjkwl2ye3s" path="res://assets/fonts/MunroSmall-wPZw.ttf" id="2_ndipm"]
 
 [node name="ActionButtons" type="VBoxContainer"]
@@ -9,36 +10,62 @@ theme_override_constants/separation = 4
 script = ExtResource("1_7gg4r")
 
 [node name="MakeMerchButton" type="Button" parent="."]
+visible = false
 layout_mode = 2
-text = "Make Merch"
+text = "merch"
+icon = ExtResource("2_jvh65")
+flat = true
+icon_alignment = 1
 
 [node name="GetInspirationButton" type="Button" parent="."]
+visible = false
 layout_mode = 2
-text = "Get Inspiration"
+text = "inspiration"
+icon = ExtResource("2_jvh65")
+flat = true
+icon_alignment = 1
 
 [node name="PCButton" type="Button" parent="."]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ndipm")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 20
 text = "use pc"
+icon = ExtResource("2_jvh65")
+flat = true
+icon_alignment = 1
 
 [node name="TVButton" type="Button" parent="."]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ndipm")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 20
 text = "teevee"
+icon = ExtResource("2_jvh65")
+flat = true
+icon_alignment = 1
 
 [node name="SleepButton" type="Button" parent="."]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ndipm")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 20
 text = "eep"
+icon = ExtResource("2_jvh65")
+flat = true
+icon_alignment = 1
 
 [node name="DrawButton" type="Button" parent="."]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ndipm")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 20
 text = "dwaw"
+icon = ExtResource("2_jvh65")
+flat = true
+icon_alignment = 1
 
 [connection signal="pressed" from="MakeMerchButton" to="." method="_on_make_merch_button_pressed"]
 [connection signal="pressed" from="GetInspirationButton" to="." method="_on_get_inspiration_button_pressed"]

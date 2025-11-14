@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cj7f2aeo47fmc"]
+[gd_scene load_steps=19 format=3 uid="uid://cj7f2aeo47fmc"]
 
 [ext_resource type="Texture2D" uid="uid://dd80o5u1fd4c3" path="res://assets/images/IMG_8019.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dooexj2bhnjew" path="res://game/objects/player/player.gd" id="1_j0r2g"]
 [ext_resource type="Script" uid="uid://qf3yuag6s13v" path="res://game/objects/player/animated_sprite_2d.gd" id="3_k0tc2"]
+[ext_resource type="PackedScene" uid="uid://c2vbmrv5tj786" path="res://game/ui/overhead_speech_bubble/overhead_speech_bubble.tscn" id="4_k0tc2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("1_3vyb7")
@@ -172,3 +173,9 @@ shape = SubResource("CircleShape2D_oprun")
 disabled = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="OverheadSpeechBubble" parent="." instance=ExtResource("4_k0tc2")]
+offset_left = -46.0
+offset_top = -28.0
+offset_right = -46.0
+offset_bottom = -28.0
