@@ -1,6 +1,9 @@
 extends Node2D
 class_name BedroomScene
 
+const OBJECT_OFF = 0
+const OBJECT_ON = 1
+
 # Bedroom sprites
 # example path: Sprites/Rug (animatedsprite2d)
 @export var window_sprite: AnimatedSprite2D
@@ -20,3 +23,15 @@ class_name BedroomScene
 @onready var books_position: Vector2 = $Markers/Books.position
 @onready var tv_position: Vector2 = $Markers/TV.position
 @onready var pc_position: Vector2 = $Markers/PC.position
+
+
+func turn_on_object(sprite: AnimatedSprite2D) -> void:
+    sprite.frame = OBJECT_ON
+
+func turn_off_object(sprite: AnimatedSprite2D) -> void:
+    sprite.frame = OBJECT_OFF
+
+func turn_off_everything() -> void:
+    turn_off_object(tv_sprite)
+    turn_off_object(pc_sprite)
+    turn_off_object(desk_sprite)
