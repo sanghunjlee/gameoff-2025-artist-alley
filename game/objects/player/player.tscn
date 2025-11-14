@@ -158,10 +158,11 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oprun"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("message_bubble")]
 motion_mode = 1
 script = ExtResource("1_j0r2g")
 speed = 50.0
+message_bubble = NodePath("OverheadSpeechBubble")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f1ej7")
@@ -175,7 +176,5 @@ disabled = true
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="OverheadSpeechBubble" parent="." instance=ExtResource("4_k0tc2")]
-offset_left = -46.0
-offset_top = -28.0
-offset_right = -46.0
-offset_bottom = -28.0
+offset_top = -18.0
+offset_bottom = -18.0

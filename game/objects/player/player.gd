@@ -20,6 +20,7 @@ enum Task {
 @export var bedroom_scene: BedroomScene
 @export var speed: float = 100.0
 @export var starting_task: Task = Task.NONE
+@export var message_bubble: OverheadSpeechBubble
 
 @onready var current_task: Task = Task.NONE:
     set(_current_task):
@@ -37,6 +38,8 @@ func _ready() -> void:
     navigation_agent.max_speed = speed
     navigation_agent.target_desired_distance = 3.0
     do_task(starting_task) # Start with drawing task
+
+    message_bubble.show_message("Good meowning!")
 
 func _physics_process(delta: float) -> void:
     if !navigation_agent.is_navigation_finished():
@@ -59,6 +62,7 @@ func do_task(task: Task) -> void:
 
     match task:
         Task.DRAW:
+            message_bubble.show_message("What to draw...?")
             target_position = bedroom_scene.desk_position
 
             # Tablet should turn on when the player arrives
@@ -66,6 +70,7 @@ func do_task(task: Task) -> void:
             bedroom_scene.turn_on_object(bedroom_scene.desk_sprite)
 
         Task.WATCH_TV:
+            message_bubble.show_message("Alexa, TV on!")
             target_position = bedroom_scene.tv_position
 
             # Tv should turn on when the player arrives
@@ -74,12 +79,14 @@ func do_task(task: Task) -> void:
             # Player will emit little message bubbles every x seconds
             
         Task.USE_PC:
+            message_bubble.show_message("Love a remote-start PC!")
             target_position = bedroom_scene.pc_position
 
             # PC should turn on when the player arrives
             bedroom_scene.turn_on_object(bedroom_scene.pc_sprite)
 
         Task.SLEEP:
+            message_bubble.show_message("Yawn...")
             target_position = bedroom_scene.bed_position
         _:
             return # Invalid task
