@@ -24,6 +24,8 @@ const OBJECT_ON = 1
 @onready var tv_position: Vector2 = $Markers/TV.position
 @onready var pc_position: Vector2 = $Markers/PC.position
 
+func _ready() -> void:
+    TimeManager.time_updated.connect(update_window)
 
 func turn_on_object(sprite: AnimatedSprite2D) -> void:
     sprite.frame = OBJECT_ON
@@ -35,3 +37,6 @@ func turn_off_everything() -> void:
     turn_off_object(tv_sprite)
     turn_off_object(pc_sprite)
     turn_off_object(desk_sprite)
+
+func update_window() -> void:
+    window_sprite.play("window_" + TimeManager.get_current_daytime())
