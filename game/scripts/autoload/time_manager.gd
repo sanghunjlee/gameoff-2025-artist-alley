@@ -10,7 +10,16 @@ extends Node
 
 signal time_updated # Called outside of class when time_count changes
 
-signal time_control_updated # Callled when time state changes (e.g. play, pause, fast forward)
+signal time_control_updated # Called when time state changes (e.g. play, pause, fast forward)
+
+# Note: DAYTIME refers to the general time of day (morning, afternoon, evening, night)
+# Denotes the hour thresholds for different times of day
+var daytimes = {
+    "morning": 6, # eg. Morning starts at 6:00
+    "afternoon": 12,
+    "evening": 18,
+    "night": 21
+}
 
 var fast_forward_multiplier: float = 5.0
 
@@ -38,4 +47,14 @@ func get_current_time() -> float:
     var hour = int(GameState.time_count) % 24
     var decimals = GameState.time_count - int(GameState.time_count)
     return hour + decimals
-    
+
+func get_current_daytime() -> String:
+    var hour = get_current_hour()
+    if hour >= daytimes["morning"] and hour < daytimes["afternoon"]:
+        return "morning"
+    elif hour >= daytimes["afternoon"] and hour < daytimes["evening"]:
+        return "afternoon"
+    elif hour >= daytimes["evening"] and hour < daytimes["night"]:
+        return "evening"
+    else:
+        return "night"
