@@ -1,3 +1,4 @@
+@tool
 class_name MerchResource extends Resource
 
 enum MerchType {
@@ -7,16 +8,21 @@ enum MerchType {
 }
 
 enum MerchGenre {
-    FURRY,
-    MECHA,
-    YAOI,
-    YURI,
+    NONE = 0,
+    FURRY = 1,
+    MECHA = 2,
+    YAOI = 4,
+    YURI = 8,
 }
 
 ## Descriptive word(s) to prefix the name
+@export var icon: Texture = null
 @export var qualifier: String = ""
-@export var genre: MerchGenre = MerchGenre.FURRY
-@export var type: MerchType = MerchType.STICKER
+@export_flags("Furry", "Mecha", "Yaoi", "Yuri") var genre: int = 0
+@export var type: StringName = MerchConstants.MERCH_TYPE_CHARM:
+    set(value):
+        type = value
+        update_color()
 @export var description: String = ""
 @export var base_value: int = 0
 @export var cost: int = 0
@@ -24,6 +30,8 @@ enum MerchGenre {
 
 ## Required skill(s) and level(s) needed
 @export var requirement: Dictionary[SkillResource, int] = {}
+
+var color: Color = Color.WHITE
 
 var type_names = {
     MerchType.STICKER: "Sticker",
@@ -38,7 +46,18 @@ var genre_names = {
     MerchGenre.YURI: "Yuri"
 }
 
+func update_color():
+    var color_map = {
+        MerchConstants.MERCH_TYPE_CHARM: Color.RED,
+        MerchConstants.MERCH_TYPE_POSTER: Color.BLUE,
+    }
+    if type in color_map:
+        color = color_map[type]
+    else:
+        color = Color.WHITE
+
+
 func _to_string() -> String:
     return "{0} {1} {2}".format(
-        [qualifier, genre_names[genre], type_names[type]]
+        [qualifier, genre_names[genre], type]
     ).strip_edges()
