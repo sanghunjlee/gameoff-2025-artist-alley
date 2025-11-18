@@ -6,6 +6,14 @@ enum TimeControlState {
     FAST
 }
 
+enum PlayerTaskType {
+    NONE,
+    DRAW,
+    WATCH_TV,
+    USE_PC,
+    SLEEP
+}
+
 # Time control state
 var time_state: TimeControlState = TimeControlState.PLAY:
     set(value):
@@ -26,6 +34,10 @@ var inspiration_point: int = 0:
         inspiration_point = value % inspiration_limit
         StatsManager.emit_signal("inspiration_updated")
 var inspiration_limit: int = 10
+
+## Task related vars
+var current_task: PlayerTaskType = PlayerTaskType.NONE
+var is_on_task = false
 
 ## Merch related vars
 var merch_inventory: MerchInventory = preload("res://game/resources/inventories/merch_inventory.tres")

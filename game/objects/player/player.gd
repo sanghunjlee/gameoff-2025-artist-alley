@@ -8,21 +8,13 @@ class_name Player
 # Note that the character is not manually controlled via input, but automatically
 # moves in the world according to its assigned task
 
-enum Task {
-    NONE,
-    DRAW,
-    WATCH_TV,
-    USE_PC,
-    SLEEP
-}
-
 # task positions can be accessed via bedroom_scene.<task>_position
 @export var bedroom_scene: BedroomScene
 @export var speed: float = 100.0
-@export var starting_task: Task = Task.NONE
+@export var starting_task: GameState.PlayerTaskType = GameState.PlayerTaskType.NONE
 @export var message_bubble: OverheadSpeechBubble
 
-@onready var current_task: Task = Task.NONE:
+@onready var current_task: GameState.PlayerTaskType = GameState.PlayerTaskType.NONE:
     set(_current_task):
         current_task = _current_task
         reset_sprites()
@@ -53,7 +45,7 @@ func move_toward_target(_delta):
     velocity = direction * speed
     move_and_slide()
 
-func do_task(task: Task) -> void:
+func do_task(task: GameState.PlayerTaskType) -> void:
     if is_interacting:
         return # Already performing a task
 
@@ -61,7 +53,7 @@ func do_task(task: Task) -> void:
     var target_position: Vector2
 
     match task:
-        Task.DRAW:
+        GameState.PlayerTaskType.DRAW:
             message_bubble.show_message("What to draw...?")
             target_position = bedroom_scene.desk_position
 
@@ -69,7 +61,7 @@ func do_task(task: Task) -> void:
             # Everything turns on too early though lol 
             bedroom_scene.turn_on_object(bedroom_scene.desk_sprite)
 
-        Task.WATCH_TV:
+        GameState.PlayerTaskType.WATCH_TV:
             message_bubble.show_message("Alexa, TV on!")
             target_position = bedroom_scene.tv_position
 
@@ -78,14 +70,14 @@ func do_task(task: Task) -> void:
 
             # Player will emit little message bubbles every x seconds
             
-        Task.USE_PC:
+        GameState.PlayerTaskType.USE_PC:
             message_bubble.show_message("Love a remote-start PC!")
             target_position = bedroom_scene.pc_position
 
             # PC should turn on when the player arrives
             bedroom_scene.turn_on_object(bedroom_scene.pc_sprite)
 
-        Task.SLEEP:
+        GameState.PlayerTaskType.SLEEP:
             message_bubble.show_message("Yawn...")
             target_position = bedroom_scene.bed_position
         _:
@@ -99,11 +91,11 @@ func reset_sprites() -> void:
 
 func _on_navigation_finished() -> void:
     match current_task:
-        Task.DRAW:
+        GameState.PlayerTaskType.DRAW:
             animated_sprite.face_direction("right")
-        Task.WATCH_TV:
+        GameState.PlayerTaskType.WATCH_TV:
             animated_sprite.face_direction("up")
-        Task.USE_PC:
+        GameState.PlayerTaskType.USE_PC:
             animated_sprite.face_direction("up")
-        Task.SLEEP:
+        GameState.PlayerTaskType.SLEEP:
             animated_sprite.face_direction("down")

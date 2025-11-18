@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
     else:
         # If there is a current work, complete it
         if current_work != null:
+            print('design made:', current_work)
             design_completed.emit(current_work)
             GameState.design_inventory.add_design(current_work)
             current_work = null
@@ -23,12 +24,17 @@ func _process(delta: float) -> void:
         # Check if there is queue and handle it
         if design_queue.size() > 0:
             current_work = design_queue.pop_front()
+            print('starting design:', current_work)
             design_started.emit(current_work)
             wait_time = current_work.process_time
 
 func make_design(design: DesignResource):
+    print('adding design to queue', design)
     design_queue.append(design)
 
 func make_random_design():
     var d = DesignResource.random()
     make_design(d)
+
+func clear_queue():
+    design_queue.clear()

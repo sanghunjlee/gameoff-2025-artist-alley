@@ -35,3 +35,6 @@ func _process(delta: float) -> void:
 func order_merch(merch: MerchResource, amount: int):
     var stack = MerchStackResource.new(merch, amount)
     merch_queue.append(stack)
+
+func clear_queue():
+    merch_queue.clear()
