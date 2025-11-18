@@ -27,7 +27,10 @@ var inspiration_point: int = 0:
         StatsManager.emit_signal("inspiration_updated")
 var inspiration_limit: int = 10
 
+## Merch related vars
 var merch_inventory: MerchInventory = preload("res://game/resources/inventories/merch_inventory.tres")
+
+## Design related vars
 var design_inventory: DesignInventory = preload("res://game/resources/inventories/design_inventory.tres")
 
 # Node reference

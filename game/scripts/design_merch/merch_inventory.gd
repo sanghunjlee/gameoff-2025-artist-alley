@@ -21,9 +21,7 @@ func count_merch_amount(merch: MerchResource) -> int:
 func add_merch(merch: MerchResource, amount: int):
     var index = find_merch(merch)
     if index == -1:
-        var stack = MerchStackResource.new()
-        stack.item = merch
-        stack.amount = amount
+        var stack = MerchStackResource.new(merch, amount)
         stacks.append(stack)
         return 
     

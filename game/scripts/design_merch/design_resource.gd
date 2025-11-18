@@ -34,7 +34,8 @@ func _init(title_param: String, type_param: DesignType, sub_type_param: DesignTy
     self.type = type_param
     self.sub_type = sub_type_param
 
-func random() -> DesignResource:
+
+static func random() -> DesignResource:
     var types = DesignType.values()
 
     # Random range starts from 1 to avoid DesignType.NONE
@@ -44,7 +45,7 @@ func random() -> DesignResource:
 
     # TODO: Better random title generator
     var random_title = "{0} drawing".format([
-        str(DesignType.find_key(self.type)).to_pascal_case()
+        str(DesignType.find_key(random_type)).to_pascal_case()
     ])
 
     var design = DesignResource.new(random_title, random_type)

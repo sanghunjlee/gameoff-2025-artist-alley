@@ -5,3 +5,6 @@ class_name MerchStackResource extends Resource
     set(value):
         amount = maxi(value, 0) # disallows negative amount
         
+func _init(merch_param: MerchResource, amount_param: int):
+    merch = merch_param
+    amount = amount_param
