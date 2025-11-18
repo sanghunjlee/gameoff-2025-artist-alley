@@ -27,6 +27,9 @@ var inspiration_point: int = 0:
         StatsManager.emit_signal("inspiration_updated")
 var inspiration_limit: int = 10
 
+var merch_inventory: MerchInventory = preload("res://game/resources/inventories/merch_inventory.tres")
+var design_inventory: DesignInventory = preload("res://game/resources/inventories/design_inventory.tres")
+
 # Node reference
 @onready var player: Player = null
 
@@ -38,7 +41,6 @@ var inspiration_limit: int = 10
         if money != value:
             money = value
             StatsManager.emit_signal("money_updated")
-@onready var inventory = []
 @onready var time_count = 0: # Used by TimeManager:
     set(value): # On time_count change, emit signal to update time UI
         if time_count != value:
