@@ -25,7 +25,7 @@ var description = ""
 
 ## Time that takes to create the design
 ## In real time seconds
-var process_time: float = 1.0
+var process_time: float = 5.0
 
 func _init(title_param: String, type_param: DesignType, sub_type_param: DesignType = DesignType.NONE):
     if type_param == DesignType.NONE:

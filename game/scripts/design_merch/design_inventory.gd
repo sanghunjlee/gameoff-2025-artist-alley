@@ -6,7 +6,7 @@ func find_design(design: DesignResource) -> int:
     ## Find the design in the designs and return the index
     ## Returns -1 if not found
     for i in range(len(designs)):
-        if designs[i].item == design:
+        if designs[i] == design:
             return i
     return -1
 
