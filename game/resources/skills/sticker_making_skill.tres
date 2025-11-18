@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SkillResource" load_steps=2 format=3 uid="uid://dyysieqhjsspr"]
+
+[ext_resource type="Script" uid="uid://8wwk11v874kc" path="res://game/scripts/merch/skill_resource.gd" id="1_1imnp"]
+
+[resource]
+script = ExtResource("1_1imnp")
+skill_name = "Sticker Making Skill"
+description = "Skill that allows you to create stickers"
+metadata/_custom_type_script = "uid://8wwk11v874kc"

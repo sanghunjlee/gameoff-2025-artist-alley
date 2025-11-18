@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MerchInventory" load_steps=3 format=3 uid="uid://024nwyhuwqmu"]
+
+[ext_resource type="Script" uid="uid://cr1imc5er7p7n" path="res://game/scripts/merch/merch_inventory.gd" id="1_m4ij1"]
+[ext_resource type="Script" uid="uid://c1f32ixgg5mxd" path="res://game/scripts/merch/merch_stack_resource.gd" id="2_q27se"]
+
+[resource]
+script = ExtResource("1_m4ij1")
+metadata/_custom_type_script = "uid://cr1imc5er7p7n"
