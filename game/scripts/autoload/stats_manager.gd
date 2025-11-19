@@ -22,7 +22,8 @@ func _process(delta: float) -> void:
     if GameState.is_on_task:
         match GameState.current_task:
             GameState.PlayerTaskType.DRAW:
-                DesignManager.make_random_design()
+                if DesignManager.design_queue.size() < 5:
+                    DesignManager.make_random_design()
             GameState.PlayerTaskType.USE_PC:
                 pass
 
@@ -35,10 +36,8 @@ func handle_task_action(task: GameState.PlayerTaskType):
     DesignManager.clear_queue()
 
     # Wait for existing process
-    if MerchManager.current_work != null:
-        await MerchManager.merch_completed
     if DesignManager.current_work != null:
-        await DesignManager.design_completed
+        DesignManager.cancel_work()
 
     # Tell player to do task
     GameState.player.do_task(task)

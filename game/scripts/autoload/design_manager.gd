@@ -4,6 +4,7 @@ extends Node
 
 signal design_started(design: DesignResource)
 signal design_completed(design: DesignResource)
+signal design_canceled
 
 var design_queue: Array[DesignResource] = []
 var current_work: DesignResource = null
@@ -35,6 +36,12 @@ func make_design(design: DesignResource):
 func make_random_design():
     var d = DesignResource.random()
     make_design(d)
+
+func cancel_work():
+    clear_queue()
+    if current_work != null:
+        current_work = null
+        design_canceled.emit()
 
 func clear_queue():
     design_queue.clear()
