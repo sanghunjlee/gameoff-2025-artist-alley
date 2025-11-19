@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
         if merch_queue.size() > 0:
             current_work = merch_queue.pop_front()
             merch_started.emit(current_work)
-            wait_time = 5.0 # TODO: implement shipping time
+            wait_time = current_work.process_time
 
 func order_merch(merch: MerchResource, amount: int):
     var stack = MerchStackResource.new(merch, amount)
