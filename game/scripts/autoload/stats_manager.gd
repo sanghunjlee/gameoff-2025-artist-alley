@@ -25,7 +25,15 @@ func _process(delta: float) -> void:
                 if DesignManager.design_queue.size() < 5:
                     DesignManager.make_random_design()
             GameState.PlayerTaskType.USE_PC:
-                pass
+                if MerchManager.merch_queue.size() < 1:
+                    if GameState.design_inventory.designs.size() > 0:
+                        var random_index = randi_range(0, GameState.design_inventory.designs.size() - 1)
+                        var random_design = GameState.design_inventory.designs[random_index]
+                        var random_merch = MerchResource.new()
+                        random_merch.type = MerchResource.MerchType.values()[randi_range(0, MerchResource.MerchType.size() - 1)]
+                        random_merch.design = random_design
+                        var random_amount = randi_range(1, 10)
+                        MerchManager.order_merch(random_merch, random_amount)
 
 func handle_task_action(task: GameState.PlayerTaskType):
     GameState.is_on_task = false
