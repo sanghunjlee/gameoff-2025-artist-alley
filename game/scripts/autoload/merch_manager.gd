@@ -24,13 +24,14 @@ func _process(delta: float) -> void:
         if current_work != null:
             merch_completed.emit(current_work)
             GameState.merch_inventory.add_merch(current_work.merch, current_work.amount)
+            MessageLogManager.append_log("'" + str(current_work) + "' is complete!")
             current_work = null
 
         # Check if there is queue and handle it
         if merch_queue.size() > 0:
             current_work = merch_queue.pop_front()
             merch_started.emit(current_work)
-            wait_time = 5.0 # TODO: implement shipping time
+            wait_time = current_work.process_time
 
 func order_merch(merch: MerchResource, amount: int):
     var stack = MerchStackResource.new(merch, amount)

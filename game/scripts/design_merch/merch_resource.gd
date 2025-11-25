@@ -16,7 +16,9 @@ var design: DesignResource = null
 var icon: Texture = null
 var description: String = ""
 
-var process_time: float = 1.0
+## Time it takes to make this merch
+## i.e. Shipping time
+var process_time: float = 2.0
 
 ## Readonly
 ## Base value of the merch
@@ -57,6 +59,6 @@ func _get_cost():
 
 
 func _to_string() -> String:
-    return "<{1}> {2}".format(
+    return "<{0}> {1}".format(
         [design.title.to_upper(), MerchType.find_key(type).to_lower()]
     ).strip_edges()

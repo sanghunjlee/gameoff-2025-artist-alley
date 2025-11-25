@@ -9,7 +9,7 @@ func _ready() -> void:
 
     DesignManager.design_started.connect(on_design_start)
     DesignManager.design_completed.connect(on_design_completed)
-
+    DesignManager.design_canceled.connect(on_design_canceled)
 
 func _process(_delta: float) -> void:
     if is_design_processing:
@@ -28,5 +28,9 @@ func on_design_completed(design: DesignResource):
     if progress_bar:
         progress_bar.value = design.process_time
 
+    self.is_design_processing = false
+    self.visible = false
+
+func on_design_canceled():
     self.is_design_processing = false
     self.visible = false

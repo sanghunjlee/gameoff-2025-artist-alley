@@ -13,12 +13,12 @@ offset_bottom = 40.0
 script = ExtResource("1_po5wc")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(24, 4)
 layout_mode = 0
-offset_left = -20.0
+offset_left = -12.0
 offset_top = -18.0
-offset_right = 20.0
-offset_bottom = -10.0
+offset_right = 12.0
+offset_bottom = -14.0
 nine_patch_stretch = true
 texture_under = ExtResource("1_qjnhb")
 texture_over = ExtResource("2_po5wc")
