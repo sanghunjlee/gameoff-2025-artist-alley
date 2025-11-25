@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://djlyva08u52mw"]
+[gd_scene load_steps=8 format=4 uid="uid://djlyva08u52mw"]
 
 [ext_resource type="Script" uid="uid://bjtneh3k3a567" path="res://game/scenes/bedroom_scene.gd" id="1_50lqx"]
 [ext_resource type="TileSet" uid="uid://dp50pvjg0js34" path="res://assets/tilesets/background_tile_set.tres" id="2_0grwd"]
 [ext_resource type="SpriteFrames" uid="uid://5vbv6qfemxsm" path="res://assets/sprite_frames/bedroom.tres" id="2_5kyax"]
 [ext_resource type="Texture2D" uid="uid://bgdsviccf8a16" path="res://assets/images/rug.png" id="3_aaeym"]
 [ext_resource type="PackedScene" uid="uid://csbe3uwm0luys" path="res://game/objects/pc/pc.tscn" id="5_mpusn"]
+[ext_resource type="PackedScene" uid="uid://c4gubb6j886f2" path="res://game/objects/desk/desk.tscn" id="6_m2mbp"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aaeym"]
 vertices = PackedVector2Array(55.65625, 6, 100.171875, 9.2890625, 101.796875, 95.859375, 43.21875, 95.10156, 40.148438, 79.75781, 40.828125, 6, 7.890625, 80.703125, 7.09375, 5.6484375, 11.5625, 5.0234375)
@@ -76,10 +77,8 @@ position = Vector2(40, 8)
 sprite_frames = ExtResource("2_5kyax")
 animation = &"tv"
 
-[node name="Desk" type="AnimatedSprite2D" parent="Sprites"]
+[node name="Desk" parent="Sprites" instance=ExtResource("6_m2mbp")]
 position = Vector2(104, 88)
-sprite_frames = ExtResource("2_5kyax")
-animation = &"desk"
 
 [node name="Books" type="AnimatedSprite2D" parent="Sprites"]
 position = Vector2(104, 40)

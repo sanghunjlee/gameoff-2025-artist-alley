@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4gubb6j886f2"]
+
+[ext_resource type="SpriteFrames" uid="uid://5vbv6qfemxsm" path="res://assets/sprite_frames/bedroom.tres" id="1_ghn24"]
+[ext_resource type="PackedScene" uid="uid://b75og0ut6pxil" path="res://game/ui/design_progress_bar/design_progress_bar.tscn" id="2_o0sx1"]
+
+[node name="Desk" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_ghn24")
+animation = &"desk"
+
+[node name="DesignProgressBar" parent="." instance=ExtResource("2_o0sx1")]
