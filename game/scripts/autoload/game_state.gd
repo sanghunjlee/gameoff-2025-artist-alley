@@ -33,7 +33,8 @@ var inspiration_level: int = 0
 var inspiration_point: int = 0:
     set(value):
         # TODO: Replaced this to utilize "insp calc funcs"
-        inspiration_point = value % inspiration_limit
+        # inspiration_point = value % inspiration_limit
+        inspiration_point = value
         StatsManager.emit_signal("inspiration_updated")
 var inspiration_limit: int = 10
 
