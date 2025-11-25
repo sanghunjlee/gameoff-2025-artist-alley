@@ -99,3 +99,14 @@ func _on_navigation_finished() -> void:
             animated_sprite.face_direction("up")
         GameState.PlayerTaskType.SLEEP:
             animated_sprite.face_direction("down")
+
+func complain() -> void:
+    match current_task:
+        GameState.PlayerTaskType.DRAW:
+            message_bubble.show_message("I have no inspiration.")
+        GameState.PlayerTaskType.WATCH_TV:
+            message_bubble.show_message("This show is so boring.")
+        GameState.PlayerTaskType.USE_PC:
+            message_bubble.show_message("I have no money.")
+        GameState.PlayerTaskType.SLEEP:
+            message_bubble.show_message("I am too eepy.")
