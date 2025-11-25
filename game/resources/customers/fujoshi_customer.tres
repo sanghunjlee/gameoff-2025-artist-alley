@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CustomerResource" load_steps=4 format=3 uid="uid://cr5ibwd4j0rs8"]
+
+[ext_resource type="Script" uid="uid://bpu541p4vnin" path="res://game/scripts/customer/customer_resource.gd" id="1_qh54k"]
+[ext_resource type="Texture2D" uid="uid://7qutghxbjytr" path="res://assets/images/kid fujoshi pillow guy spritesheet.png" id="2_3l6t1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od8hl"]
+atlas = ExtResource("2_3l6t1")
+region = Rect2(48, 0, 48, 16)
+
+[resource]
+script = ExtResource("1_qh54k")
+customer_type_name = "fujoshi"
+liked_design_types = Array[int]([3, 8])
+liked_merch_types = null
+sprite_sheet = SubResource("AtlasTexture_od8hl")
+metadata/_custom_type_script = "uid://bpu541p4vnin"

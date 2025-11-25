@@ -10,6 +10,7 @@ enum DesignType {
     SHOUNEN,
     CUTE,
     SPICY,
+    SPOOKY
 }
 
 var type: DesignType = DesignType.NONE

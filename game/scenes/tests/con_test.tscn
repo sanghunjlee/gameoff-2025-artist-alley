@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddwcsdwcy65tc"]
+
+[ext_resource type="PackedScene" uid="uid://cqe6c6l0jpokp" path="res://game/objects/customer/customer.tscn" id="1_2jekq"]
+[ext_resource type="Resource" uid="uid://dark56c1mfb4r" path="res://game/resources/customers/kid_customer.tres" id="2_n6dmm"]
+
+[node name="ConTest" type="Node2D"]
+
+[node name="Customer" parent="." instance=ExtResource("1_2jekq")]
+customer_data = ExtResource("2_n6dmm")
+
+[node name="Camera2D" type="Camera2D" parent="."]

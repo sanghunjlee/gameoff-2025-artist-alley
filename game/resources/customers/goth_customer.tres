@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CustomerResource" load_steps=4 format=3 uid="uid://dl7gvk4u4h3xb"]
+
+[ext_resource type="Script" uid="uid://bpu541p4vnin" path="res://game/scripts/customer/customer_resource.gd" id="1_qyuit"]
+[ext_resource type="Texture2D" uid="uid://twhl05qcuodb" path="res://assets/images/npc spritesheet transparent.png" id="2_abybc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od8hl"]
+atlas = ExtResource("2_abybc")
+region = Rect2(0, 0, 48, 16)
+
+[resource]
+script = ExtResource("1_qyuit")
+customer_type_name = "goth"
+liked_design_types = Array[int]([4, 9])
+sprite_sheet = SubResource("AtlasTexture_od8hl")
+metadata/_custom_type_script = "uid://bpu541p4vnin"

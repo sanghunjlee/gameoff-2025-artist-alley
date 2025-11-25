@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CustomerResource" load_steps=4 format=3 uid="uid://cikj8noomu5be"]
+
+[ext_resource type="Script" uid="uid://bpu541p4vnin" path="res://game/scripts/customer/customer_resource.gd" id="1_usalm"]
+[ext_resource type="Texture2D" uid="uid://twhl05qcuodb" path="res://assets/images/npc spritesheet transparent.png" id="2_usalm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od8hl"]
+atlas = ExtResource("2_usalm")
+region = Rect2(0, 32, 48, 16)
+
+[resource]
+script = ExtResource("1_usalm")
+customer_type_name = "cat_boy"
+liked_design_types = Array[int]([3, 8, 4, 6, 2, 1])
+sprite_sheet = SubResource("AtlasTexture_od8hl")
+metadata/_custom_type_script = "uid://bpu541p4vnin"

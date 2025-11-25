@@ -1,6 +1,7 @@
 class_name MerchResource extends Resource
 
 enum MerchType {
+    NONE,
     CHARM,
     STICKER,
     POSTER,
