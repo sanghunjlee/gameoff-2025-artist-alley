@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq7jnd8pqmgnb"]
+
+[ext_resource type="Texture2D" uid="uid://cl6bpvc52jbj7" path="res://assets/images/pc_window_temp.png" id="1_8cb31"]
+
+[node name="PcTab" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WindowContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.047000002
+anchor_right = 1.2060001
+anchor_bottom = 0.95400006
+offset_left = -2.0
+offset_top = -1.8800001
+offset_right = 51.759995
+offset_bottom = 41.839996
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="WindowContainer"]
+layout_mode = 2
+texture = ExtResource("1_8cb31")
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowContainer/TextureRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 45.0
+offset_bottom = 38.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowContainer/TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="WindowContainer/TextureRect/MarginContainer"]
+layout_mode = 2
