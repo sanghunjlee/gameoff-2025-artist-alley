@@ -10,7 +10,7 @@ func _ready():
 
 func append_log(message: String, type: MLConstants.LogType = MLConstants.LogType.Normal):
     var l = MessageLogLine.new(message, type)
-    l.timestamp = Time.get_unix_time_from_system()
+    l.timestamp = GameState.time_count
 
     log_list.append(l)
     log_changed.emit(l)

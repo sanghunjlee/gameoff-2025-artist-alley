@@ -17,7 +17,7 @@ var description: String = ""
 
 ## Time it takes to make this merch
 ## i.e. Shipping time
-var process_time: float = 10.0
+var process_time: float = 2.0
 
 ## Readonly
 ## Base value of the merch
