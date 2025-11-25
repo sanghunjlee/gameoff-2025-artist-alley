@@ -22,8 +22,8 @@ func _process(delta: float) -> void:
     else:
         # If there is a current work, complete it
         if current_work != null:
-            merch_completed.emit(current_work)
             GameState.merch_inventory.add_merch(current_work.merch, current_work.amount)
+            merch_completed.emit(current_work)
             MessageLogManager.append_log("'" + str(current_work) + "' is complete!")
             current_work = null
 

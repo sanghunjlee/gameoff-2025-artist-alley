@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dweikuwue1r0y"]
+[gd_scene load_steps=7 format=3 uid="uid://dweikuwue1r0y"]
 
 [ext_resource type="Script" uid="uid://dhc0iavj0wyu1" path="res://game/ui/hud/hud.gd" id="1_l7e5k"]
 [ext_resource type="PackedScene" uid="uid://dg7n6n8xjwkxp" path="res://game/ui/hud/home_tab.tscn" id="2_8mv14"]
+[ext_resource type="PackedScene" uid="uid://c3ra5ochu06i1" path="res://game/ui/hud/inventory_tab.tscn" id="3_8mv14"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7e5k"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -54,5 +55,9 @@ current_tab = 0
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
+
+[node name="Inventory" parent="TabContainer" instance=ExtResource("3_8mv14")]
+visible = false
+layout_mode = 2
 
 [editable path="TabContainer/Home"]
