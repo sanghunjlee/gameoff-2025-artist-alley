@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b00cv3x2m1xis"]
+
+[ext_resource type="Script" uid="uid://cqgiflt48xsis" path="res://game/scripts/messaage_logs/message_log_label.gd" id="1_g2ayb"]
+[ext_resource type="Script" uid="uid://bvu4d8m1lh0e3" path="res://game/ui/hud/log_panel.gd" id="1_u7d67"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y12al"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.44313726, 0.44313726, 0.44313726, 0.5882353)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+anti_aliasing = false
+
+[node name="LogPanel" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_y12al")
+script = ExtResource("1_u7d67")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="MessageLogLabel" type="RichTextLabel" parent="MarginContainer"]
+custom_minimum_size = Vector2(280, 60)
+layout_mode = 2
+scroll_following = true
+vertical_alignment = 2
+script = ExtResource("1_g2ayb")
+metadata/_custom_type_script = "uid://cqgiflt48xsis"
