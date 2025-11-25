@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
             print('design made:', current_work)
             design_completed.emit(current_work)
             GameState.design_inventory.add_design(current_work)
+            MessageLogManager.append_log("'" + str(current_work) + "' is complete!")
             current_work = null
 
         # Check if there is queue and handle it

@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
         if current_work != null:
             merch_completed.emit(current_work)
             GameState.merch_inventory.add_merch(current_work.merch, current_work.amount)
+            MessageLogManager.append_log("'" + str(current_work) + "' is complete!")
             current_work = null
 
         # Check if there is queue and handle it
