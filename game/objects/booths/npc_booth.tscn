@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=4 uid="uid://rtdj1e5k3mdy"]
+
+[ext_resource type="Texture2D" uid="uid://crkqsbbonye6g" path="res://assets/images/npc vendor spritesheet.png" id="1_hq6so"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq6so"]
+atlas = ExtResource("1_hq6so")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyqbd"]
+atlas = ExtResource("1_hq6so")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6tfg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq6so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyqbd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyqbd"]
+texture = ExtResource("1_hq6so")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_h6tfg"]
+sources/0 = SubResource("TileSetAtlasSource_xyqbd")
+
+[node name="NpcBooth" type="Node2D"]
+
+[node name="NPC" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 25)
+sprite_frames = SubResource("SpriteFrames_h6tfg")
+frame_progress = 0.4482305
+
+[node name="NPCBoothTileset" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAEAAAACAAAAAAAAAAIAAAAAAAEAAAACAAEAAAADAAAAAAACAAIAAAACAAEAAAAAAAAAAAAEAAAAAAABAAAAAAAEAAAAAAABAAIAAAABAAEAAAACAAAAAAAEAAAAAAA=")
+tile_set = SubResource("TileSet_h6tfg")

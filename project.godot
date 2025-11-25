@@ -25,6 +25,7 @@ GlobalHud="*res://game/ui/hud/hud.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 MerchManager="*res://game/scripts/autoload/merch_manager.gd"
 DesignManager="*res://game/scripts/autoload/design_manager.gd"
+CustomerManager="*res://game/scripts/autoload/customer_manager.gd"
 
 [display]
 

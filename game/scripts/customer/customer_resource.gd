@@ -1,6 +1,17 @@
 extends Resource
 class_name CustomerResource
 
+enum CustomerType {
+    NONE,
+    KID,
+    FUJOSHI,
+    FURRY,
+    GOTH,
+    GIRLY_GIRL,
+    LADY_LOVER,
+    CAT_BOY
+}
+
 var design_type = DesignResource.DesignType
 var merch_type = MerchResource.MerchType
 

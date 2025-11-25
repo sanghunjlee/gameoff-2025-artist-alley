@@ -13,12 +13,17 @@ animations = [{
 }]
 
 [node name="Customer" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+y_sort_enabled = true
 script = ExtResource("1_fkeyt")
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_37rvj")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_fkeyt")
 animation = &"walk"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
