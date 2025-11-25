@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://csbe3uwm0luys"]
+
+[ext_resource type="SpriteFrames" uid="uid://5vbv6qfemxsm" path="res://assets/sprite_frames/bedroom.tres" id="1_yfewb"]
+[ext_resource type="PackedScene" uid="uid://5owikk3gr1ox" path="res://game/ui/merch_progress_bar/merch_progress_bar.tscn" id="2_m6dsl"]
+
+[node name="PC" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_yfewb")
+animation = &"pc"
+
+[node name="MerchProgressBar" parent="." instance=ExtResource("2_m6dsl")]
