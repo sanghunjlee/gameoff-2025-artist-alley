@@ -1,74 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://dstcm70jjmg6b"]
+[gd_scene load_steps=3 format=3 uid="uid://dstcm70jjmg6b"]
 
 [ext_resource type="Script" uid="uid://dpfcasa3iaq0b" path="res://game/ui/hud/action_buttons.gd" id="1_7gg4r"]
-[ext_resource type="Texture2D" uid="uid://dywnm44fl3lhr" path="res://assets/images/main action button.png" id="2_jvh65"]
-[ext_resource type="FontFile" uid="uid://dubdjkwl2ye3s" path="res://assets/fonts/MunroSmall-wPZw.ttf" id="2_ndipm"]
+[ext_resource type="PackedScene" uid="uid://cc7rjd0413knw" path="res://game/ui/hud/action_button.tscn" id="2_673ll"]
 
 [node name="ActionButtons" type="VBoxContainer"]
+offset_right = 180.0
+offset_bottom = 292.0
 size_flags_vertical = 3
 theme_override_constants/separation = 4
 script = ExtResource("1_7gg4r")
 
-[node name="MakeMerchButton" type="Button" parent="."]
-visible = false
+[node name="PCButton" parent="." instance=ExtResource("2_673ll")]
 layout_mode = 2
-text = "merch"
-icon = ExtResource("2_jvh65")
-flat = true
-icon_alignment = 1
+size_flags_vertical = 3
+stretch_mode = 5
+action_name = "Use PC"
 
-[node name="GetInspirationButton" type="Button" parent="."]
-visible = false
+[node name="TVButton" parent="." instance=ExtResource("2_673ll")]
 layout_mode = 2
-text = "inspiration"
-icon = ExtResource("2_jvh65")
-flat = true
-icon_alignment = 1
+size_flags_vertical = 3
+stretch_mode = 5
+action_name = "teevee"
 
-[node name="PCButton" type="Button" parent="."]
+[node name="SleepButton" parent="." instance=ExtResource("2_673ll")]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ndipm")
-theme_override_font_sizes/font_size = 20
-text = "use pc"
-icon = ExtResource("2_jvh65")
-flat = true
-icon_alignment = 1
+size_flags_vertical = 3
+stretch_mode = 5
+action_name = "Eep"
 
-[node name="TVButton" type="Button" parent="."]
+[node name="DrawButton" parent="." instance=ExtResource("2_673ll")]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ndipm")
-theme_override_font_sizes/font_size = 20
-text = "teevee"
-icon = ExtResource("2_jvh65")
-flat = true
-icon_alignment = 1
+size_flags_vertical = 3
+stretch_mode = 5
+action_name = "Dwaw"
 
-[node name="SleepButton" type="Button" parent="."]
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ndipm")
-theme_override_font_sizes/font_size = 20
-text = "eep"
-icon = ExtResource("2_jvh65")
-flat = true
-icon_alignment = 1
-
-[node name="DrawButton" type="Button" parent="."]
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ndipm")
-theme_override_font_sizes/font_size = 20
-text = "dwaw"
-icon = ExtResource("2_jvh65")
-flat = true
-icon_alignment = 1
-
-[connection signal="pressed" from="MakeMerchButton" to="." method="_on_make_merch_button_pressed"]
-[connection signal="pressed" from="GetInspirationButton" to="." method="_on_get_inspiration_button_pressed"]
 [connection signal="pressed" from="PCButton" to="." method="_on_pc_button_pressed"]
 [connection signal="pressed" from="TVButton" to="." method="_on_tv_button_pressed"]
 [connection signal="pressed" from="SleepButton" to="." method="_on_sleep_button_pressed"]

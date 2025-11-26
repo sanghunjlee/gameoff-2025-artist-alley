@@ -5,26 +5,38 @@
 [ext_resource type="Texture2D" uid="uid://dp22ew2jasilv" path="res://assets/images/progress-bar-over.png" id="2_s6ju8"]
 [ext_resource type="Texture2D" uid="uid://dgyqhqlck6mva" path="res://assets/images/progress-bar-progress.png" id="3_ysxi1"]
 
-[node name="InspirationInfo" type="HBoxContainer"]
-size_flags_horizontal = 3
+[node name="InspirationInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_s6ju8")
 
-[node name="Label" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 28
 text = "Inspiration:"
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" type="TextureProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 3
 nine_patch_stretch = true
 stretch_margin_left = 8
-stretch_margin_top = 2
+stretch_margin_top = 4
 stretch_margin_right = 8
-stretch_margin_bottom = 2
+stretch_margin_bottom = 4
 texture_under = ExtResource("1_v55au")
 texture_over = ExtResource("2_s6ju8")
 texture_progress = ExtResource("3_ysxi1")
