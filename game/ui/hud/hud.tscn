@@ -2,18 +2,37 @@
 
 [ext_resource type="Script" uid="uid://dhc0iavj0wyu1" path="res://game/ui/hud/hud.gd" id="1_l7e5k"]
 [ext_resource type="PackedScene" uid="uid://dg7n6n8xjwkxp" path="res://game/ui/hud/home_tab.tscn" id="2_8mv14"]
-[ext_resource type="PackedScene" uid="uid://c3ra5ochu06i1" path="res://game/ui/hud/inventory_tab.tscn" id="3_8mv14"]
+[ext_resource type="PackedScene" uid="uid://pjmnjrq11ioy" path="res://game/ui/hud/inventory_tab.tscn" id="3_8mv14"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_l7e5k")
 
-[node name="Home" parent="." instance=ExtResource("2_8mv14")]
+[node name="HomeTab" parent="." instance=ExtResource("2_8mv14")]
 unique_name_in_owner = true
 mouse_filter = 1
 
-[node name="Inventory" parent="." instance=ExtResource("3_8mv14")]
+[node name="InventoryTab" parent="." instance=ExtResource("3_8mv14")]
+unique_name_in_owner = true
 visible = false
-offset_left = 1.0
-offset_top = 23.0
-offset_right = -1.0
-offset_bottom = -1.0
+
+[node name="HomeTabButton" type="Button" parent="."]
+offset_left = 20.0
+offset_top = 7.0
+offset_right = 326.0
+offset_bottom = 56.0
+
+[node name="CalendarTabButton" type="Button" parent="."]
+offset_left = 331.0
+offset_top = 7.0
+offset_right = 637.0
+offset_bottom = 57.0
+
+[node name="InventoryTabButton" type="Button" parent="."]
+offset_left = 644.0
+offset_top = 7.0
+offset_right = 951.0
+offset_bottom = 57.0
+
+[connection signal="pressed" from="HomeTabButton" to="." method="_on_home_tab_selected"]
+[connection signal="pressed" from="CalendarTabButton" to="." method="_on_calendar_tab_selected"]
+[connection signal="pressed" from="InventoryTabButton" to="." method="_on_inventory_tab_selected"]

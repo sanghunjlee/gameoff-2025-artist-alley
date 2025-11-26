@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dg7n6n8xjwkxp"]
 
-[ext_resource type="Texture2D" uid="uid://bqt5qk5pmqojr" path="res://assets/images/home tab full.png" id="1_7iet1"]
+[ext_resource type="Texture2D" uid="uid://chhbj0oouaolc" path="res://assets/images/home tab no skills.png" id="1_7iet1"]
 [ext_resource type="PackedScene" uid="uid://q0ggh5y0bofo" path="res://game/ui/hud/date_time_clock.tscn" id="1_tmwwy"]
 [ext_resource type="PackedScene" uid="uid://dstcm70jjmg6b" path="res://game/ui/hud/action_buttons.tscn" id="2_dfsxb"]
 [ext_resource type="PackedScene" uid="uid://hvccchi61w6c" path="res://game/ui/hud/inspiration_info.tscn" id="2_xxsk4"]
@@ -25,6 +25,7 @@ grow_vertical = 2
 texture = ExtResource("1_7iet1")
 
 [node name="DateTimeClock" parent="HomeBackground" instance=ExtResource("1_tmwwy")]
+custom_minimum_size = Vector2(80, 64)
 layout_mode = 0
 offset_left = 48.0
 offset_top = 71.0
@@ -42,9 +43,9 @@ offset_bottom = 720.0
 [node name="LogPanel" parent="HomeBackground" instance=ExtResource("3_y12al")]
 z_index = -1
 layout_mode = 0
-offset_left = 1152.0
+offset_left = 1014.0
 offset_top = 768.0
-offset_right = 1434.0
+offset_right = 1424.0
 offset_bottom = 886.0
 
 [node name="InspirationInfo" parent="HomeBackground" instance=ExtResource("2_xxsk4")]

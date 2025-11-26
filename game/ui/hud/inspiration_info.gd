@@ -1,6 +1,6 @@
 extends Control
 
-@onready var progress_bar = $ProgressBar
+@onready var progress_bar = %InspirationBar
 
 func _ready():
     StatsManager.inspiration_updated.connect(_on_inspiration_updated)
