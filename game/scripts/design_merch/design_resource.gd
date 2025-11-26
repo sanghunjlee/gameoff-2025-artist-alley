@@ -12,20 +12,20 @@ enum DesignType {
     SPICY,
 }
 
-var type: DesignType = DesignType.NONE
-var sub_type: DesignType = DesignType.NONE
+@export var type: DesignType = DesignType.NONE
+@export var sub_type: DesignType = DesignType.NONE
 
 ## For future implementation
 # var quality: int = 0
 
 ## Descriptive Props
-var icon: Texture = null
-var title = ""
-var description = ""
+@export var icon: Texture = null
+@export var title = ""
+@export var description = ""
 
 ## Time that takes to create the design
 ## In real time seconds
-var process_time: float = 5.0
+@export var process_time: float = 5.0
 
 func _init(title_param: String, type_param: DesignType, sub_type_param: DesignType = DesignType.NONE):
     if type_param == DesignType.NONE:
