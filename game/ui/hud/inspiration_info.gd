@@ -7,3 +7,4 @@ func _ready():
 
 func _on_inspiration_updated():
     progress_bar.value = (100.0 * GameState.inspiration_point) / GameState.inspiration_limit
+    MessageLogManager.append_log("'Current Inspiration: " + str(GameState.inspiration_point) + "'")

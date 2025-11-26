@@ -9,6 +9,7 @@ signal inspiration_updated
 
 var cooldown: float = 1.0
 var wait: float = 0.0
+var draw_consumption: int = -2
 
 func _process(delta: float) -> void:
     # cooldown to avoid spamming
@@ -35,7 +36,7 @@ func _process(delta: float) -> void:
                         var random_amount = randi_range(1, 10)
                         MerchManager.order_merch(random_merch, random_amount)
             GameState.PlayerTaskType.WATCH_TV:
-                increase_inspiration()
+                good_or_bad_show()
 
 func handle_task_action(task: GameState.PlayerTaskType):
     GameState.is_on_task = false
@@ -57,22 +58,30 @@ func handle_task_action(task: GameState.PlayerTaskType):
         GameState.is_on_task = true
     ), ConnectFlags.CONNECT_ONE_SHOT)
 
-func increase_inspiration() -> void:
-    if GameState.inspiration_point < GameState.inspiration_limit:
-        GameState.inspiration_point += 1
-        MessageLogManager.append_log("'Current Inspiration: " + str(GameState.inspiration_point) + "'")
-    else:
-        MessageLogManager.append_log("'Reached inspiration limit'")
+# Change the inspiration points by a certain amount
+func change_inspiration(amount: int) -> void:
+    if amount < 0 and GameState.inspiration_point < abs(amount):
         return
+    elif GameState.inspiration_point + amount <= 0:
+        GameState.inspiration_point = 0
+    elif GameState.inspiration_point + amount >= GameState.inspiration_limit:
+        GameState.inspiration_point = GameState.inspiration_limit
+        MessageLogManager.append_log("'Reached inspiration limit'")
+    else:
+        GameState.inspiration_point += amount
 
-# Consume inspiration when making merch
+# Consume inspiration acoording to the task
 func consume_inspiration() -> void:
     match GameState.current_task:
         GameState.PlayerTaskType.DRAW:
-            if GameState.inspiration_point <= 0:
-                GameState.player.complain()
-                return
-            elif GameState.inspiration_point <= 2:
-                GameState.inspiration_point = 0
-            else:
-                GameState.inspiration_point -= 2
+            change_inspiration(draw_consumption)  
+
+# Decrease inspiration because the show is too trashy 
+func good_or_bad_show() -> void:
+    var random_number : int = randi()
+    if random_number % 10 == 0:
+        GameState.player.complain()
+        change_inspiration(-1)
+    else:
+        change_inspiration(1)
+
