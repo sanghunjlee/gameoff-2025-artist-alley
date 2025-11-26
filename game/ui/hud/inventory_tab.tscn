@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3ra5ochu06i1"]
+[gd_scene load_steps=6 format=3 uid="uid://c3ra5ochu06i1"]
 
 [ext_resource type="PackedScene" uid="uid://dd0srykimujq5" path="res://game/ui/inventory_ui/design_inventory_ui/design_inventory_ui.tscn" id="1_xhu0g"]
+[ext_resource type="PackedScene" uid="uid://b8ri5l4lk43y4" path="res://game/ui/inventory_ui/merch_inventory_ui/merch_inventory_ui.tscn" id="2_kelud"]
+[ext_resource type="Resource" uid="uid://024nwyhuwqmu" path="res://game/resources/inventories/merch_inventory.tres" id="3_arpxa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aq47v"]
 content_margin_left = 0.0
@@ -52,28 +54,54 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_g63d5")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Designs"
 
-[node name="DesignInventoryUI" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_xhu0g")]
+[node name="DesignInventoryUI" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_xhu0g")]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_g63d5")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Merch"
+
+[node name="MerchInventoryUi" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" instance=ExtResource("2_kelud")]
+layout_mode = 2
+size_flags_vertical = 3
+inventory = ExtResource("3_arpxa")
