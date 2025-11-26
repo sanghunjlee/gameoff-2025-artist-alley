@@ -13,9 +13,23 @@ var tween: Tween = null
 @onready var month_label: Label = %MonthLabel
 @onready var date_label: Label = %DateLabel
 
+@onready var play_button: TextureButton = %PlayButton
+@onready var pause_button: TextureButton = %PauseButton
+@onready var fast_button: TextureButton = %FastButton
+
 func _ready():
     TimeManager.time_updated.connect(_on_time_updated)
     _on_time_updated()
+
+    # Initiate button pressed state based on game state
+    # In case of save / load
+    match GameState.time_state:
+        GameState.TimeControlState.PLAY:
+            play_button.button_pressed = true
+        GameState.TimeControlState.PAUSE:
+            play_button.button_pressed = true
+        GameState.TimeControlState.FAST:
+            play_button.button_pressed = true
 
 func _on_time_updated():
     var day: int = TimeManager.get_current_day()
@@ -32,3 +46,15 @@ func _on_time_updated():
     
     
     ampm = AM if time < 12 else PM
+
+func _on_play_button_toggled(toggled_on: bool):
+    if toggled_on:
+        GameState.time_state = GameState.TimeControlState.PLAY
+
+func _on_pause_button_toggled(toggled_on: bool):
+    if toggled_on:
+        GameState.time_state = GameState.TimeControlState.PAUSE
+    
+func _on_fast_button_toggled(toggled_on: bool):
+    if toggled_on:
+        GameState.time_state = GameState.TimeControlState.FAST
