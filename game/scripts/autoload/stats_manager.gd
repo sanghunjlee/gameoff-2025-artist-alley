@@ -9,7 +9,7 @@ signal inspiration_updated
 
 var cooldown: float = 1.0
 var wait: float = 0.0
-var draw_consumption: int = -2
+var draw_consumption: int = -1
 
 func _process(delta: float) -> void:
     # cooldown to avoid spamming
@@ -23,8 +23,7 @@ func _process(delta: float) -> void:
     if GameState.is_on_task:
         match GameState.current_task:
             GameState.PlayerTaskType.DRAW:
-                if DesignManager.design_queue.size() < 5:
-                    DesignManager.make_random_design()
+                time_to_draw()
             GameState.PlayerTaskType.USE_PC:
                 if MerchManager.merch_queue.size() < 1:
                     if GameState.design_inventory.designs.size() > 0:
@@ -60,7 +59,7 @@ func handle_task_action(task: GameState.PlayerTaskType):
 
 # Change the inspiration points by a certain amount
 func change_inspiration(amount: int) -> void:
-    if amount < 0 and GameState.inspiration_point < abs(amount):
+    if amount < 0 and !can_consume_inspiration(abs(amount)):
         return
     elif GameState.inspiration_point + amount <= 0:
         GameState.inspiration_point = 0
@@ -69,6 +68,9 @@ func change_inspiration(amount: int) -> void:
         MessageLogManager.append_log("'Reached inspiration limit'")
     else:
         GameState.inspiration_point += amount
+
+func can_consume_inspiration(amount: int) -> bool:
+    return GameState.inspiration_point >= abs(amount)
 
 # Consume inspiration acoording to the task
 func consume_inspiration() -> void:
@@ -85,3 +87,11 @@ func good_or_bad_show() -> void:
     else:
         change_inspiration(1)
 
+func time_to_draw() -> void:
+    if can_consume_inspiration(draw_consumption):
+        if DesignManager.design_queue.size() < 5:
+            DesignManager.make_random_design()
+    else:
+        GameState.is_on_task = false
+        DesignManager.cancel_work()
+        GameState.player.complain()
