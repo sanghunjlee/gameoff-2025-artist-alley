@@ -20,8 +20,7 @@ const CHANCE_OF_CUSTOMER_VISITING_BOOTH = 0.5
 @onready var customer_data: CustomerResource
 @onready var exit_position: Vector2
 @onready var booth_position: Vector2
-var stopped_at_booth = false # To prevent multiple stops
-
+var has_stopped_at_booth = false # To prevent multiple stops
 # When spawned, type should be set by convention scene script
 
 func _ready() -> void:
@@ -78,12 +77,16 @@ func _on_velocity_computed(suggested_velocity: Vector2) -> void:
 
 
 func _on_time_to_spend_at_booth_timer_timeout() -> void:
+    # if booth has designs displayed that the customer likes, pick one to buy
+    # leave the booth
     walk_to_position(exit_position)
     pass # Replace with function body.
 
+func buy_merch():
+    pass
 
 func _on_time_to_notice_booth_timer_timeout() -> void:
-    if randf() < CHANCE_OF_CUSTOMER_VISITING_BOOTH and not stopped_at_booth:
+    if randf() < CHANCE_OF_CUSTOMER_VISITING_BOOTH and not has_stopped_at_booth:
         walk_to_booth()
 
 func walk_to_booth() -> void:
@@ -92,9 +95,18 @@ func walk_to_booth() -> void:
     await navigation_agent.target_reached
     look_at_booth()
 
-func look_at_booth() -> void:
-    stopped_at_booth = true
+func stop_walking() -> void:
+    navigation_agent.target_position = global_position
+    velocity = Vector2.ZERO
+    move_and_slide()
+
+    # update animation
     animated_sprite.frame = 0
     animated_sprite.stop()
+
+func look_at_booth() -> void:
+    has_stopped_at_booth = true
+    stop_walking()
+    
     time_to_spend_at_booth_timer.wait_time = randf_range(CUSTOMER_VISIT_DURATION_RANGE.x, CUSTOMER_VISIT_DURATION_RANGE.y)
     time_to_spend_at_booth_timer.start()

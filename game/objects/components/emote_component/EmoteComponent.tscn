@@ -50,6 +50,5 @@ script = ExtResource("3_si7ii")
 display_timer = NodePath("DisplayTimer")
 
 [node name="DisplayTimer" type="Timer" parent="."]
-wait_time = 2.0
 
 [connection signal="timeout" from="DisplayTimer" to="." method="_on_display_timer_timeout"]

@@ -14,11 +14,6 @@ enum PlayerTaskType {
     SLEEP
 }
 
-# for testing customer interactions in convention scene
-# remove once inventory system is implemented
-var temp_con_designs_displayed: Array[DesignResource.DesignType] = [
-    DesignResource.DesignType.YAOI
-]
 
 # Time control state
 var time_state: TimeControlState = TimeControlState.PLAY:

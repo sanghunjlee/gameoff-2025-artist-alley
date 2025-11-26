@@ -23,7 +23,7 @@ func add_merch(merch: MerchResource, amount: int):
     if index == -1:
         var stack = MerchStackResource.new(merch, amount)
         stacks.append(stack)
-        return 
+        return
     
     stacks[index].amount += amount
 
