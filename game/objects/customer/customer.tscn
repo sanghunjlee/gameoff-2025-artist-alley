@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqe6c6l0jpokp"]
+
+[ext_resource type="Script" uid="uid://dx0hapkkhi62w" path="res://game/objects/customer/customer.gd" id="1_fkeyt"]
+[ext_resource type="PackedScene" uid="uid://ic05k6bvilnj" path="res://game/objects/components/emote_component/EmoteComponent.tscn" id="2_27yho"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_37rvj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fkeyt"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Customer" type="CharacterBody2D" node_paths=PackedStringArray("emote_component", "time_to_spend_at_booth_timer", "time_to_notice_booth_timer", "animated_sprite", "navigation_agent")]
+y_sort_enabled = true
+script = ExtResource("1_fkeyt")
+emote_component = NodePath("EmoteComponent")
+movement_speed = 50.0
+time_to_spend_at_booth_timer = NodePath("TimeToSpendAtBoothTimer")
+time_to_notice_booth_timer = NodePath("TimeToNoticeBoothTimer")
+animated_sprite = NodePath("AnimatedSprite2D")
+navigation_agent = NodePath("NavigationAgent2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_37rvj")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_fkeyt")
+animation = &"walk"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="TimeToSpendAtBoothTimer" type="Timer" parent="."]
+
+[node name="TimeToNoticeBoothTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="EmoteComponent" parent="." instance=ExtResource("2_27yho")]
+visible = false
+position = Vector2(0, -28)
+
+[connection signal="timeout" from="TimeToSpendAtBoothTimer" to="." method="_on_time_to_spend_at_booth_timer_timeout"]
+[connection signal="timeout" from="TimeToNoticeBoothTimer" to="." method="_on_time_to_notice_booth_timer_timeout"]

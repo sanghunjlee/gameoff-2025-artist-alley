@@ -14,6 +14,12 @@ enum PlayerTaskType {
     SLEEP
 }
 
+# for testing customer interactions in convention scene
+# remove once inventory system is implemented
+var temp_con_designs_displayed: Array[DesignResource.DesignType] = [
+    DesignResource.DesignType.YAOI
+]
+
 # Time control state
 var time_state: TimeControlState = TimeControlState.PLAY:
     set(value):
@@ -31,7 +37,8 @@ var inspiration_level: int = 0
 var inspiration_point: int = 0:
     set(value):
         # TODO: Replaced this to utilize "insp calc funcs"
-        inspiration_point = value % inspiration_limit
+        # inspiration_point = value % inspiration_limit
+        inspiration_point = value
         StatsManager.emit_signal("inspiration_updated")
 var inspiration_limit: int = 10
 
@@ -56,6 +63,7 @@ var design_inventory: DesignInventory = preload("res://game/resources/inventorie
         if money != value:
             money = value
             StatsManager.emit_signal("money_updated")
+
 @onready var time_count = 0: # Used by TimeManager:
     set(value): # On time_count change, emit signal to update time UI
         if time_count != value:

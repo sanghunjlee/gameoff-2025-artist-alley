@@ -34,6 +34,8 @@ func _process(delta: float) -> void:
                         random_merch.design = random_design
                         var random_amount = randi_range(1, 10)
                         MerchManager.order_merch(random_merch, random_amount)
+            GameState.PlayerTaskType.WATCH_TV:
+                increase_inspiration()
 
 func handle_task_action(task: GameState.PlayerTaskType):
     GameState.is_on_task = false
@@ -54,3 +56,23 @@ func handle_task_action(task: GameState.PlayerTaskType):
     GameState.player.navigation_agent.navigation_finished.connect((func():
         GameState.is_on_task = true
     ), ConnectFlags.CONNECT_ONE_SHOT)
+
+func increase_inspiration() -> void:
+    if GameState.inspiration_point < GameState.inspiration_limit:
+        GameState.inspiration_point += 1
+        MessageLogManager.append_log("'Current Inspiration: " + str(GameState.inspiration_point) + "'")
+    else:
+        MessageLogManager.append_log("'Reached inspiration limit'")
+        return
+
+# Consume inspiration when making merch
+func consume_inspiration() -> void:
+    match GameState.current_task:
+        GameState.PlayerTaskType.DRAW:
+            if GameState.inspiration_point <= 0:
+                GameState.player.complain()
+                return
+            elif GameState.inspiration_point <= 2:
+                GameState.inspiration_point = 0
+            else:
+                GameState.inspiration_point -= 2

@@ -10,6 +10,7 @@ enum DesignType {
     SHOUNEN,
     CUTE,
     SPICY,
+    SPOOKY
 }
 
 @export var type: DesignType = DesignType.NONE
