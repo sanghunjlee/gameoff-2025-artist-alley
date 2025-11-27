@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rgy64tybfwxb"
-path="res://.godot/imported/calendar tab no skills.png-0898c79cbd13ef6485e50e956459310f.ctex"
+uid="uid://jnhpdmmr2lqf"
+path="res://.godot/imported/shoujo-icon.png-558dd341f7cf1fd439eaa4667038d767.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/calendar tab no skills.png"
-dest_files=["res://.godot/imported/calendar tab no skills.png-0898c79cbd13ef6485e50e956459310f.ctex"]
+source_file="res://assets/icons/shoujo-icon.png"
+dest_files=["res://.godot/imported/shoujo-icon.png-558dd341f7cf1fd439eaa4667038d767.ctex"]
 
 [params]
 

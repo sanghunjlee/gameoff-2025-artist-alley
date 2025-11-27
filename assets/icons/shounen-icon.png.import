@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rgy64tybfwxb"
-path="res://.godot/imported/calendar tab no skills.png-0898c79cbd13ef6485e50e956459310f.ctex"
+uid="uid://dq1u7fbnkd0qc"
+path="res://.godot/imported/shounen-icon.png-14291cb0c54454a81f32d6cd1cd5cf21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/calendar tab no skills.png"
-dest_files=["res://.godot/imported/calendar tab no skills.png-0898c79cbd13ef6485e50e956459310f.ctex"]
+source_file="res://assets/icons/shounen-icon.png"
+dest_files=["res://.godot/imported/shounen-icon.png-14291cb0c54454a81f32d6cd1cd5cf21.ctex"]
 
 [params]
 
