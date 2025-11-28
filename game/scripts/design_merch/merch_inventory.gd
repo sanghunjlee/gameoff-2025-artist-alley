@@ -1,6 +1,6 @@
 class_name MerchInventory extends Resource
 
-signal inventory_changed()
+signal inventory_updated()
 
 @export var stacks: Array[MerchStackResource] = []
 
@@ -61,7 +61,7 @@ func add_merch(merch: MerchResource, amount: int):
     if index == -1:
         var stack = MerchStackResource.new(merch, amount)
         stacks.append(stack)
-        inventory_changed.emit()
+        inventory_updated.emit()
         return 
     
     stacks[index].amount += amount
@@ -74,9 +74,9 @@ func remove_merch(merch: MerchResource, amount: int) -> int:
     
     if stacks[index].amount < amount:
         stacks[index].amount = 0
-        inventory_changed.emit()
+        inventory_updated.emit()
         return amount - stacks[index].amount
     
     stacks[index].amount -= amount
-    inventory_changed.emit()
+    inventory_updated.emit()
     return 0
