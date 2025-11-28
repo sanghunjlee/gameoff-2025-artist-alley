@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://b546oc8aqjfha"]
+
+[ext_resource type="Script" uid="uid://c8jgbvqfx1oa7" path="res://game/scenes/tests/inventory_test.gd" id="1_2r5ra"]
+[ext_resource type="PackedScene" uid="uid://dd0srykimujq5" path="res://game/ui/inventory_ui/design_inventory_ui/design_inventory_ui.tscn" id="1_s7vw6"]
+[ext_resource type="PackedScene" uid="uid://b8ri5l4lk43y4" path="res://game/ui/inventory_ui/merch_inventory_ui/merch_inventory_ui.tscn" id="3_hways"]
+
+[node name="InventoryTest" type="Control" node_paths=PackedStringArray("design_inventory_ui", "merch_inventory_ui")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2r5ra")
+design_inventory_ui = NodePath("VBoxContainer/DesignInventoryUI")
+merch_inventory_ui = NodePath("VBoxContainer2/MerchInventoryUi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DesignInventoryUI" parent="VBoxContainer" instance=ExtResource("1_s7vw6")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Create Random Design"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 0
+offset_left = 423.0
+offset_right = 1443.0
+offset_bottom = 400.0
+
+[node name="MerchInventoryUi" parent="VBoxContainer2" instance=ExtResource("3_hways")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Create Random merch stack"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_design_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_merch_button_pressed"]
