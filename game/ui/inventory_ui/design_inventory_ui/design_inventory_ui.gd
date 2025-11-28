@@ -41,6 +41,6 @@ func update_ui() -> void:
         child.queue_free()
 
     for item in inventory.designs:
-        var design_ui: DesignItemSlot= design_item_slot_ui.instantiate()
+        var design_ui: DesignItemSlot = design_item_slot_ui.instantiate()
         design_ui.design = item
         design_container.add_child(design_ui)

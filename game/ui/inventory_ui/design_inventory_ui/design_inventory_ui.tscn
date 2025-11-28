@@ -144,14 +144,13 @@ script = ExtResource("1_ochss")
 inventory = ExtResource("2_jh6v0")
 
 [node name="Panel" type="Panel" parent="."]
-clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jh6v0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
@@ -181,13 +180,13 @@ text = "Design"
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-mouse_filter = 0
-mouse_force_pass_scroll_events = false
 theme_override_constants/margin_right = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
 theme = SubResource("Theme_8mho0")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 4
@@ -196,7 +195,6 @@ vertical_scroll_mode = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 8
@@ -208,5 +206,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8mho0")
