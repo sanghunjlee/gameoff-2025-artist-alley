@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnws2gnlubse3"]
+[gd_scene load_steps=4 format=3 uid="uid://bnws2gnlubse3"]
 
+[ext_resource type="PackedScene" uid="uid://dweikuwue1r0y" path="res://game/ui/hud/hud.tscn" id="1_gp8w2"]
 [ext_resource type="PackedScene" uid="uid://djlyva08u52mw" path="res://game/scenes/bedroom_scene.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cj7f2aeo47fmc" path="res://game/objects/player/player.tscn" id="3_tbgi4"]
 
 [node name="Main" type="Node2D"]
+
+[node name="HUD" parent="." instance=ExtResource("1_gp8w2")]
 
 [node name="Bedroom" parent="." instance=ExtResource("2_jyhfs")]
 
