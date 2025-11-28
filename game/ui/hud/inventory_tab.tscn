@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 metadata/_tab_index = 1
 
 [node name="InventoryBackground" type="TextureRect" parent="."]
@@ -57,6 +58,7 @@ text = "Designs"
 [node name="DesignInventoryUI" parent="InventoryBackground/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_xhu0g")]
 layout_mode = 2
 size_flags_vertical = 3
+columns = 8
 
 [node name="MarginContainer2" type="MarginContainer" parent="InventoryBackground/MarginContainer/HBoxContainer"]
 layout_mode = 2
