@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnhx5gd884n75"
-path="res://.godot/imported/pause button.png-d3d66c43fb604cddd4529af3c74e9c53.ctex"
+uid="uid://bmcflwvvcrxpx"
+path="res://.godot/imported/time-button-fast-forward-pressed.png-eab425d8762b77fd4e347ff4615d5dae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/pause button.png"
-dest_files=["res://.godot/imported/pause button.png-d3d66c43fb604cddd4529af3c74e9c53.ctex"]
+source_file="res://assets/images/buttons/time-button-fast-forward-pressed.png"
+dest_files=["res://.godot/imported/time-button-fast-forward-pressed.png-eab425d8762b77fd4e347ff4615d5dae.ctex"]
 
 [params]
 
