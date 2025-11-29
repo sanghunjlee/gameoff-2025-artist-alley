@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhc0iavj0wyu1" path="res://game/ui/hud/hud.gd" id="1_l7e5k"]
 [ext_resource type="PackedScene" uid="uid://dg7n6n8xjwkxp" path="res://game/ui/hud/home_tab.tscn" id="2_8mv14"]
-[ext_resource type="PackedScene" uid="uid://pjmnjrq11ioy" path="res://game/ui/hud/inventory_tab.tscn" id="3_8mv14"]
+[ext_resource type="PackedScene" path="res://game/ui/hud/inventory_tab.tscn" id="3_8mv14"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_l7e5k")

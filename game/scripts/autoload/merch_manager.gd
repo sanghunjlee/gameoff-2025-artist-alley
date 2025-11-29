@@ -9,6 +9,7 @@ signal merch_completed(merch: MerchStackResource)
 var merch_queue: Array[MerchStackResource] = []
 var current_work: MerchStackResource = null
 var wait_time: float = 0.0
+var merch_cost: int = 5
 
 func _ready():
     if not Engine.has_singleton("DesignMerchManager"):
@@ -20,15 +21,15 @@ func _process(delta: float) -> void:
         # If there is a wait, wait
         wait_time -= delta
     else:
-        # If there is a current work, complete it
-        if current_work != null:
+        if can_make_merch() and current_work != null:
             GameState.merch_inventory.add_merch(current_work.merch, current_work.amount)
             merch_completed.emit(current_work)
             MessageLogManager.append_log("'" + str(current_work) + "' is complete!")
+            StatsManager.spend_money(merch_cost)
             current_work = null
 
         # Check if there is queue and handle it
-        if merch_queue.size() > 0:
+        if can_make_merch() and merch_queue.size() > 0:
             current_work = merch_queue.pop_front()
             merch_started.emit(current_work)
             wait_time = current_work.process_time
@@ -67,3 +68,10 @@ func buy_random_merch_by_design_types(designs: Array[DesignResource.DesignType],
 
 func clear_queue():
     merch_queue.clear()
+
+func can_make_merch() -> bool:
+    if GameState.money - merch_cost >= 0:
+        return true
+    else:
+        GameState.player.complain()
+        return false

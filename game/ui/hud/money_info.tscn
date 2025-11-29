@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxwfmbtcexvn0"]
+
+[ext_resource type="Script" uid="uid://dx6adm53fenvn" path="res://game/ui/hud/money_info.gd" id="1_syd0y"]
+
+[node name="MoneyInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_syd0y")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 19.0
+text = "Money: "
+
+[node name="MoneyAmount" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 48.0
+offset_right = 88.0
+offset_bottom = 19.0
+text = "1000"

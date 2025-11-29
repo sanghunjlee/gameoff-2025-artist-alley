@@ -57,6 +57,15 @@ func handle_task_action(task: GameState.PlayerTaskType):
         GameState.is_on_task = true
     ), ConnectFlags.CONNECT_ONE_SHOT)
 
+# Increase money by amount
+func add_money(amount: int) -> void:
+    GameState.money += amount
+
+# Decrease money by amount
+func spend_money(amount: int) -> void:
+    if GameState.money - amount >= 0:
+        GameState.money -= amount
+
 # Change the inspiration points by a certain amount
 func change_inspiration(amount: int) -> void:
     if amount < 0 and !can_consume_inspiration(abs(amount)):
