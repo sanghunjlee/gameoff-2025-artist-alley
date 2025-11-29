@@ -30,16 +30,6 @@ func _process(delta: float) -> void:
         match GameState.current_task:
             GameState.PlayerTaskType.DRAW:
                 time_to_draw()
-            GameState.PlayerTaskType.USE_PC:
-                if MerchManager.merch_queue.size() < 1:
-                    if GameState.design_inventory.designs.size() > 0:
-                        var random_index = randi_range(0, GameState.design_inventory.designs.size() - 1)
-                        var random_design = GameState.design_inventory.designs[random_index]
-                        var random_merch = MerchResource.new()
-                        random_merch.type = MerchResource.MerchType.values()[randi_range(0, MerchResource.MerchType.size() - 1)]
-                        random_merch.design = random_design
-                        var random_amount = randi_range(1, 10)
-                        MerchManager.order_merch(random_merch, random_amount)
             GameState.PlayerTaskType.WATCH_TV:
                 good_or_bad_show()
 
@@ -52,7 +42,6 @@ func handle_task_action(task: GameState.PlayerTaskType):
     GameState.current_task = task
 
     # Clear existing queues
-    MerchManager.clear_queue()
     DesignManager.clear_queue()
 
     # Wait for existing process
@@ -66,6 +55,8 @@ func handle_task_action(task: GameState.PlayerTaskType):
     GameState.player.navigation_agent.navigation_finished.connect((func():
         GameState.is_on_task = true
     ), ConnectFlags.CONNECT_ONE_SHOT)
+
+    await GameState.player.navigation_agent.navigation_finished
 
     # Emit signal so that ui can update
     task_changed.emit()
@@ -91,6 +82,7 @@ func increase_inspiration() -> void:
         MessageLogManager.append_log("'Current Inspiration: " + str(GameState.inspiration_point) + "'")
     else:
         MessageLogManager.append_log("'Reached inspiration limit'")
+
 # Change the inspiration points by a certain amount
 func change_inspiration(amount: int) -> void:
     if amount < 0 and !can_consume_inspiration(abs(amount)):

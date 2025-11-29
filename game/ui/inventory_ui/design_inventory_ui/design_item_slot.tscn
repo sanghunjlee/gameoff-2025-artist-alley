@@ -1,26 +1,93 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdjse2wwlu3ur"]
+[gd_scene load_steps=8 format=3 uid="uid://cdjse2wwlu3ur"]
 
 [ext_resource type="Script" uid="uid://rn75p5r50rlv" path="res://game/ui/inventory_ui/design_inventory_ui/design_item_slot.gd" id="1_ygtan"]
 [ext_resource type="Texture2D" uid="uid://cqm4lc7eccx1d" path="res://assets/images/funny bl spicy merch spritesheet.png" id="2_xttea"]
 
-[node name="DesignItemSlot" type="Control"]
-custom_minimum_size = Vector2(64, 108)
-layout_mode = 3
-anchors_preset = 0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xttea"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tk24"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.4666667, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d47cx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4tk24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xttea"]
+
+[node name="DesignItemSlot" type="Button"]
+custom_minimum_size = Vector2(72, 116)
+offset_right = 72.0
+offset_bottom = 116.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_xttea")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4tk24")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d47cx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4tk24")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xttea")
+toggle_mode = true
 script = ExtResource("1_ygtan")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-offset_right = 64.0
-offset_bottom = 89.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
-[node name="DesignTextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="DesignTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("2_xttea")
 
-[node name="DesignLabel" type="Label" parent="VBoxContainer"]
+[node name="DesignLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
@@ -31,3 +98,5 @@ text = "test Design"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
