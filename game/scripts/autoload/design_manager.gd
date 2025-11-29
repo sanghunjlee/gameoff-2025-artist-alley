@@ -9,10 +9,15 @@ signal design_canceled
 var design_queue: Array[DesignResource] = []
 var current_work: DesignResource = null
 var wait_time: float = 0.0
+var can_draw: bool = true
 
 func _process(delta: float) -> void:
     # Skip if paused
     if GameState.is_paused:
+        return
+        
+    if !can_draw:
+        can_draw = true
         return
 
     if wait_time > 0.0:
@@ -47,6 +52,7 @@ func make_random_design():
     make_design(d)
 
 func cancel_work():
+    can_draw = false
     clear_queue()
     if current_work != null:
         current_work = null
