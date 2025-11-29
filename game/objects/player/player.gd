@@ -42,7 +42,13 @@ func _physics_process(delta: float) -> void:
 func move_toward_target(_delta):
     var next_position = navigation_agent.get_next_path_position()
     var direction = (next_position - global_position).normalized()
-    var adjusted_speed = speed * (TimeManager.fast_forward_multiplier if GameState.time_state == GameState.TimeControlState.FAST else 1.0)
+
+    var adjusted_speed = speed
+    if GameState.is_paused:
+        adjusted_speed = 0.0
+    elif GameState.time_state == GameState.TimeControlState.FAST:
+        adjusted_speed *= TimeManager.fast_forward_multiplier
+        
     velocity = direction * adjusted_speed 
     move_and_slide()
 
