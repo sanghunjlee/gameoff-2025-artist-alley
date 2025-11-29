@@ -1,13 +1,23 @@
+@tool
 extends Control
+
+@export var show_title: bool = true:
+    set(value):
+        show_title = value
+        if title_bar != null:
+            title_bar.visible = show_title
 
 @export var inventory: DesignInventory:
     set(value):
         if inventory != value and value != null:
-            if inventory != null and inventory.inventory_updated.is_connected(update_ui):
-                inventory.inventory_updated.disconnect(update_ui)
-            inventory = value
-            if not inventory.inventory_updated.is_connected(update_ui):
-                inventory.inventory_updated.connect(update_ui)
+            if Engine.is_editor_hint():
+                inventory = value
+            else:
+                if inventory != null and inventory.inventory_updated.is_connected(update_ui):
+                    inventory.inventory_updated.disconnect(update_ui)
+                inventory = value
+                if not inventory.inventory_updated.is_connected(update_ui):
+                    inventory.inventory_updated.connect(update_ui)
             update_ui()
 
 @export var columns: int = 4:
@@ -17,11 +27,15 @@ extends Control
 
 var design_item_slot_ui: PackedScene = preload("res://game/ui/inventory_ui/design_inventory_ui/design_item_slot.tscn")
 
+@onready var title_bar: Control = %TitleBar
 @onready var design_container: GridContainer = %DesignContainer
 
 func _ready() -> void:
     if inventory != null:
         inventory.inventory_updated.connect(update_ui)
+    if title_bar != null:
+        title_bar.visible = show_title
+
     call_deferred("update_ui")
 
 func update_ui() -> void:
