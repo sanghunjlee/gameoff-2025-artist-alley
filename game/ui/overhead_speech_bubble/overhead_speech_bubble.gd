@@ -2,7 +2,7 @@ extends Control
 class_name OverheadSpeechBubble
 
 const DEFAULT_SHOW_TIME: float = 2.0
-
+@export var display_timer: Timer
 
 func _ready() -> void:
     pass
@@ -12,7 +12,7 @@ func _ready() -> void:
 func show_message(_text: String, _seconds_to_show: float = DEFAULT_SHOW_TIME) -> void:
     %Label.text = _text
     visible = true
-    await get_tree().create_timer(_seconds_to_show).timeout
+    display_timer.start(_seconds_to_show)
     visible = false
 
 # func center_bubble_horizontal_to_parent() -> void:

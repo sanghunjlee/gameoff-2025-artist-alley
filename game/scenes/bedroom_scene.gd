@@ -6,14 +6,14 @@ const OBJECT_ON = 1
 
 # Bedroom sprites
 # example path: Sprites/Rug (animatedsprite2d)
-@export var window_sprite: AnimatedSprite2D
-@export var bed_sprite: AnimatedSprite2D
-@export var tv_sprite: AnimatedSprite2D
-@export var pc_sprite: AnimatedSprite2D
-@export var desk_sprite: AnimatedSprite2D
-@export var books_sprite: AnimatedSprite2D
-@export var closet_sprite: AnimatedSprite2D
-@export var door_sprite: AnimatedSprite2D
+@onready var window_sprite: AnimatedSprite2D = $Sprites/Window
+@onready var bed_sprite: AnimatedSprite2D = $Sprites/Bed
+@onready var tv_sprite: AnimatedSprite2D = $Sprites/TV
+@onready var pc_sprite: AnimatedSprite2D = $Sprites/PC
+@onready var desk_sprite: AnimatedSprite2D = $Sprites/Desk
+@onready var books_sprite: AnimatedSprite2D = $Sprites/Books
+@onready var closet_sprite: AnimatedSprite2D = $Sprites/ClosetDoor
+@onready var door_sprite: AnimatedSprite2D = $Sprites/MainDoor
 
 # Where the player stands when performing a task
 @onready var bed_position: Vector2 = $Markers/Bed.position
@@ -28,15 +28,17 @@ func _ready() -> void:
     TimeManager.time_updated.connect(update_window)
 
 func turn_on_object(sprite: AnimatedSprite2D) -> void:
-    sprite.frame = OBJECT_ON
+    sprite.animation = "in_use"
+    #sprite.play()
 
 func turn_off_object(sprite: AnimatedSprite2D) -> void:
-    sprite.frame = OBJECT_OFF
+    sprite.animation = "not_in_use"
 
 func turn_off_everything() -> void:
-    turn_off_object(tv_sprite)
-    turn_off_object(pc_sprite)
-    turn_off_object(desk_sprite)
+    for sprite in $Sprites.get_children():
+        if sprite is AnimatedSprite2D:
+            if sprite.sprite_frames.has_animation("in_use"):
+                turn_off_object(sprite)
 
 func update_window() -> void:
-    window_sprite.play("window_" + TimeManager.get_current_daytime())
+    window_sprite.play(TimeManager.get_current_daytime())

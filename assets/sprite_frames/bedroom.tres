@@ -1,7 +1,8 @@
-[gd_resource type="SpriteFrames" load_steps=41 format=3 uid="uid://5vbv6qfemxsm"]
+[gd_resource type="SpriteFrames" load_steps=44 format=3 uid="uid://5vbv6qfemxsm"]
 
 [ext_resource type="Texture2D" uid="uid://lrrow4teot46" path="res://assets/images/room_sprites_transparent.png" id="1_pkevi"]
 [ext_resource type="Texture2D" uid="uid://deuh76kqocqhn" path="res://assets/images/window daytimes animated spritesheets.png" id="2_d178q"]
+[ext_resource type="Texture2D" uid="uid://c2mgejuy67gh6" path="res://assets/images/sitting + sleeping spritesheet.png" id="2_rxgvj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d178q"]
 atlas = ExtResource("1_pkevi")
@@ -10,6 +11,18 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rxgvj"]
 atlas = ExtResource("1_pkevi")
 region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcf2l"]
+atlas = ExtResource("1_pkevi")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ne5p"]
+atlas = ExtResource("2_rxgvj")
+region = Rect2(0, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op7ed"]
+atlas = ExtResource("2_rxgvj")
+region = Rect2(32, 64, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y8ch"]
 atlas = ExtResource("1_pkevi")
@@ -38,10 +51,6 @@ region = Rect2(48, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xkc7x"]
 atlas = ExtResource("1_pkevi")
 region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wcf2l"]
-atlas = ExtResource("1_pkevi")
-region = Rect2(0, 16, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72ali"]
 atlas = ExtResource("1_pkevi")
@@ -170,6 +179,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wcf2l")
+}],
+"loop": true,
+"name": &"bed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ne5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op7ed")
+}],
+"loop": true,
+"name": &"bed_sleeping",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5y8ch")
 }],
 "loop": true,
@@ -207,14 +235,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"main_door",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wcf2l")
-}],
-"loop": true,
-"name": &"new_animation",
 "speed": 5.0
 }, {
 "frames": [{

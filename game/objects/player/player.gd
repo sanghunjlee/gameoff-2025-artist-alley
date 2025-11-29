@@ -8,6 +8,8 @@ class_name Player
 # Note that the character is not manually controlled via input, but automatically
 # moves in the world according to its assigned task
 
+signal task_left(task: GameState.PlayerTaskType) # Should emit when task abandoned or finished
+
 # task positions can be accessed via bedroom_scene.<task>_position
 @export var bedroom_scene: BedroomScene
 @export var speed: float = 100.0
@@ -16,9 +18,12 @@ class_name Player
 
 @onready var current_task: GameState.PlayerTaskType = GameState.PlayerTaskType.NONE:
     set(_current_task):
+        if current_task != GameState.PlayerTaskType.NONE:
+            emit_signal("task_left", current_task)
+        
         current_task = _current_task
-        reset_sprites()
-
+        
+        
 @onready var is_interacting: bool = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
@@ -26,10 +31,14 @@ class_name Player
 
 func _ready() -> void:
     GameState.player = self
+
+    connect("task_left", Callable(self, "_on_task_left"))
     navigation_agent.connect("navigation_finished", Callable(self, "_on_navigation_finished"))
+
     navigation_agent.max_speed = speed
     navigation_agent.target_desired_distance = 3.0
-    do_task(starting_task) # Start with drawing task
+
+    do_task(starting_task)
 
     message_bubble.show_message("Good meowning!")
 
@@ -49,63 +58,45 @@ func move_toward_target(_delta):
     elif GameState.time_state == GameState.TimeControlState.FAST:
         adjusted_speed *= TimeManager.fast_forward_multiplier
         
-    velocity = direction * adjusted_speed 
+    velocity = direction * adjusted_speed
     move_and_slide()
 
 func do_task(task: GameState.PlayerTaskType) -> void:
-    if is_interacting:
-        return # Already performing a task
+    if task != current_task:
+        current_task = task
+        
+        var target_position: Vector2
+        var task_sprite: AnimatedSprite2D
 
-    current_task = task
-    var target_position: Vector2
+        match task:
+            GameState.PlayerTaskType.DRAW:
+                message_bubble.show_message("What to draw...?")
+                target_position = bedroom_scene.desk_position
 
-    match task:
-        GameState.PlayerTaskType.DRAW:
-            message_bubble.show_message("What to draw...?")
-            target_position = bedroom_scene.desk_position
+            GameState.PlayerTaskType.WATCH_TV:
+                message_bubble.show_message("Let's watch some TV!")
+                target_position = bedroom_scene.tv_position
+                
+            GameState.PlayerTaskType.USE_PC:
+                message_bubble.show_message("Computer-ing time!")
+                target_position = bedroom_scene.pc_position
 
-            # Tablet should turn on when the player arrives
-            # Everything turns on too early though lol 
-            bedroom_scene.turn_on_object(bedroom_scene.desk_sprite)
+            GameState.PlayerTaskType.SLEEP:
+                message_bubble.show_message("Yawn...")
+                target_position = bedroom_scene.bed_position
+            _:
+                return # Invalid task
 
-        GameState.PlayerTaskType.WATCH_TV:
-            message_bubble.show_message("Alexa, TV on!")
-            target_position = bedroom_scene.tv_position
+        navigation_agent.target_position = target_position
 
-            # Tv should turn on when the player arrives
-            bedroom_scene.turn_on_object(bedroom_scene.tv_sprite)
+        
+        navigation_agent.target_position = target_position
 
-            # Player will emit little message bubbles every x seconds
-            
-        GameState.PlayerTaskType.USE_PC:
-            message_bubble.show_message("Love a remote-start PC!")
-            target_position = bedroom_scene.pc_position
-
-            # PC should turn on when the player arrives
-            bedroom_scene.turn_on_object(bedroom_scene.pc_sprite)
-
-        GameState.PlayerTaskType.SLEEP:
-            message_bubble.show_message("Yawn...")
-            target_position = bedroom_scene.bed_position
-        _:
-            return # Invalid task
-
-    navigation_agent.target_position = target_position
-
+# Reset sprites to initial default state
 func reset_sprites() -> void:
-    # Reset any sprites that may have changed during tasks
+    # Reset any bedroom sprites that may have changed during tasks
     bedroom_scene.turn_off_everything()
-
-func _on_navigation_finished() -> void:
-    match current_task:
-        GameState.PlayerTaskType.DRAW:
-            animated_sprite.face_direction("right")
-        GameState.PlayerTaskType.WATCH_TV:
-            animated_sprite.face_direction("up")
-        GameState.PlayerTaskType.USE_PC:
-            animated_sprite.face_direction("up")
-        GameState.PlayerTaskType.SLEEP:
-            animated_sprite.face_direction("down")
+    visible = true
 
 func complain() -> void:
     match current_task:
@@ -117,3 +108,35 @@ func complain() -> void:
             message_bubble.show_message("I don't have enough money.")
         GameState.PlayerTaskType.SLEEP:
             message_bubble.show_message("I am too eepy.")
+
+
+func _on_task_left(current_task: GameState.PlayerTaskType) -> void:
+    is_interacting = false
+    reset_sprites()
+
+# Upon task reached successfully by navigation agent
+func _on_navigation_finished() -> void:
+    is_interacting = true
+
+    # Face appropriate direction based on task
+    match current_task:
+        GameState.PlayerTaskType.DRAW:
+            animated_sprite.face_direction("right")
+        GameState.PlayerTaskType.WATCH_TV:
+            animated_sprite.face_direction("up")
+        GameState.PlayerTaskType.USE_PC:
+            animated_sprite.face_direction("up")
+        GameState.PlayerTaskType.SLEEP:
+            animated_sprite.face_direction("down")
+
+    # Activate bedroom object based on task
+    match current_task:
+        GameState.PlayerTaskType.DRAW:
+            bedroom_scene.turn_on_object(bedroom_scene.desk_sprite)
+        GameState.PlayerTaskType.WATCH_TV:
+            bedroom_scene.turn_on_object(bedroom_scene.tv_sprite)
+        GameState.PlayerTaskType.USE_PC:
+            bedroom_scene.turn_on_object(bedroom_scene.pc_sprite)
+        GameState.PlayerTaskType.SLEEP:
+            bedroom_scene.turn_on_object(bedroom_scene.bed_sprite)
+            visible = false # Hide player when sleeping

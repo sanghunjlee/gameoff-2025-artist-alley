@@ -1,6 +1,6 @@
 ## Autoload
 ## Manages Merch related logic
-#@tool
+# @tool # uncommented bc was throwing errors abt gamestate var not being found - sabrina
 extends Node
 
 signal merch_started(merch: MerchStackResource)

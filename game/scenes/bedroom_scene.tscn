@@ -1,27 +1,27 @@
-[gd_scene load_steps=8 format=4 uid="uid://djlyva08u52mw"]
+[gd_scene load_steps=16 format=4 uid="uid://djlyva08u52mw"]
 
 [ext_resource type="Script" uid="uid://bjtneh3k3a567" path="res://game/scenes/bedroom_scene.gd" id="1_50lqx"]
 [ext_resource type="TileSet" uid="uid://dp50pvjg0js34" path="res://assets/tilesets/background_tile_set.tres" id="2_0grwd"]
 [ext_resource type="SpriteFrames" uid="uid://5vbv6qfemxsm" path="res://assets/sprite_frames/bedroom.tres" id="2_5kyax"]
 [ext_resource type="Texture2D" uid="uid://bgdsviccf8a16" path="res://assets/images/rug.png" id="3_aaeym"]
+[ext_resource type="SpriteFrames" uid="uid://bvau5575wrluy" path="res://assets/sprite_frames/bedroom_furniture/Window.tres" id="4_iv5cq"]
+[ext_resource type="SpriteFrames" uid="uid://co5ya7m337yu8" path="res://assets/sprite_frames/bedroom_furniture/Door.tres" id="5_h6xwx"]
 [ext_resource type="PackedScene" uid="uid://csbe3uwm0luys" path="res://game/objects/pc/pc.tscn" id="5_mpusn"]
 [ext_resource type="PackedScene" uid="uid://c4gubb6j886f2" path="res://game/objects/desk/desk.tscn" id="6_m2mbp"]
+[ext_resource type="SpriteFrames" uid="uid://vodfxq5cpmql" path="res://assets/sprite_frames/bedroom_furniture/PC.tres" id="7_5t86p"]
+[ext_resource type="SpriteFrames" uid="uid://cumsaqr4t6vnt" path="res://assets/sprite_frames/bedroom_furniture/Closet.tres" id="8_cah6i"]
+[ext_resource type="SpriteFrames" uid="uid://cpostd3l2wdir" path="res://assets/sprite_frames/bedroom_furniture/TV.tres" id="10_2013s"]
+[ext_resource type="SpriteFrames" uid="uid://d3hnvk2jls2al" path="res://assets/sprite_frames/bedroom_furniture/Desk.tres" id="12_bfj7a"]
+[ext_resource type="SpriteFrames" uid="uid://bmtka6jwq4ab6" path="res://assets/sprite_frames/bedroom_furniture/Books.tres" id="13_8iady"]
+[ext_resource type="SpriteFrames" uid="uid://dhql5xdgb28f2" path="res://assets/sprite_frames/bedroom_furniture/Bed.tres" id="14_eq7bp"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aaeym"]
 vertices = PackedVector2Array(55.65625, 6, 100.171875, 9.2890625, 101.796875, 95.859375, 43.21875, 95.10156, 40.148438, 79.75781, 40.828125, 6, 7.890625, 80.703125, 7.09375, 5.6484375, 11.5625, 5.0234375)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 4, 6, 7, 8)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(11, -5, 41, -4, 56, -4, 110, 0, 112, 106, 35, 105, 32, 90, -2, 91, -3, -3)])
 
-[node name="BedroomScene" type="Node2D" node_paths=PackedStringArray("window_sprite", "bed_sprite", "tv_sprite", "pc_sprite", "desk_sprite", "books_sprite", "closet_sprite", "door_sprite")]
+[node name="BedroomScene" type="Node2D"]
 script = ExtResource("1_50lqx")
-window_sprite = NodePath("Sprites/Window")
-bed_sprite = NodePath("Sprites/Bed")
-tv_sprite = NodePath("Sprites/TV")
-pc_sprite = NodePath("Sprites/PC")
-desk_sprite = NodePath("Sprites/Desk")
-books_sprite = NodePath("Sprites/Books")
-closet_sprite = NodePath("Sprites/ClosetDoor")
-door_sprite = NodePath("Sprites/MainDoor")
 
 [node name="TileMapLayers" type="Node" parent="."]
 
@@ -45,21 +45,23 @@ texture = ExtResource("3_aaeym")
 
 [node name="Window" type="AnimatedSprite2D" parent="Sprites"]
 position = Vector2(8, -8)
-sprite_frames = ExtResource("2_5kyax")
-animation = &"window_night"
+sprite_frames = ExtResource("4_iv5cq")
+animation = &"morning"
 
 [node name="MainDoor" type="AnimatedSprite2D" parent="Sprites"]
 position = Vector2(24, -8)
-sprite_frames = ExtResource("2_5kyax")
-animation = &"main_door"
+sprite_frames = ExtResource("5_h6xwx")
+animation = &"not_in_use"
 
 [node name="PC" parent="Sprites" instance=ExtResource("5_mpusn")]
 position = Vector2(56, 8)
+sprite_frames = ExtResource("7_5t86p")
+animation = &"not_in_use"
 
 [node name="ClosetDoor" type="AnimatedSprite2D" parent="Sprites"]
 position = Vector2(88, 8)
-sprite_frames = ExtResource("2_5kyax")
-animation = &"closet_door"
+sprite_frames = ExtResource("8_cah6i")
+animation = &"not_in_use"
 
 [node name="Poster1" type="AnimatedSprite2D" parent="Sprites"]
 position = Vector2(40, -8)
@@ -74,21 +76,24 @@ frame = 1
 
 [node name="TV" type="AnimatedSprite2D" parent="Sprites"]
 position = Vector2(40, 8)
-sprite_frames = ExtResource("2_5kyax")
-animation = &"tv"
+sprite_frames = ExtResource("10_2013s")
+animation = &"not_in_use"
 
 [node name="Desk" parent="Sprites" instance=ExtResource("6_m2mbp")]
 position = Vector2(104, 88)
+sprite_frames = ExtResource("12_bfj7a")
+animation = &"not_in_use"
 
 [node name="Books" type="AnimatedSprite2D" parent="Sprites"]
 position = Vector2(104, 40)
-sprite_frames = ExtResource("2_5kyax")
-animation = &"books"
+sprite_frames = ExtResource("13_8iady")
+animation = &"not_in_use"
 
 [node name="Bed" type="AnimatedSprite2D" parent="Sprites"]
-position = Vector2(19, 87)
-sprite_frames = ExtResource("2_5kyax")
-animation = &"new_animation"
+position = Vector2(19, 88)
+sprite_frames = ExtResource("14_eq7bp")
+animation = &"not_in_use"
+frame_progress = 0.40766624
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-2, -2)

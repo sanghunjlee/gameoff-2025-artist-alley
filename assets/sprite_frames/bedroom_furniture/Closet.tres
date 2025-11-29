@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://cumsaqr4t6vnt"]
+
+[ext_resource type="Texture2D" uid="uid://lrrow4teot46" path="res://assets/images/room_sprites_transparent.png" id="1_vvdmq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvdmq"]
+atlas = ExtResource("1_vvdmq")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5gt8"]
+atlas = ExtResource("1_vvdmq")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvdmq")
+}],
+"loop": true,
+"name": &"in_use",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5gt8")
+}],
+"loop": true,
+"name": &"not_in_use",
+"speed": 5.0
+}]
