@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://hvccchi61w6c" path="res://game/ui/hud/inspiration_info.tscn" id="2_xxsk4"]
 [ext_resource type="PackedScene" uid="uid://b00cv3x2m1xis" path="res://game/ui/hud/log_panel.tscn" id="3_y12al"]
 [ext_resource type="PackedScene" uid="uid://dxwfmbtcexvn0" path="res://game/ui/hud/money_info.tscn" id="6_4j515"]
+[ext_resource type="PackedScene" uid="uid://cc3hdt2k6cx4o" path="res://game/ui/hud/pc_screen.tscn" id="6_4j515"]
 
 [node name="Home" type="Control"]
 layout_mode = 3
@@ -63,3 +64,18 @@ offset_left = 1047.0
 offset_top = 896.0
 offset_right = -222.0
 offset_bottom = -9.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 80
+
+[node name="PCScreen" parent="CenterContainer/MarginContainer" instance=ExtResource("6_4j515")]
+layout_mode = 2

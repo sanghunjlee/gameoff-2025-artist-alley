@@ -1,6 +1,8 @@
 @tool
 extends Control
 
+@export var is_selectable: bool = false
+
 @export var show_title: bool = true:
     set(value):
         show_title = value
@@ -26,18 +28,32 @@ extends Control
         update_ui()
 
 var design_item_slot_ui: PackedScene = preload("res://game/ui/inventory_ui/design_inventory_ui/design_item_slot.tscn")
+var design_group: ButtonGroup = ButtonGroup.new()
 
 @onready var title_bar: Control = %TitleBar
 @onready var design_container: GridContainer = %DesignContainer
 
 func _ready() -> void:
-    # Uncommented because this is defined in the setter of 'inventory', no? Same case in merch inv ui -sabrina
-    # if inventory != null:
-    #     inventory.inventory_updated.connect(update_ui)
+    if not Engine.is_editor_hint():
+        if inventory != null:
+            inventory.inventory_updated.connect(update_ui)
     if title_bar != null:
         title_bar.visible = show_title
 
     call_deferred("update_ui")
+
+func get_selected() -> DesignResource:
+    print("Getting selected design")
+    if not is_selectable:
+        return null
+    
+    var selected_button := design_group.get_pressed_button()
+    if selected_button == null:
+        return null
+    
+    var slot = selected_button as DesignItemSlot
+    print(slot)
+    return slot.design
 
 func update_ui() -> void:
     print("Updating Design Inventory UI")
@@ -58,4 +74,8 @@ func update_ui() -> void:
     for item in inventory.designs:
         var design_ui: DesignItemSlot = design_item_slot_ui.instantiate()
         design_ui.design = item
+        if is_selectable:
+            design_ui.button_group = design_group
+        else:
+            design_ui.disabled = true
         design_container.add_child(design_ui)
