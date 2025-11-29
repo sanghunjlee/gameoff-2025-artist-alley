@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dg7n6n8xjwkxp"]
+[gd_scene load_steps=7 format=3 uid="uid://dg7n6n8xjwkxp"]
 
 [ext_resource type="Texture2D" uid="uid://chhbj0oouaolc" path="res://assets/images/home tab no skills.png" id="1_7iet1"]
 [ext_resource type="PackedScene" uid="uid://q0ggh5y0bofo" path="res://game/ui/hud/date_time_clock.tscn" id="1_tmwwy"]
 [ext_resource type="PackedScene" uid="uid://dstcm70jjmg6b" path="res://game/ui/hud/action_buttons.tscn" id="2_dfsxb"]
 [ext_resource type="PackedScene" uid="uid://hvccchi61w6c" path="res://game/ui/hud/inspiration_info.tscn" id="2_xxsk4"]
 [ext_resource type="PackedScene" uid="uid://b00cv3x2m1xis" path="res://game/ui/hud/log_panel.tscn" id="3_y12al"]
+[ext_resource type="PackedScene" uid="uid://cc3hdt2k6cx4o" path="res://game/ui/hud/pc_screen.tscn" id="6_4j515"]
 
 [node name="Home" type="Control"]
 layout_mode = 3
@@ -55,3 +56,19 @@ offset_left = 336.0
 offset_top = 896.0
 offset_right = 1024.0
 offset_bottom = 952.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 80
+
+[node name="PCScreen" parent="CenterContainer/MarginContainer" instance=ExtResource("6_4j515")]
+layout_mode = 2

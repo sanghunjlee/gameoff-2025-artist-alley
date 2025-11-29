@@ -1,6 +1,5 @@
 ## Autoload
 ## Manages Merch related logic
-@tool
 extends Node
 
 signal merch_started(merch: MerchStackResource)
@@ -17,11 +16,18 @@ func _ready():
 
 func _process(delta: float) -> void:
     if wait_time > 0.0:
+        if GameState.is_paused:
+            return
+
         # If there is a wait, wait
-        wait_time -= delta
+        if GameState.time_state == GameState.TimeControlState.PLAY:
+            wait_time -= delta
+        elif GameState.time_state == GameState.TimeControlState.FAST:
+            wait_time -= delta * TimeManager.fast_forward_multiplier
     else:
         # If there is a current work, complete it
         if current_work != null:
+            print("Merch completed: " + str(current_work))
             GameState.merch_inventory.add_merch(current_work.merch, current_work.amount)
             merch_completed.emit(current_work)
             MessageLogManager.append_log("'" + str(current_work) + "' is complete!")
@@ -29,13 +35,16 @@ func _process(delta: float) -> void:
 
         # Check if there is queue and handle it
         if merch_queue.size() > 0:
+            print("Starting next merch work")
             current_work = merch_queue.pop_front()
             merch_started.emit(current_work)
             wait_time = current_work.process_time
 
 func order_merch(merch: MerchResource, amount: int):
+    print("Ordering merch: " + str(merch) + " x" + str(amount))
     var stack = MerchStackResource.new(merch, amount)
     merch_queue.append(stack)
+    print("Merch queued")
 
 func buy_random_merch_by_design_types(designs: Array[DesignResource.DesignType], amount: int = 1) -> bool:
     ## Buy random merch from inventory matching design types

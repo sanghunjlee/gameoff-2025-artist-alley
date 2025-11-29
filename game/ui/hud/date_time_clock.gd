@@ -18,18 +18,26 @@ var tween: Tween = null
 @onready var fast_button: TextureButton = %FastButton
 
 func _ready():
+    TimeManager.time_control_updated.connect(_update_time_control_buttons)
     TimeManager.time_updated.connect(_on_time_updated)
     _on_time_updated()
 
     # Initiate button pressed state based on game state
     # In case of save / load
+    _update_time_control_buttons()
+
+func _update_time_control_buttons():
+    play_button.button_pressed = false
+    pause_button.button_pressed = false
+    fast_button.button_pressed = false
     match GameState.time_state:
         GameState.TimeControlState.PLAY:
             play_button.button_pressed = true
         GameState.TimeControlState.PAUSE:
-            play_button.button_pressed = true
+            pause_button.button_pressed = true
         GameState.TimeControlState.FAST:
-            play_button.button_pressed = true
+            fast_button.button_pressed = true
+
 
 func _on_time_updated():
     var day: int = TimeManager.get_current_day()
