@@ -17,11 +17,18 @@ func _ready():
 
 
 func _process(delta: float) -> void:
+
+    if GameState.is_paused:
+        return
+
+    if not can_make_merch():
+        return
+
     if wait_time > 0.0:
         # If there is a wait, wait
         wait_time -= delta
     else:
-        if can_make_merch() and current_work != null:
+        if current_work != null:
             GameState.merch_inventory.add_merch(current_work.merch, current_work.amount)
             merch_completed.emit(current_work)
             MessageLogManager.append_log("'" + str(current_work) + "' is complete!")
@@ -33,6 +40,10 @@ func _process(delta: float) -> void:
             current_work = merch_queue.pop_front()
             merch_started.emit(current_work)
             wait_time = current_work.process_time
+        else:
+            # Not enough money to make merch, complain
+            if not can_make_merch():
+                GameState.player.complain()
 
 func order_merch(merch: MerchResource, amount: int):
     var stack = MerchStackResource.new(merch, amount)
@@ -70,8 +81,4 @@ func clear_queue():
     merch_queue.clear()
 
 func can_make_merch() -> bool:
-    if GameState.money - merch_cost >= 0:
-        return true
-    else:
-        GameState.player.complain()
-        return false
+    return GameState.get_money() - merch_cost >= 0

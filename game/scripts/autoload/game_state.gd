@@ -58,7 +58,7 @@ var design_inventory: DesignInventory = preload("res://game/resources/inventorie
 # Stat vars
 @onready var player_name = "ARTIST"
 
-@onready var money = 10:
+@onready var money = 100:
     set(value): # On money change, emit signal to update money UI
         if money != value:
             money = value
@@ -69,3 +69,6 @@ var design_inventory: DesignInventory = preload("res://game/resources/inventorie
         if time_count != value:
             time_count = value
             TimeManager.emit_signal("time_updated")
+
+func get_money() -> int:
+    return money
