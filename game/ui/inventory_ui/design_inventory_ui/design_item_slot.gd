@@ -1,4 +1,4 @@
-class_name DesignItemSlot extends Control
+class_name DesignItemSlot extends Button
 
 @export var design: DesignResource:
     set(value):
