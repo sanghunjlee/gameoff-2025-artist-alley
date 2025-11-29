@@ -107,6 +107,6 @@ func complain() -> void:
         GameState.PlayerTaskType.WATCH_TV:
             message_bubble.show_message("This show is so boring.")
         GameState.PlayerTaskType.USE_PC:
-            message_bubble.show_message("I have no money.")
+            message_bubble.show_message("I don't have enough money.")
         GameState.PlayerTaskType.SLEEP:
             message_bubble.show_message("I am too eepy.")
