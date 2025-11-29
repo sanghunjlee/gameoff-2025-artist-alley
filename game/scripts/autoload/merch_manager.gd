@@ -41,7 +41,6 @@ func buy_random_merch_by_design_types(designs: Array[DesignResource.DesignType],
     ## Buy random merch from inventory matching design types
     ## If designs is empty, buy any merch
     ## Returns true if purchase was successful, false otherwise
-    
     var available_stacks := GameState.merch_inventory.get_stacks_by_design_types(designs)
     var available_amount: int = GameState.merch_inventory.count_merch_amount_by_design_types(designs)
 
@@ -51,7 +50,7 @@ func buy_random_merch_by_design_types(designs: Array[DesignResource.DesignType],
     if available_amount < amount:
         return false
     
-    available_stacks.shuffle()    
+    available_stacks.shuffle()
 
     var buy_amount: int = amount
     for stack in available_stacks:

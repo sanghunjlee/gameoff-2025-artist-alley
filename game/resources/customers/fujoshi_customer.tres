@@ -11,6 +11,5 @@ region = Rect2(48, 0, 48, 16)
 script = ExtResource("1_qh54k")
 customer_type_name = "fujoshi"
 liked_design_types = Array[int]([3, 8])
-liked_merch_types = null
 sprite_sheet = SubResource("AtlasTexture_od8hl")
 metadata/_custom_type_script = "uid://bpu541p4vnin"

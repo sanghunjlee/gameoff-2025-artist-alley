@@ -75,15 +75,19 @@ func _on_velocity_computed(suggested_velocity: Vector2) -> void:
     velocity = suggested_velocity
     move_and_slide()
 
-
+# After having looked at booth
 func _on_time_to_spend_at_booth_timer_timeout() -> void:
-    # if booth has designs displayed that the customer likes, pick one to buy
-    # leave the booth
+    var has_bought = MerchManager.buy_random_merch_by_design_types(customer_data.liked_design_types)
+    if has_bought:
+        emote_component.play_emote("happy")
+    else:
+        emote_component.play_emote("sad")
     walk_to_position(exit_position)
     pass # Replace with function body.
 
 func buy_merch():
-    pass
+    emote_component.play_emote("happy")
+    MerchManager.buy_random_merch_by_design_types(customer_data.preferred_design_types)
 
 func _on_time_to_notice_booth_timer_timeout() -> void:
     if randf() < CHANCE_OF_CUSTOMER_VISITING_BOOTH and not has_stopped_at_booth:
