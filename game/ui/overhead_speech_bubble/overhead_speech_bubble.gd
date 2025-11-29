@@ -15,5 +15,5 @@ func show_message(_text: String, _seconds_to_show: float = DEFAULT_SHOW_TIME) ->
     await get_tree().create_timer(_seconds_to_show).timeout
     visible = false
 
-func center_bubble_horizontal_to_parent() -> void:
-    var parent_width = get_parent().rect_size.x
+# func center_bubble_horizontal_to_parent() -> void:
+#     var parent_width = get_parent().rect_size.x

@@ -26,6 +26,10 @@ MerchManager="*res://game/scripts/autoload/merch_manager.gd"
 DesignManager="*res://game/scripts/autoload/design_manager.gd"
 CustomerManager="*res://game/scripts/autoload/customer_manager.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1440

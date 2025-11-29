@@ -31,8 +31,9 @@ var design_item_slot_ui: PackedScene = preload("res://game/ui/inventory_ui/desig
 @onready var design_container: GridContainer = %DesignContainer
 
 func _ready() -> void:
-    if inventory != null:
-        inventory.inventory_updated.connect(update_ui)
+    # Uncommented because this is defined in the setter of 'inventory', no? Same case in merch inv ui -sabrina
+    # if inventory != null:
+    #     inventory.inventory_updated.connect(update_ui)
     if title_bar != null:
         title_bar.visible = show_title
 

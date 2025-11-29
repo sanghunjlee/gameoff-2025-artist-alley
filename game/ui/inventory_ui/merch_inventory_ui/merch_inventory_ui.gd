@@ -15,8 +15,9 @@ var merch_item_row: PackedScene = preload("res://game/ui/inventory_ui/merch_inve
 @onready var merch_container: VBoxContainer = %MerchContainer
 
 func _ready() -> void:
-    if inventory != null:
-        inventory.inventory_updated.connect(update_ui)
+    # Uncommented because this is defined in the setter of 'inventory', no? Same case in design_inventory_ui -sabrina
+    # if inventory != null:
+    #     inventory.inventory_updated.connect(update_ui)
     call_deferred("update_ui")
 
 func update_ui() -> void:
