@@ -97,4 +97,6 @@ navigation_polygon = SubResource("NavigationPolygon_xg0o0")
 [node name="CustomersNode" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="MerchDisplayContainer" type="Node2D" parent="."]
+
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

@@ -1,6 +1,6 @@
 ## Autoload
 ## Manages Merch related logic
-@tool
+#@tool
 extends Node
 
 signal merch_started(merch: MerchStackResource)
@@ -17,7 +17,6 @@ func _ready():
 
 
 func _process(delta: float) -> void:
-
     if GameState.is_paused:
         return
 
