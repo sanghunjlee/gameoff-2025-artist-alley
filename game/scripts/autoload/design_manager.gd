@@ -12,13 +12,20 @@ var wait_time: float = 0.0
 var can_draw: bool = true
 
 func _process(delta: float) -> void:
+    # Skip if paused
+    if GameState.is_paused:
+        return
+        
     if !can_draw:
         can_draw = true
         return
 
     if wait_time > 0.0:
         # If there is a wait, wait
-        wait_time -= delta
+        if GameState.time_state == GameState.TimeControlState.PLAY:
+            wait_time -= delta
+        elif GameState.time_state == GameState.TimeControlState.FAST:
+            wait_time -= delta * TimeManager.fast_forward_multiplier
     else:
         # If there is a current work, complete it
         if current_work != null:
