@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://ic05k6bvilnj"]
+
+[ext_resource type="Texture2D" uid="uid://bokhdvnejx3a4" path="res://assets/images/inspo sprite.png" id="1_lh8np"]
+[ext_resource type="Texture2D" uid="uid://dlja4g4cffxwp" path="res://assets/images/emote spritesheet.png" id="2_bbo1p"]
+[ext_resource type="Script" uid="uid://khjre3orkqm4" path="res://game/objects/components/emote_component/emote_component.gd" id="3_si7ii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s2ul"]
+atlas = ExtResource("1_lh8np")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gpad"]
+atlas = ExtResource("2_bbo1p")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ule8k"]
+atlas = ExtResource("2_bbo1p")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nq658"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s2ul")
+}],
+"loop": true,
+"name": &"exclaim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gpad")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ule8k")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}]
+
+[node name="EmoteComponent" type="AnimatedSprite2D" node_paths=PackedStringArray("display_timer")]
+sprite_frames = SubResource("SpriteFrames_nq658")
+animation = &"exclaim"
+script = ExtResource("3_si7ii")
+display_timer = NodePath("DisplayTimer")
+
+[node name="DisplayTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DisplayTimer" to="." method="_on_display_timer_timeout"]

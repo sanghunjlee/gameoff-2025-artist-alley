@@ -1,148 +1,85 @@
-[gd_scene load_steps=7 format=3 uid="uid://q0ggh5y0bofo"]
+[gd_scene load_steps=9 format=3 uid="uid://q0ggh5y0bofo"]
 
 [ext_resource type="Script" uid="uid://b51pallu8tjmw" path="res://game/ui/hud/date_time_clock.gd" id="1_6nhso"]
-[ext_resource type="Texture2D" uid="uid://bxbulismgj7jj" path="res://assets/images/console.png" id="2_6nhso"]
+[ext_resource type="Texture2D" uid="uid://b0h6tjiokh4yw" path="res://assets/images/console-base.png" id="1_uyhe3"]
 [ext_resource type="Texture2D" uid="uid://dy3nuo7xii7d8" path="res://assets/images/clock-base.png" id="2_72ao1"]
 [ext_resource type="Texture2D" uid="uid://qexcdp5qhua" path="res://assets/images/hour-hand.png" id="3_6x4co"]
 [ext_resource type="Texture2D" uid="uid://be0maanoihwl2" path="res://assets/images/daily calendar.png" id="4_k5jop"]
-[ext_resource type="PackedScene" uid="uid://dw5wat5kpfgla" path="res://game/ui/hud/media_control.tscn" id="5_k5jop"]
+[ext_resource type="Texture2D" uid="uid://cla5wnatssi1g" path="res://assets/images/play button.png" id="7_72ao1"]
+[ext_resource type="Texture2D" uid="uid://cnhx5gd884n75" path="res://assets/images/pause button.png" id="8_ilngl"]
+[ext_resource type="Texture2D" uid="uid://yn7ksydnroyu" path="res://assets/images/fast forward button.png" id="9_xbdj8"]
 
-[node name="DateTimeClock" type="Control"]
-custom_minimum_size = Vector2(80, 64)
-layout_mode = 3
-anchors_preset = 0
+[node name="DateTimeClock" type="TextureRect"]
+custom_minimum_size = Vector2(240, 200)
+offset_right = 240.0
+offset_bottom = 200.0
+texture = ExtResource("1_uyhe3")
 script = ExtResource("1_6nhso")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TimeClock" type="Control" parent="."]
+custom_minimum_size = Vector2(96, 96)
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 24.0
+offset_right = 116.0
+offset_bottom = 120.0
+size_flags_horizontal = 3
+
+[node name="ClockBase" type="TextureRect" parent="TimeClock"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="PanelContainer" type="TextureRect" parent="MarginContainer"]
-layout_mode = 2
-texture = ExtResource("2_6nhso")
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -32.0
-offset_right = 40.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TimeClock" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ClockBase" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/TimeClock"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("2_72ao1")
+stretch_mode = 5
 
-[node name="HourHand" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/TimeClock"]
+[node name="HourHand" type="TextureRect" parent="TimeClock/ClockBase"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -7.5
-offset_top = -7.5
-offset_right = 7.5
-offset_bottom = 7.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(16, 16)
+pivot_offset = Vector2(48, 48)
 texture = ExtResource("3_6x4co")
+stretch_mode = 5
 
-[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
+[node name="DateSticker" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 132.0
+offset_top = 24.0
+offset_right = 212.0
+offset_bottom = 120.0
 size_flags_horizontal = 3
 
-[node name="DateSticker" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer2"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="StickyBase" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer2/DateSticker"]
+[node name="StickyBase" type="TextureRect" parent="DateSticker"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_k5jop")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer2/DateSticker/StickyBase"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DateSticker/StickyBase"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -10.5
-offset_top = -29.0
-offset_right = 10.5
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
+grow_vertical = 2
+theme_override_constants/separation = 2
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer2/DateSticker/StickyBase/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = -8
-
-[node name="MonthLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer2/DateSticker/StickyBase/MarginContainer/VBoxContainer"]
+[node name="MonthLabel" type="Label" parent="DateSticker/StickyBase/VBoxContainer"]
 unique_name_in_owner = true
 texture_filter = 3
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.014267038, 0.030689912, 0.15312496, 1)
 theme_override_font_sizes/font_size = 12
 text = "Nov"
@@ -150,19 +87,46 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="DateLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer2/DateSticker/StickyBase/MarginContainer/VBoxContainer"]
+[node name="DateLabel" type="Label" parent="DateSticker/StickyBase/VBoxContainer"]
 unique_name_in_owner = true
 texture_filter = 3
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.014267038, 0.030689912, 0.15312496, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 52
 text = "6"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="PlayButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 136.0
+offset_right = 80.0
+offset_bottom = 176.0
+texture_normal = ExtResource("7_72ao1")
+stretch_mode = 5
 
-[node name="MediaControl" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CenterContainer" instance=ExtResource("5_k5jop")]
-layout_mode = 2
+[node name="PauseButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 96.0
+offset_top = 136.0
+offset_right = 136.0
+offset_bottom = 176.0
+texture_normal = ExtResource("8_ilngl")
+stretch_mode = 5
+
+[node name="FastButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 152.0
+offset_top = 136.0
+offset_right = 192.0
+offset_bottom = 176.0
+texture_normal = ExtResource("9_xbdj8")
+stretch_mode = 5
+
+[connection signal="toggled" from="PlayButton" to="." method="_on_play_button_toggled"]
+[connection signal="toggled" from="PauseButton" to="." method="_on_pause_button_toggled"]
+[connection signal="toggled" from="FastButton" to="." method="_on_fast_button_toggled"]

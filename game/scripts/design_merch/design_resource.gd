@@ -13,20 +13,54 @@ enum DesignType {
     SPOOKY
 }
 
-var type: DesignType = DesignType.NONE
-var sub_type: DesignType = DesignType.NONE
+@export var type: DesignType = DesignType.NONE
+@export var sub_type: DesignType = DesignType.NONE
 
 ## For future implementation
 # var quality: int = 0
 
 ## Descriptive Props
-var icon: Texture = null
-var title = ""
-var description = ""
+@export var title = ""
+@export var description = ""
 
 ## Time that takes to create the design
 ## In real time seconds
-var process_time: float = 5.0
+@export var process_time: float = 5.0
+
+## Readonly
+var icon: Texture:
+    set = _set_icon, get = _get_icon
+
+
+## Getters / Setters
+
+func _set_icon(_value):
+    push_error("Cannot directly set 'icon' property.")
+
+func _get_icon():
+    match type:
+        DesignType.FURRY:
+            return null # TODO: Add icon
+        DesignType.MECHA:
+            return null # TODO: Add icon
+        DesignType.YAOI:
+            return preload("res://assets/icons/bl-icon.png")
+        DesignType.YURI:
+            return null # TODO: Add icon
+        DesignType.SHOUJO:
+            return preload("res://assets/icons/shoujo-icon.png")
+        DesignType.SHOUNEN:
+            return preload("res://assets/icons/shounen-icon.png")
+        DesignType.CUTE:
+            return null # TODO:   Add icon
+        DesignType.SPICY:
+            return preload("res://assets/icons/spicy-icon.png")
+        DesignType.SPOOKY:
+            return preload("res://assets/icons/spooky-icon.png")
+        _:
+            return null
+
+## Functions
 
 func _init(title_param: String, type_param: DesignType, sub_type_param: DesignType = DesignType.NONE):
     if type_param == DesignType.NONE:

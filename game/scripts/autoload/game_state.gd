@@ -1,6 +1,5 @@
 extends Node
 
-
 enum TimeControlState {
     PLAY,
     PAUSE,

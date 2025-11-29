@@ -7,18 +7,18 @@ enum MerchType {
     POSTER,
 }
 
-var type: MerchType = MerchType.CHARM
-var design: DesignResource = null
+@export var type: MerchType = MerchType.CHARM
+@export var design: DesignResource = null
 
 ## For future implementation
 # var size: Vector2i = Vector2i.ZERO
 
-var icon: Texture = null
-var description: String = ""
+@export var icon: Texture = null
+@export var description: String = ""
 
 ## Time it takes to make this merch
 ## i.e. Shipping time
-var process_time: float = 2.0
+@export var process_time: float = 2.0
 
 ## Readonly
 ## Base value of the merch
