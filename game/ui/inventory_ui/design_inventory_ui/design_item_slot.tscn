@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdjse2wwlu3ur"]
+
+[ext_resource type="Script" uid="uid://rn75p5r50rlv" path="res://game/ui/inventory_ui/design_inventory_ui/design_item_slot.gd" id="1_ygtan"]
+[ext_resource type="Texture2D" uid="uid://cqm4lc7eccx1d" path="res://assets/images/funny bl spicy merch spritesheet.png" id="2_xttea"]
+
+[node name="DesignItemSlot" type="Control"]
+custom_minimum_size = Vector2(64, 108)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ygtan")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 89.0
+
+[node name="DesignTextureRect" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_xttea")
+
+[node name="DesignLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 18
+text = "test Design"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

@@ -1,43 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg7n6n8xjwkxp"]
+[gd_scene load_steps=7 format=3 uid="uid://dg7n6n8xjwkxp"]
 
+[ext_resource type="Texture2D" uid="uid://chhbj0oouaolc" path="res://assets/images/home tab no skills.png" id="1_7iet1"]
 [ext_resource type="PackedScene" uid="uid://q0ggh5y0bofo" path="res://game/ui/hud/date_time_clock.tscn" id="1_tmwwy"]
 [ext_resource type="PackedScene" uid="uid://dstcm70jjmg6b" path="res://game/ui/hud/action_buttons.tscn" id="2_dfsxb"]
 [ext_resource type="PackedScene" uid="uid://hvccchi61w6c" path="res://game/ui/hud/inspiration_info.tscn" id="2_xxsk4"]
 [ext_resource type="PackedScene" uid="uid://b00cv3x2m1xis" path="res://game/ui/hud/log_panel.tscn" id="3_y12al"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02tuw"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.44313726, 0.44313726, 0.44313726, 1)
-border_width_right = 1
-border_color = Color(1, 1, 1, 1)
-corner_detail = 5
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfsxb"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.44313726, 0.44313726, 0.44313726, 1)
-border_color = Color(1, 1, 1, 1)
-corner_detail = 5
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxsk4"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.44313726, 0.44313726, 0.44313726, 1)
-border_width_top = 1
-border_width_right = 1
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_right = 3
-corner_detail = 3
-anti_aliasing = false
+[ext_resource type="PackedScene" uid="uid://dxwfmbtcexvn0" path="res://game/ui/hud/money_info.tscn" id="6_4j515"]
 
 [node name="Home" type="Control"]
 layout_mode = 3
@@ -46,101 +14,52 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_tab_index = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HomeBackground" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 0
+texture = ExtResource("1_7iet1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_02tuw")
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="DateTimeClock" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_tmwwy")]
-layout_mode = 2
+[node name="DateTimeClock" parent="HomeBackground" instance=ExtResource("1_tmwwy")]
+custom_minimum_size = Vector2(80, 64)
+layout_mode = 0
+offset_left = 48.0
+offset_top = 71.0
+offset_right = 288.0
+offset_bottom = 271.0
 size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+[node name="ActionButtons" parent="HomeBackground" instance=ExtResource("2_dfsxb")]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 285.0
+offset_right = 292.0
+offset_bottom = 720.0
 
-[node name="ActionButtons" parent="HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("2_dfsxb")]
-layout_mode = 2
+[node name="LogPanel" parent="HomeBackground" instance=ExtResource("3_y12al")]
+z_index = -1
+layout_mode = 0
+offset_left = 1014.0
+offset_top = 768.0
+offset_right = 1424.0
+offset_bottom = 886.0
 
-[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dfsxb")
+[node name="InspirationInfo" parent="HomeBackground" instance=ExtResource("2_xxsk4")]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 896.0
+offset_right = 1024.0
+offset_bottom = 952.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_right = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/MarginContainer"]
-layout_mode = 2
-alignment = 2
-
-[node name="LogPanel" parent="HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("3_y12al")]
-layout_mode = 2
-
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_styles/panel = SubResource("StyleBoxFlat_xxsk4")
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/PanelContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer"]
-layout_mode = 2
-
-[node name="InspirationInfo" parent="HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/HBoxContainer" instance=ExtResource("2_xxsk4")]
-layout_mode = 2
-
-[node name="MoneyInfo" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/HBoxContainer/MoneyInfo"]
-layout_mode = 2
-text = "Money:"
-
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/PanelContainer2/MarginContainer/HBoxContainer/MoneyInfo"]
-layout_mode = 2
-text = "$0"
+[node name="MoneyInfo" parent="HomeBackground" instance=ExtResource("6_4j515")]
+layout_mode = 1
+offset_left = 1047.0
+offset_top = 896.0
+offset_right = -222.0
+offset_bottom = -9.0

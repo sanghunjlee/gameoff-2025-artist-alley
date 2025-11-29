@@ -25,10 +25,19 @@ var fast_forward_multiplier: float = 5.0
 
 # In-game time updates every second with respect to delta
 func _process(delta: float) -> void:
+    if GameState.is_paused:
+        return
+
     if GameState.time_state == GameState.TimeControlState.PLAY:
         GameState.time_count += delta
     elif GameState.time_state == GameState.TimeControlState.FAST:
         GameState.time_count += delta * fast_forward_multiplier
+
+func play_time() -> void:
+    GameState.time_state = GameState.TimeControlState.PLAY
+
+func force_pause_time() -> void:
+    GameState.time_state = GameState.TimeControlState.FORCE_PAUSE
 
 func pass_hour() -> void:
     GameState.time_count += 1

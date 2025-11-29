@@ -42,7 +42,14 @@ func _physics_process(delta: float) -> void:
 func move_toward_target(_delta):
     var next_position = navigation_agent.get_next_path_position()
     var direction = (next_position - global_position).normalized()
-    velocity = direction * speed
+
+    var adjusted_speed = speed
+    if GameState.is_paused:
+        adjusted_speed = 0.0
+    elif GameState.time_state == GameState.TimeControlState.FAST:
+        adjusted_speed *= TimeManager.fast_forward_multiplier
+        
+    velocity = direction * adjusted_speed 
     move_and_slide()
 
 func do_task(task: GameState.PlayerTaskType) -> void:
@@ -107,6 +114,6 @@ func complain() -> void:
         GameState.PlayerTaskType.WATCH_TV:
             message_bubble.show_message("This show is so boring.")
         GameState.PlayerTaskType.USE_PC:
-            message_bubble.show_message("I have no money.")
+            message_bubble.show_message("I don't have enough money.")
         GameState.PlayerTaskType.SLEEP:
             message_bubble.show_message("I am too eepy.")
