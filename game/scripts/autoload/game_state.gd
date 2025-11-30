@@ -67,6 +67,9 @@ var design_inventory: DesignInventory = preload("res://game/resources/inventorie
         if money != value:
             money = value
             StatsManager.emit_signal("money_updated")
+        if money <= 0:
+            money = 0
+            StatsManager.emit_signal("money_depleted")
 
 @onready var time_count = 0: # Used by TimeManager:
     set(value): # On time_count change, emit signal to update time UI
