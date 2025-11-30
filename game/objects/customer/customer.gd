@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Customer
 
-
 enum CustomerState {
     WALKING_TO_BOOTH,
     LOOKING_AT_BOOTH,
@@ -116,4 +115,4 @@ func look_at_booth() -> void:
 
 func _on_navigation_finished() -> void:
     if customer_state == CustomerState.WALKING_TO_EXIT:
-        queue_free()
+        CustomerManager.emit_signal("customer_exited")

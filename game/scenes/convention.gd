@@ -4,10 +4,11 @@ class_name Convention extends Node2D
 
 const CUSTOMER_SPAWN_DELAY_RANGE = Vector2(0.1, .5) # seconds
 
-@export var TOTAL_CUSTOMERS_TO_SPAWN = 50
+@export var TOTAL_CUSTOMERS_TO_SPAWN = 1
 
 # @export var convention_resource: ConventionResource
 
+@export var convention_dialogue: DialogueResource
 @export var customers_node: Node
 @export var customer_spawn_timer: Timer
 @export var customer_scene: PackedScene
@@ -18,8 +19,14 @@ const CUSTOMER_SPAWN_DELAY_RANGE = Vector2(0.1, .5) # seconds
 @export var customer_bound_right: Area2D
 
 @onready var customers_spawned = 0
+@onready var customers_exited = 0:
+    set(value):
+        customers_exited = value
+        if customers_exited >= TOTAL_CUSTOMERS_TO_SPAWN:
+            end_convention()
 
 func _ready():
+    CustomerManager.connect("customer_exited", Callable(self, "_on_customer_exited"))
     customer_spawn_timer.wait_time = randf_range(CUSTOMER_SPAWN_DELAY_RANGE.x, CUSTOMER_SPAWN_DELAY_RANGE.y)
     customer_spawn_timer.start()
 
@@ -55,3 +62,12 @@ func get_random_point_in_area(area: Area2D) -> Vector2:
     var random_x = randf_range(rect.position.x, rect.position.x + rect.size.x)
     var random_y = randf_range(rect.position.y, rect.position.y + rect.size.y)
     return area.global_position + Vector2(random_x, random_y)
+
+func _on_customer_exited() -> void:
+    customers_exited += 1
+
+func end_convention() -> void:
+    print_debug("Convention ended, all customers have exited.")
+    DialogueManager.show_dialogue_balloon(convention_dialogue, "end_convention")
+    await DialogueManager.dialogue_ended
+    SceneManager.change_scene_to(SceneManager.main_scene)

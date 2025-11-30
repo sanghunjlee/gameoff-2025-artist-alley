@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bcgqusb2aw6u1"
+path="res://.godot/imported/convention_dialogue.dialogue-eb020bcc084a54c3c6461de1f13d02d4.tres"
+
+[deps]
+
+source_file="res://game/resources/dialogue/convention_dialogue.dialogue"
+dest_files=["res://.godot/imported/convention_dialogue.dialogue-eb020bcc084a54c3c6461de1f13d02d4.tres"]
+
+[params]
+
+defaults=true

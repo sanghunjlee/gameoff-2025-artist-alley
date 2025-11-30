@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://ddwcsdwcy65tc"]
+[gd_scene load_steps=16 format=4 uid="uid://ddwcsdwcy65tc"]
 
 [ext_resource type="Script" uid="uid://cutgptby43iag" path="res://game/scenes/convention.gd" id="1_ccsxj"]
 [ext_resource type="PackedScene" uid="uid://cqe6c6l0jpokp" path="res://game/objects/customer/customer.tscn" id="1_nftnu"]
+[ext_resource type="Resource" uid="uid://bcgqusb2aw6u1" path="res://game/resources/dialogue/convention_dialogue.dialogue" id="2_5njts"]
 [ext_resource type="Texture2D" uid="uid://crkqsbbonye6g" path="res://assets/images/npc vendor spritesheet.png" id="2_rpvfi"]
 [ext_resource type="PackedScene" uid="uid://dwwrp77p2snjc" path="res://game/objects/booths/player_booth.tscn" id="3_rpvfi"]
 [ext_resource type="Texture2D" uid="uid://bcafao3e5gr7h" path="res://assets/images/con flooring 1 spritesheet.png" id="3_wgpxs"]
@@ -45,6 +46,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-216, -8, 256, -8, 256,
 
 [node name="Convention" type="Node2D" node_paths=PackedStringArray("customers_node", "customer_spawn_timer", "customer_resource_loader", "booth_area", "customer_bound_left", "customer_bound_right")]
 script = ExtResource("1_ccsxj")
+TOTAL_CUSTOMERS_TO_SPAWN = 10
+convention_dialogue = ExtResource("2_5njts")
 customers_node = NodePath("CustomersNode")
 customer_spawn_timer = NodePath("CustomerSpawnTimer")
 customer_scene = ExtResource("1_nftnu")
