@@ -121,13 +121,14 @@ func _on_navigation_finished() -> void:
     # Face appropriate direction based on task
     match current_task:
         GameState.PlayerTaskType.DRAW:
-            animated_sprite.face_direction("right")
+            animated_sprite.play("sit_right")
         GameState.PlayerTaskType.WATCH_TV:
-            animated_sprite.face_direction("up")
+            animated_sprite.play("sit_up")
         GameState.PlayerTaskType.USE_PC:
-            animated_sprite.face_direction("up")
+            animated_sprite.play("sit_up")
         GameState.PlayerTaskType.SLEEP:
             animated_sprite.face_direction("down")
+    print_debug(animated_sprite.is_playing())
 
     # Activate bedroom object based on task
     match current_task:

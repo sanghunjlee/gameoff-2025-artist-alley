@@ -1,9 +1,42 @@
-[gd_scene load_steps=19 format=3 uid="uid://cj7f2aeo47fmc"]
+[gd_scene load_steps=28 format=3 uid="uid://cj7f2aeo47fmc"]
 
 [ext_resource type="Texture2D" uid="uid://dd80o5u1fd4c3" path="res://assets/images/IMG_8019.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dooexj2bhnjew" path="res://game/objects/player/player.gd" id="1_j0r2g"]
+[ext_resource type="Texture2D" uid="uid://c2mgejuy67gh6" path="res://assets/images/sitting + sleeping spritesheet.png" id="2_wce7k"]
 [ext_resource type="Script" uid="uid://qf3yuag6s13v" path="res://game/objects/player/animated_sprite_2d.gd" id="3_k0tc2"]
 [ext_resource type="PackedScene" uid="uid://c2vbmrv5tj786" path="res://game/ui/overhead_speech_bubble/overhead_speech_bubble.tscn" id="4_k0tc2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63sg6"]
+atlas = ExtResource("2_wce7k")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k36d3"]
+atlas = ExtResource("2_wce7k")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpwsx"]
+atlas = ExtResource("2_wce7k")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg0da"]
+atlas = ExtResource("2_wce7k")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_760k0"]
+atlas = ExtResource("2_wce7k")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfmqm"]
+atlas = ExtResource("2_wce7k")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv1vh"]
+atlas = ExtResource("2_wce7k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjyx3"]
+atlas = ExtResource("2_wce7k")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("1_3vyb7")
@@ -55,6 +88,50 @@ region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f1ej7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63sg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k36d3")
+}],
+"loop": true,
+"name": &"sit_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpwsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg0da")
+}],
+"loop": true,
+"name": &"sit_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_760k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfmqm")
+}],
+"loop": true,
+"name": &"sit_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv1vh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjyx3")
+}],
+"loop": true,
+"name": &"sit_up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qhqgy")
@@ -167,6 +244,7 @@ message_bubble = NodePath("OverheadSpeechBubble")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f1ej7")
 animation = &"stay_down"
+frame_progress = 0.86092174
 script = ExtResource("3_k0tc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

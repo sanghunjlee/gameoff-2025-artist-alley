@@ -93,7 +93,7 @@ animation = &"not_in_use"
 position = Vector2(19, 88)
 sprite_frames = ExtResource("14_eq7bp")
 animation = &"not_in_use"
-frame_progress = 0.40766624
+frame_progress = 0.3447596
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-2, -2)
@@ -105,13 +105,13 @@ navigation_polygon = SubResource("NavigationPolygon_aaeym")
 position = Vector2(24, 8)
 
 [node name="TV" type="Marker2D" parent="Markers"]
-position = Vector2(40, 20)
+position = Vector2(39, 33)
 
 [node name="PC" type="Marker2D" parent="Markers"]
 position = Vector2(57, 20)
 
 [node name="Desk" type="Marker2D" parent="Markers"]
-position = Vector2(89, 86)
+position = Vector2(96, 89)
 
 [node name="Closet" type="Marker2D" parent="Markers"]
 position = Vector2(88, 24)
