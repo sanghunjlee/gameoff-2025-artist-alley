@@ -68,7 +68,7 @@ var design_inventory: DesignInventory = preload("res://game/resources/inventorie
     set(value): # On time_count change, emit signal to update time UI
         if time_count != value:
             time_count = value
-            TimeManager.emit_signal("time_updated", time_count)
+            TimeManager.emit_signal("time_updated")
 
 func get_money() -> int:
     return money

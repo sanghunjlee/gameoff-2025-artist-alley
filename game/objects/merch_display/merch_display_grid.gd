@@ -8,15 +8,6 @@ extends Node2D
 @onready var cells: Array[MerchDisplayCell] = []
 
 func _ready() -> void:
-    MerchManager.add_merch_to_inventory_with_design_type(DesignResource.DesignType.YAOI)
-    MerchManager.add_merch_to_inventory_with_design_type(DesignResource.DesignType.SHOUNEN)
-    MerchManager.add_merch_to_inventory_with_design_type(DesignResource.DesignType.YAOI)
-    MerchManager.add_merch_to_inventory_with_design_type(DesignResource.DesignType.SHOUNEN)
-    MerchManager.add_merch_to_inventory_with_design_type(DesignResource.DesignType.YAOI)
-    MerchManager.add_merch_to_inventory_with_design_type(DesignResource.DesignType.SHOUNEN)
-    MerchManager.add_merch_to_inventory_with_design_type(DesignResource.DesignType.SHOUNEN)
-    MerchManager.add_merch_to_inventory_with_design_type(DesignResource.DesignType.YAOI)
-    MerchManager.add_merch_to_inventory_with_design_type(DesignResource.DesignType.SHOUNEN)
     print_debug("inventory after adding yaoi merch: ", GameState.merch_inventory.stacks)
     initialize_display(GameState.merch_inventory.stacks.size())
 

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Artist Alley"
-run/main_scene="uid://bnws2gnlubse3"
+run/main_scene="uid://dy0a0dny1ynjl"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,7 @@ DesignManager="*res://game/scripts/autoload/design_manager.gd"
 CustomerManager="*res://game/scripts/autoload/customer_manager.gd"
 SceneManager="*res://game/scripts/autoload/scene_manager.gd"
 AudioManager="*res://game/scripts/autoload/audio_manager.gd"
+EventManager="*res://game/scripts/autoload/event_manager.gd"
 
 [debug]
 

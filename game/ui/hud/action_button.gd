@@ -8,6 +8,9 @@ class_name ActionButton extends TextureButton
 
 @onready var action_label: Label = %ActionLabel
 
+func _ready() -> void:
+    update_ui()
+
 func update_ui() -> void:
     if action_label == null:
         return

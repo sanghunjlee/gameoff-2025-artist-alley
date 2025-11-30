@@ -8,7 +8,7 @@ extends Node
 #              time_count = 15 -> Day 1, 15:00
 #              time_count = 24 -> Day 2, 0:00
 
-signal time_updated(time_count) # Called outside of class when time_count changes
+signal time_updated # Called outside of class when time_count changes
 
 signal time_control_updated # Called when time state changes (e.g. play, pause, fast forward)
 
