@@ -7,6 +7,7 @@ extends Node
 
 @onready var home_tab: Control = %HomeTab
 @onready var inventory_tab: Control = %InventoryTab
+@onready var calendar_tab: Control = %CalendarTab
 
 
 func _ready():
@@ -14,6 +15,7 @@ func _ready():
 
 func _update_tab_visibility() -> void:
     home_tab.visible = current_tab == 0
+    calendar_tab.visible = current_tab == 1
     inventory_tab.visible = current_tab == 2
 
 func _on_home_tab_selected() -> void:
