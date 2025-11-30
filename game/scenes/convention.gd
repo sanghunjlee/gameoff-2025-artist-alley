@@ -23,17 +23,6 @@ func _ready():
     customer_spawn_timer.wait_time = randf_range(CUSTOMER_SPAWN_DELAY_RANGE.x, CUSTOMER_SPAWN_DELAY_RANGE.y)
     customer_spawn_timer.start()
 
-    test_add_merch_to_inventory_with_design_type(DesignResource.DesignType.YAOI)
-
-func test_add_merch_to_inventory_with_design_type(design_type: DesignResource.DesignType) -> void:
-    var merch = MerchResource.new()
-    merch.type = MerchResource.MerchType.values()[randi_range(0, MerchResource.MerchType.size() - 1)]
-    var design = DesignResource.new("test_design", design_type)
-    merch.design = design
-    #MerchManager.order_merch(merch, 100)
-    GameState.merch_inventory.add_merch(merch, 1)
-    print_debug("inventory: ", GameState.merch_inventory.stacks)
-
 func spawn_random_customer() -> void:
     # note: had a hard time implementing this cleanly cus of resource sharing issues and reliance on data for sprite initialization
     # would be nice to have a structured way for customers to initialize themselves based on their data

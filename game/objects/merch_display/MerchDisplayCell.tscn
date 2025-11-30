@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://be1e5mns8etd6"]
+
+[ext_resource type="Script" uid="uid://bp8gsr8terumm" path="res://game/objects/merch_display/merch_display_cell.gd" id="1_bwuct"]
+[ext_resource type="Texture2D" uid="uid://chkxlgjkt028f" path="res://assets/images/red_dot.png" id="2_bwuct"]
+[ext_resource type="Texture2D" uid="uid://b7j3kegguldih" path="res://assets/images/con asset sprite sheet.png" id="3_r4ubr"]
+[ext_resource type="Texture2D" uid="uid://dsn78vckdekeq" path="res://assets/icons/x-icon.png" id="4_08nbe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08nbe"]
+atlas = ExtResource("3_r4ubr")
+region = Rect2(0, 32, 16, 16)
+
+[node name="MerchDisplayCell" type="Node2D" node_paths=PackedStringArray("merch_sprite", "base_sprite", "out_of_stock_sprite")]
+script = ExtResource("1_bwuct")
+merch_sprite = NodePath("MerchSprite")
+base_sprite = NodePath("BaseSprite")
+out_of_stock_sprite = NodePath("OutOfStockOverlaySprite")
+
+[node name="BaseSprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_08nbe")
+
+[node name="MerchSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_bwuct")
+
+[node name="OutOfStockOverlaySprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_08nbe")

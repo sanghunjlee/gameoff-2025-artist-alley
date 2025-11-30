@@ -56,7 +56,16 @@ func order_merch(merch: MerchResource, amount: int):
     merch_queue.append(stack)
     print("Merch queued")
 
-func buy_random_merch_by_design_types(designs: Array[DesignResource.DesignType], amount: int = 1) -> bool:
+func add_merch_to_inventory_with_design_type(design_type: DesignResource.DesignType) -> void:
+    var merch = MerchResource.new()
+    merch.type = MerchResource.MerchType.values()[randi_range(0, MerchResource.MerchType.size() - 1)]
+    var design = DesignResource.new("test_design", design_type)
+    merch.design = design
+    #MerchManager.order_merch(merch, 100)
+    GameState.merch_inventory.add_merch(merch, 1)
+    print_debug("inventory: ", GameState.merch_inventory.stacks)
+
+func remove_random_merch_by_design_types(designs: Array[DesignResource.DesignType], amount: int = 1) -> bool:
     ## Buy random merch from inventory matching design types
     ## If designs is empty, buy any merch
     ## Returns true if purchase was successful, false otherwise

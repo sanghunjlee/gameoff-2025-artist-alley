@@ -29,6 +29,7 @@ CustomerManager="*res://game/scripts/autoload/customer_manager.gd"
 [debug]
 
 gdscript/warnings/unused_signal=0
+gdscript/warnings/integer_division=0
 
 [display]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://dwwrp77p2snjc"]
+[gd_scene load_steps=10 format=3 uid="uid://dwwrp77p2snjc"]
 
 [ext_resource type="Texture2D" uid="uid://b7j3kegguldih" path="res://assets/images/con asset sprite sheet.png" id="1_jhdrf"]
+[ext_resource type="PackedScene" uid="uid://che4nxnn2512o" path="res://game/objects/merch_display/MerchDisplayGrid.tscn" id="2_p8bmv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c53w0"]
 atlas = ExtResource("1_jhdrf")
@@ -58,11 +59,15 @@ sources/0 = SubResource("TileSetAtlasSource_jhdrf")
 [node name="PlayerBooth" type="Node2D"]
 
 [node name="BoothingPlayer" type="AnimatedSprite2D" parent="."]
-position = Vector2(24, 24)
+position = Vector2(24, -24)
 sprite_frames = SubResource("SpriteFrames_rw2vl")
 animation = &"talking"
 frame_progress = 0.7205535
 
-[node name="BoothTileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAIAAAAAAAQAAAABAAIAAAABAAQAAAACAAIAAAACAAQAAAAAAAEAAAAAAAIAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAIAAAABAAAAAAAAAAIAAAA=")
+[node name="BaseBoothTileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, -48)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 0, 0, 1, 0, 2, 0, 0, 0, 1, 0, 4, 0, 0, 0, 2, 0, 2, 0, 0, 0, 2, 0, 4, 0, 0, 0)
 tile_set = SubResource("TileSet_c53w0")
+
+[node name="MerchDisplayGrid" parent="." instance=ExtResource("2_p8bmv")]
+position = Vector2(0, -16)
