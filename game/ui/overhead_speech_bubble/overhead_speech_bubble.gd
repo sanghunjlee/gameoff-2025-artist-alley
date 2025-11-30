@@ -13,6 +13,7 @@ func show_message(_text: String, _seconds_to_show: float = DEFAULT_SHOW_TIME) ->
     %Label.text = _text
     visible = true
     display_timer.start(_seconds_to_show)
+    await display_timer.timeout
     visible = false
 
 # func center_bubble_horizontal_to_parent() -> void:
