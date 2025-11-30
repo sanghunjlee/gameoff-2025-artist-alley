@@ -70,4 +70,5 @@ func end_convention() -> void:
     print_debug("Convention ended, all customers have exited.")
     DialogueManager.show_dialogue_balloon(convention_dialogue, "end_convention")
     await DialogueManager.dialogue_ended
-    SceneManager.change_scene_to(SceneManager.main_scene)
+    TimeManager.pass_day()
+    SceneManager.change_scene_to(GameState.scenes_data.main_scene)

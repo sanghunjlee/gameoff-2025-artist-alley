@@ -10,5 +10,5 @@ func _on_time_updated() -> void:
         go_to_convention()
 
 func go_to_convention() -> void:
-        SceneManager.change_scene_to(GameState.scenes_data.convention_scene)
-        con_happened = true
+    SceneManager.change_scene_to(GameState.scenes_data.convention_scene)
+    con_happened = true
