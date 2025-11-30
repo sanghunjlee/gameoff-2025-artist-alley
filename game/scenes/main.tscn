@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnws2gnlubse3"]
+[gd_scene load_steps=5 format=3 uid="uid://bnws2gnlubse3"]
 
 [ext_resource type="PackedScene" uid="uid://dweikuwue1r0y" path="res://game/ui/hud/hud.tscn" id="1_gp8w2"]
 [ext_resource type="PackedScene" uid="uid://djlyva08u52mw" path="res://game/scenes/bedroom_scene.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cj7f2aeo47fmc" path="res://game/objects/player/player.tscn" id="3_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://dw7dplmuosii3" path="res://assets/sfx/test-calm-3.ogg" id="4_8buom"]
 
 [node name="Main" type="Node2D"]
 
@@ -21,3 +22,7 @@ z_index = 1
 z_as_relative = false
 position = Vector2(48, 34)
 bedroom_scene = NodePath("../Bedroom")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8buom")
+autoplay = true

@@ -117,7 +117,7 @@ func _on_task_left(current_task: GameState.PlayerTaskType) -> void:
 # Upon task reached successfully by navigation agent
 func _on_navigation_finished() -> void:
     is_interacting = true
-
+    AudioManager.play_sound(AudioManager.audio_resource.beep_sfx)
     # Face appropriate direction based on task
     match current_task:
         GameState.PlayerTaskType.DRAW:
