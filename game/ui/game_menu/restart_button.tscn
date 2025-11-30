@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4s8id5d8f8rv"]
+
+[ext_resource type="Texture2D" uid="uid://buu3uice6afvp" path="res://assets/images/try again no highlight.png" id="1_8s11t"]
+[ext_resource type="Texture2D" uid="uid://btb4tby1u5kbo" path="res://assets/images/try again highlight.png" id="2_56qal"]
+
+[node name="RestartButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_8s11t")
+texture_pressed = ExtResource("1_8s11t")
+texture_hover = ExtResource("2_56qal")
+stretch_mode = 5

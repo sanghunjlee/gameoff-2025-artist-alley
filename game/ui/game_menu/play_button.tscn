@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://5uj1m7aqitvq"]
+
+[ext_resource type="Texture2D" uid="uid://dqyb6hc63repu" path="res://assets/images/play button highlighted.png" id="1_th5jh"]
+[ext_resource type="Texture2D" uid="uid://d00qw3l0tksns" path="res://assets/images/play button no highlight.png" id="2_vwen4"]
+
+[node name="PlayButton" type="TextureButton"]
+offset_right = 138.0
+offset_bottom = 87.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_th5jh")
+texture_pressed = ExtResource("2_vwen4")
+texture_hover = ExtResource("2_vwen4")
+stretch_mode = 5
