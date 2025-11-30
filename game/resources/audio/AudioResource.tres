@@ -2,12 +2,12 @@
 
 [ext_resource type="AudioStream" uid="uid://cxs5udgofoxon" path="res://assets/sfx/soft_blip.wav" id="1_m5ecf"]
 [ext_resource type="Script" uid="uid://c6lh8wmtw16fe" path="res://game/resources/audio/audio_resource.gd" id="1_yvcew"]
-[ext_resource type="AudioStream" uid="uid://6i13qj0o85m2" path="res://assets/sfx/sleepytown.ogg" id="2_2bt2l"]
+[ext_resource type="AudioStream" uid="uid://dufg6l5bxj1ik" path="res://assets/sfx/sleepy_town.ogg" id="2_m5ecf"]
 [ext_resource type="AudioStream" uid="uid://dw7dplmuosii3" path="res://assets/sfx/test-calm-3.ogg" id="3_sulu2"]
 
 [resource]
 script = ExtResource("1_yvcew")
 main_song = ExtResource("3_sulu2")
-convention_song = ExtResource("2_2bt2l")
+convention_song = ExtResource("2_m5ecf")
 beep_sfx = ExtResource("1_m5ecf")
 metadata/_custom_type_script = "uid://c6lh8wmtw16fe"

@@ -89,9 +89,6 @@ func do_task(task: GameState.PlayerTaskType) -> void:
 
         navigation_agent.target_position = target_position
 
-        
-        navigation_agent.target_position = target_position
-
 # Reset sprites to initial default state
 func reset_sprites() -> void:
     # Reset any bedroom sprites that may have changed during tasks

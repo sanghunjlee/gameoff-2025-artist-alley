@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://yykwpvbv448g"]
+
+[ext_resource type="Script" uid="uid://bb2j5o41rxt5t" path="res://game/ui/daytime_overlay.gd" id="1_fkvbt"]
+
+[node name="DaytimeOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fkvbt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 284.0

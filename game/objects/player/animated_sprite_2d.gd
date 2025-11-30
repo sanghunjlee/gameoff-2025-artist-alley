@@ -21,9 +21,6 @@ func _process(_delta: float) -> void:
         if velocity.x != 0 and velocity.y != 0:
             #print_debug("velocity x: ", velocity.x, " velocity y: ", velocity.y)
             play()
-        else:
-            frame = 0
-            stop()
 
 func face_direction(direction: String) -> void:
     match direction:
