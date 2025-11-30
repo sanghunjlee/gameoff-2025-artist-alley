@@ -62,7 +62,7 @@ func add_merch(merch: MerchResource, amount: int):
         var stack = MerchStackResource.new(merch, amount)
         stacks.append(stack)
         inventory_updated.emit()
-        return 
+        return
     
     stacks[index].amount += amount
 
