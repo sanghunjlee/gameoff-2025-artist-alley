@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6v2p1ohktw73"]
+
+[ext_resource type="Script" uid="uid://bbsys5j8ri34r" path="res://game/ui/hud/calendar_ui/calendar_ui.gd" id="1_1av3l"]
+[ext_resource type="StyleBox" uid="uid://b0qwkgnp4slkk" path="res://game/resources/panels/calendar_header_weekday_panel.tres" id="1_w0fq0"]
+[ext_resource type="StyleBox" uid="uid://deqr5cf0fc2ab" path="res://game/resources/panels/calendar_header_weekend_panel.tres" id="2_r1gkd"]
+
+[node name="CalendarUi" type="Control"]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1av3l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeaderGridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HeaderGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_w0fq0")
+
+[node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "MON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HeaderGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_w0fq0")
+
+[node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "TUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/HeaderGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_w0fq0")
+
+[node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "WED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer/HeaderGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_w0fq0")
+
+[node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "THR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="VBoxContainer/HeaderGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_w0fq0")
+
+[node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "FRI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="VBoxContainer/HeaderGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("2_r1gkd")
+
+[node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer6"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "SAT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer7" type="PanelContainer" parent="VBoxContainer/HeaderGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("2_r1gkd")
+
+[node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer7"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "SUN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CellGridContainer" type="GridContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 7
