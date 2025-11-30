@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dweikuwue1r0y"]
+[gd_scene load_steps=5 format=3 uid="uid://dweikuwue1r0y"]
 
 [ext_resource type="Script" uid="uid://dhc0iavj0wyu1" path="res://game/ui/hud/hud.gd" id="1_l7e5k"]
 [ext_resource type="PackedScene" uid="uid://dg7n6n8xjwkxp" path="res://game/ui/hud/home_tab.tscn" id="2_8mv14"]
-[ext_resource type="PackedScene" path="res://game/ui/hud/inventory_tab.tscn" id="3_8mv14"]
+[ext_resource type="PackedScene" uid="uid://pjmnjrq11ioy" path="res://game/ui/hud/inventory_tab.tscn" id="3_8mv14"]
+[ext_resource type="PackedScene" uid="uid://4w1xapc7osus" path="res://game/ui/hud/calendar_tab.tscn" id="4_c644b"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_l7e5k")
@@ -12,6 +13,10 @@ unique_name_in_owner = true
 mouse_filter = 1
 
 [node name="InventoryTab" parent="." instance=ExtResource("3_8mv14")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CalendarTab" parent="." instance=ExtResource("4_c644b")]
 unique_name_in_owner = true
 visible = false
 

@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4cm5fqddauvo"]
+
+[ext_resource type="StyleBox" uid="uid://b0qwkgnp4slkk" path="res://game/resources/panels/calendar_header_weekday_panel.tres" id="1_oeacv"]
+[ext_resource type="Script" uid="uid://u36eostk2ug1" path="res://game/ui/hud/calendar_ui/calendar_weekday_cell.gd" id="1_ra0ue"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 23.0
+offset_bottom = 36.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_oeacv")
+script = ExtResource("1_ra0ue")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="DayLabel" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+horizontal_alignment = 1
+vertical_alignment = 1
