@@ -7,7 +7,7 @@ extends Control
         update_ui()
 
 
-@export var day_label: Label
+@onready var day_label: Label = %WeekendDayLabel
 
 func _ready() -> void:
     call_deferred("update_ui")
