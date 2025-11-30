@@ -3,13 +3,14 @@
 [ext_resource type="StyleBox" uid="uid://deqr5cf0fc2ab" path="res://game/resources/panels/calendar_header_weekend_panel.tres" id="2_p6hox"]
 [ext_resource type="Script" uid="uid://bon43c5e8vlk5" path="res://game/ui/hud/calendar_ui/calendar_weekend_cell.gd" id="2_t8wr8"]
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("day_label")]
 offset_right = 23.0
 offset_bottom = 36.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("2_p6hox")
 script = ExtResource("2_t8wr8")
+day_label = NodePath("MarginContainer/DayLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -21,7 +22,6 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
 [node name="DayLabel" type="Label" parent="MarginContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
