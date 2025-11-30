@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dy0a0dny1ynjl"]
 
-[ext_resource type="Script" uid="uid://cliu6rx0puh31" path="res://game/ui/play_game/play_menu.gd" id="1_ogkbd"]
+[ext_resource type="Script" uid="uid://cliu6rx0puh31" path="res://game/ui/game_menu/play_menu.gd" id="1_ogkbd"]
 [ext_resource type="Texture2D" uid="uid://dlcvw5a4xsjnf" path="res://assets/images/aa title highlight frame.png" id="1_syrq0"]
-[ext_resource type="PackedScene" uid="uid://5uj1m7aqitvq" path="res://game/ui/play_game/play_button.tscn" id="2_vnum1"]
+[ext_resource type="PackedScene" uid="uid://5uj1m7aqitvq" path="res://game/ui/game_menu/play_button.tscn" id="2_vnum1"]
 [ext_resource type="Texture2D" uid="uid://b6f6wh8geahv5" path="res://assets/images/aa title no highlight.png" id="3_pbxns"]
 
 [node name="PlayMenu" type="Control"]
