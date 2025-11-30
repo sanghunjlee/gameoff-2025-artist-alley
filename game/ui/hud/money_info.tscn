@@ -1,26 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxwfmbtcexvn0"]
+[gd_scene load_steps=3 format=3 uid="uid://dxwfmbtcexvn0"]
 
 [ext_resource type="Script" uid="uid://dx6adm53fenvn" path="res://game/ui/hud/money_info.gd" id="1_syd0y"]
+[ext_resource type="Texture2D" uid="uid://5rnlg2d54p8r" path="res://assets/images/square_speech_bubble_18_18.png" id="2_2pg0f"]
 
 [node name="MoneyInfo" type="Control"]
 layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_syd0y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_syd0y")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 19.0
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "Money: "
 
-[node name="MoneyAmount" type="Label" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+texture = ExtResource("2_2pg0f")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81, 0.64678496, 0.056699995, 1)
+theme_override_font_sizes/font_size = 18
+text = "$"
+vertical_alignment = 1
+
+[node name="MoneyAmount" type="Label" parent="VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 48.0
-offset_right = 88.0
-offset_bottom = 19.0
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
 text = "1000"
+horizontal_alignment = 2
+vertical_alignment = 1
