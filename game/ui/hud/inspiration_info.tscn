@@ -23,16 +23,16 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "Inspiration:"
 vertical_alignment = 1
 
 [node name="InspirationBar" type="TextureProgressBar" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 8)
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 4
@@ -41,3 +41,16 @@ stretch_margin_bottom = 4
 texture_under = ExtResource("1_v55au")
 texture_over = ExtResource("2_s6ju8")
 texture_progress = ExtResource("3_ysxi1")
+
+[node name="InspirationLabel" type="Label" parent="VBoxContainer/InspirationBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1

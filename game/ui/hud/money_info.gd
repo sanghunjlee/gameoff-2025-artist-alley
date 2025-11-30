@@ -1,6 +1,6 @@
 extends Control
 
-@onready var amount_display = $MoneyAmount
+@onready var amount_display = %MoneyAmount
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
