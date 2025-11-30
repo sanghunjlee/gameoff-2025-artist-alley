@@ -1,16 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://uj20t2kx7eus"]
+[gd_scene load_steps=6 format=3 uid="uid://uj20t2kx7eus"]
 
 [ext_resource type="Script" uid="uid://dguk6kryqtgha" path="res://game/ui/hud/pc_progress_row.gd" id="1_85dag"]
 [ext_resource type="Texture2D" uid="uid://7614t6xnlcx6" path="res://assets/images/progress-bar-base.png" id="1_aobbw"]
 [ext_resource type="Texture2D" uid="uid://dp22ew2jasilv" path="res://assets/images/progress-bar-over.png" id="2_85dag"]
 [ext_resource type="Texture2D" uid="uid://b5dtyqnarxwkq" path="res://assets/images/progress-bar-progress-blue.png" id="3_shljf"]
+[ext_resource type="Texture2D" uid="uid://gu68pwcpyqrn" path="res://assets/icons/trash-icon.png" id="5_shljf"]
 
 [node name="PCProgressRow" type="HBoxContainer"]
 custom_minimum_size = Vector2(240, 0)
 size_flags_horizontal = 3
+theme_override_constants/separation = 8
 script = ExtResource("1_85dag")
 
-[node name="Label" type="Label" parent="."]
+[node name="IdLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(2, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -19,6 +37,7 @@ size_flags_stretch_ratio = 2.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "testtest"
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
@@ -35,3 +54,9 @@ stretch_margin_bottom = 2
 texture_under = ExtResource("1_aobbw")
 texture_over = ExtResource("2_85dag")
 texture_progress = ExtResource("3_shljf")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+icon = ExtResource("5_shljf")
+
+[connection signal="pressed" from="Button" to="." method="_on_cancel_button_pressed"]

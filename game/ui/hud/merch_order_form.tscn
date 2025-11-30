@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dwikafu48grp7"]
 
 [ext_resource type="Script" uid="uid://cusqw0exonyw8" path="res://game/ui/hud/merch_order_form.gd" id="1_r2xux"]
-[ext_resource type="Texture2D" uid="uid://dsn78vckdekeq" path="res://assets/icons/x-icon.png" id="2_chpdx"]
+[ext_resource type="Texture2D" uid="uid://cgf8c2el0q56x" path="res://assets/icons/x-white-icon.png" id="2_3kik8"]
 [ext_resource type="PackedScene" uid="uid://dd0srykimujq5" path="res://game/ui/inventory_ui/design_inventory_ui/design_inventory_ui.tscn" id="2_r2xux"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gy2t3"]
@@ -213,7 +213,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="MerchOrderForm" type="Control"]
-custom_minimum_size = Vector2(400, 440)
+custom_minimum_size = Vector2(400, 480)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 400.0
@@ -268,7 +268,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_qjhff")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wpejx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ndqjw")
-icon = ExtResource("2_chpdx")
+icon = ExtResource("2_3kik8")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -325,11 +325,51 @@ text = "Amount"
 
 [node name="AmountSpinBox" type="SpinBox" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 min_value = 1.0
 value = 1.0
 alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 2
+color = Color(0.15, 0.15, 0.15, 1)
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Total Cost"
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "$ "
+vertical_alignment = 1
+
+[node name="TotalCostLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

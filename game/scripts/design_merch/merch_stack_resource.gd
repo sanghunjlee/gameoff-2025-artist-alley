@@ -8,7 +8,9 @@ class_name MerchStackResource extends Resource
 ## Readonly
 var process_time: float:
     set = _set_process_time, get = _get_process_time
-        
+var total_cost: int:
+    set = _set_total_cost, get = _get_total_cost
+
 ## Getters / Setters
 func _set_process_time(_value):
     push_error("Cannot directly set 'process_time' property.")
@@ -16,6 +18,13 @@ func _set_process_time(_value):
 func _get_process_time():
     if merch == null: return 0.0
     return merch.process_time * amount
+
+func _set_total_cost(_value):
+    push_error("Cannot directly set 'total_cost' property.")
+
+func _get_total_cost():
+    if merch == null: return 0
+    return merch.cost * amount
 
 
 func _init(merch_param: MerchResource, amount_param: int):

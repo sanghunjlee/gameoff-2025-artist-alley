@@ -1,6 +1,8 @@
 @tool
 extends Control
 
+signal design_selected(design: DesignResource)
+
 @export var is_selectable: bool = false
 
 @export var show_title: bool = true:
@@ -40,10 +42,13 @@ func _ready() -> void:
     if title_bar != null:
         title_bar.visible = show_title
 
+    if is_selectable:
+        design_group.pressed.connect(_on_design_selected)
+
     call_deferred("update_ui")
 
 func get_selected() -> DesignResource:
-    print("Getting selected design")
+    print_debug("Getting selected design")
     if not is_selectable:
         return null
     
@@ -56,13 +61,13 @@ func get_selected() -> DesignResource:
     return slot.design
 
 func update_ui() -> void:
-    print("Updating Design Inventory UI")
+    print_debug("Updating Design Inventory UI")
     if inventory == null:
-        print("No inventory assigned")
+        print_debug("No inventory assigned")
         return
 
     if design_container == null:
-        print("No design container found")
+        print_debug("No design container found")
         return
 
     design_container.columns = columns
@@ -79,3 +84,8 @@ func update_ui() -> void:
         else:
             design_ui.disabled = true
         design_container.add_child(design_ui)
+
+func _on_design_selected(button: BaseButton) -> void:
+    print_debug("Handling design selected signal")
+    var slot = button as DesignItemSlot
+    design_selected.emit(slot.design)

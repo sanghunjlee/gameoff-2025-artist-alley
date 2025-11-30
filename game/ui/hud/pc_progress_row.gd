@@ -1,9 +1,12 @@
 extends HBoxContainer
 
+@export var task_id: int = -1
 @export var task: MerchStackResource
 @export var is_current: bool = false
 
-@onready var label: Label = $Label
+
+@onready var id_label: Label = %IdLabel
+@onready var title_label: Label = %TitleLabel
 @onready var progress_bar: TextureProgressBar = $TextureProgressBar
 
 func _ready() -> void:
@@ -20,7 +23,8 @@ func update_ui() -> void:
     if task == null:
         return
 
-    label.text = "%s x%d" % [task.merch, task.amount]
+    id_label.text = str(task_id)
+    title_label.text = "%s x%d" % [task.merch, task.amount]
 
     if is_current:
         progress_bar.visible = true
@@ -28,3 +32,7 @@ func update_ui() -> void:
         progress_bar.value = MerchManager.current_work.process_time - MerchManager.wait_time
     else:
         progress_bar.visible = false
+
+func _on_cancel_button_pressed():
+    MerchManager.cancel_merch(task_id)
+
