@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://1wfs241sv7a7"]
 
 [ext_resource type="Script" uid="uid://be82qp78f8svq" path="res://game/ui/hud/progress_window.gd" id="1_13q0x"]
-[ext_resource type="Texture2D" uid="uid://dsn78vckdekeq" path="res://assets/icons/x-icon.png" id="1_uke5y"]
+[ext_resource type="Texture2D" uid="uid://cgf8c2el0q56x" path="res://assets/icons/x-white-icon.png" id="2_pptto"]
 [ext_resource type="PackedScene" uid="uid://uj20t2kx7eus" path="res://game/ui/hud/pc_progress_row.tscn" id="3_pptto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjmwj"]
@@ -241,7 +241,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_r2xux")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_chpdx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qjhff")
-icon = ExtResource("1_uke5y")
+icon = ExtResource("2_pptto")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2

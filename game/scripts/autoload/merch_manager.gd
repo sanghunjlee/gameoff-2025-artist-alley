@@ -4,11 +4,11 @@ extends Node
 
 signal merch_started(merch: MerchStackResource)
 signal merch_completed(merch: MerchStackResource)
+signal merch_canceled
 
 var merch_queue: Array[MerchStackResource] = []
 var current_work: MerchStackResource = null
 var wait_time: float = 0.0
-var merch_cost: int = 5
 
 func _ready():
     if not Engine.has_singleton("DesignMerchManager"):
@@ -17,9 +17,6 @@ func _ready():
 
 func _process(delta: float) -> void:
     if GameState.is_paused:
-        return
-
-    if not can_make_merch():
         return
 
     if wait_time > 0.0:
@@ -37,18 +34,13 @@ func _process(delta: float) -> void:
             GameState.merch_inventory.add_merch(current_work.merch, current_work.amount)
             merch_completed.emit(current_work)
             MessageLogManager.append_log("'" + str(current_work) + "' is complete!")
-            StatsManager.spend_money(merch_cost)
             current_work = null
 
         # Check if there is queue and handle it
-        if can_make_merch() and merch_queue.size() > 0:
+        if merch_queue.size() > 0:
             current_work = merch_queue.pop_front()
             merch_started.emit(current_work)
             wait_time = current_work.process_time
-        else:
-            # Not enough money to make merch, complain
-            if not can_make_merch():
-                GameState.player.complain()
 
 func order_merch(merch: MerchResource, amount: int):
     var stack = MerchStackResource.new(merch, amount)
@@ -89,9 +81,28 @@ func remove_random_merch_by_design_types(designs: Array[DesignResource.DesignTyp
 
     return true
 
-
 func clear_queue():
     merch_queue.clear()
 
-func can_make_merch() -> bool:
-    return GameState.get_money() - merch_cost >= 0
+func cancel_merch(index: int = 0):
+    ## Index of merch to cancel
+    ## If the index is 0, cancels the current work
+    ## If the index is greater than 0, cancels the merch at index - 1 in the queue
+    if index < 0 or index > merch_queue.size():
+        return
+    if index == 0:
+        if current_work != null:
+            # Refund the money
+            StatsManager.add_money(current_work.total_cost)
+
+            current_work = null
+            wait_time = 0.0
+
+            merch_canceled.emit()
+    else:
+        var canceled_item = merch_queue.pop_at(index - 1)
+        
+        # Refund the money
+        StatsManager.add_money(canceled_item.total_cost)
+
+        merch_canceled.emit()

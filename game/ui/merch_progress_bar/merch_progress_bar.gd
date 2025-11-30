@@ -9,10 +9,11 @@ func _ready() -> void:
 
     MerchManager.merch_started.connect(on_merch_start)
     MerchManager.merch_completed.connect(on_merch_completed)
+    MerchManager.merch_canceled.connect(on_merch_canceled)
 
 func _process(_delta: float) -> void:
     if is_merch_processing:
-        if progress_bar:
+        if progress_bar and MerchManager.current_work != null:
             progress_bar.value = MerchManager.current_work.process_time - MerchManager.wait_time
 
 func on_merch_start(merch: MerchStackResource):
@@ -30,6 +31,6 @@ func on_merch_completed(merch: MerchStackResource):
     self.is_merch_processing = false
     self.visible = false
 
-func on_design_canceled():
+func on_merch_canceled():
     self.is_merch_processing = false
     self.visible = false

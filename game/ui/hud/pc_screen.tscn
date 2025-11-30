@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://cc3hdt2k6cx4o"]
 
 [ext_resource type="Script" uid="uid://ca4hadl4pxbp4" path="res://game/ui/hud/pc_screen.gd" id="1_qjhff"]
-[ext_resource type="Texture2D" uid="uid://dsn78vckdekeq" path="res://assets/icons/x-icon.png" id="2_chpdx"]
 [ext_resource type="Texture2D" uid="uid://bjrblud6b73tb" path="res://assets/icons/cart-icon.png" id="2_gy2t3"]
+[ext_resource type="Texture2D" uid="uid://cgf8c2el0q56x" path="res://assets/icons/x-white-icon.png" id="2_wpejx"]
 [ext_resource type="Texture2D" uid="uid://do7bnw8xi6lpd" path="res://assets/icons/progress-icon.png" id="3_r2xux"]
-[ext_resource type="PackedScene" path="res://game/ui/hud/merch_order_form.tscn" id="4_chpdx"]
+[ext_resource type="PackedScene" uid="uid://dwikafu48grp7" path="res://game/ui/hud/merch_order_form.tscn" id="4_chpdx"]
 [ext_resource type="PackedScene" uid="uid://1wfs241sv7a7" path="res://game/ui/hud/progress_window.tscn" id="6_wpejx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjmwj"]
@@ -162,7 +162,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_r2xux")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_chpdx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qjhff")
-icon = ExtResource("2_chpdx")
+icon = ExtResource("2_wpejx")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
