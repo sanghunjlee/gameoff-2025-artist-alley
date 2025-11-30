@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ScenesData" load_steps=4 format=3 uid="uid://carn6iutx7mfa"]
+
+[ext_resource type="PackedScene" uid="uid://ddwcsdwcy65tc" path="res://game/scenes/convention.tscn" id="1_dpd60"]
+[ext_resource type="Script" uid="uid://bc0sejuxnw7bv" path="res://game/resources/scenes/scenes_data.gd" id="1_j6bg3"]
+[ext_resource type="PackedScene" uid="uid://bnws2gnlubse3" path="res://game/scenes/main.tscn" id="2_v08jo"]
+
+[resource]
+script = ExtResource("1_j6bg3")
+main_scene = ExtResource("2_v08jo")
+convention_scene = ExtResource("1_dpd60")
+metadata/_custom_type_script = "uid://bc0sejuxnw7bv"

@@ -20,6 +20,7 @@ const CHANCE_OF_CUSTOMER_VISITING_BOOTH = 0.5
 @onready var customer_data: CustomerResource
 @onready var exit_position: Vector2
 @onready var booth_position: Vector2
+@onready var customer_state: CustomerState = CustomerState.WALKING_TO_EXIT
 var has_stopped_at_booth = false # To prevent multiple stops
 # When spawned, type should be set by convention scene script
 
@@ -83,13 +84,14 @@ func _on_time_to_spend_at_booth_timer_timeout() -> void:
     else:
         emote_component.play_emote("sad")
     walk_to_position(exit_position)
-    pass # Replace with function body.
+    customer_state = CustomerState.WALKING_TO_EXIT
 
 func _on_time_to_notice_booth_timer_timeout() -> void:
     if randf() < CHANCE_OF_CUSTOMER_VISITING_BOOTH and not has_stopped_at_booth:
         walk_to_booth()
 
 func walk_to_booth() -> void:
+    customer_state = CustomerState.WALKING_TO_BOOTH
     emote_component.play_emote("exclaim")
     walk_to_position(booth_position)
     await navigation_agent.target_reached
@@ -105,8 +107,13 @@ func stop_walking() -> void:
     animated_sprite.stop()
 
 func look_at_booth() -> void:
+    customer_state = CustomerState.LOOKING_AT_BOOTH
     has_stopped_at_booth = true
     stop_walking()
     
     time_to_spend_at_booth_timer.wait_time = randf_range(CUSTOMER_VISIT_DURATION_RANGE.x, CUSTOMER_VISIT_DURATION_RANGE.y)
     time_to_spend_at_booth_timer.start()
+
+func _on_navigation_finished() -> void:
+    if customer_state == CustomerState.WALKING_TO_EXIT:
+        queue_free()
