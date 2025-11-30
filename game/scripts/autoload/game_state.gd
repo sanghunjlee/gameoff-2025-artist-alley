@@ -23,6 +23,10 @@ var time_state: TimeControlState = TimeControlState.PLAY:
             time_state = value
             TimeManager.emit_signal("time_control_updated")
 
+# eg. main, title, game_over, convention...
+var scenes_data: ScenesData = preload("res://game/resources/scenes/ScenesData.tres")
+var current_scene: PackedScene = scenes_data.initial_scene
+
 # Easier check for pause state
 var is_paused: bool:
     get():

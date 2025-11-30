@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ScenesData" load_steps=6 format=3 uid="uid://carn6iutx7mfa"]
+
+[ext_resource type="PackedScene" uid="uid://ddwcsdwcy65tc" path="res://game/scenes/convention.tscn" id="1_dpd60"]
+[ext_resource type="Script" uid="uid://bc0sejuxnw7bv" path="res://game/resources/scenes/scenes_data.gd" id="1_j6bg3"]
+[ext_resource type="PackedScene" uid="uid://b0m7vr53xr4rj" path="res://game/scenes/game_over_menu.tscn" id="2_2pj6v"]
+[ext_resource type="PackedScene" uid="uid://bnws2gnlubse3" path="res://game/scenes/main.tscn" id="2_v08jo"]
+[ext_resource type="PackedScene" uid="uid://dy0a0dny1ynjl" path="res://game/scenes/play_menu.tscn" id="5_pv33b"]
+
+[resource]
+script = ExtResource("1_j6bg3")
+initial_scene = ExtResource("5_pv33b")
+main_scene = ExtResource("2_v08jo")
+convention_scene = ExtResource("1_dpd60")
+title_scene = ExtResource("5_pv33b")
+game_over_scene = ExtResource("2_2pj6v")
+metadata/_custom_type_script = "uid://bc0sejuxnw7bv"

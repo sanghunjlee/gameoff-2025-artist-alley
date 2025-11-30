@@ -2,10 +2,10 @@ extends Control
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var colors = {
-    "morning": Color(1, 0.9, 0.7, 0.15),
-    "afternoon": Color(1, 1, 0.8, 0.15),
-    "evening": Color(1, 0.8, 0.6, 0.2),
-    "night": Color(0, 0, 0.2, 0.3)
+    "morning": Color(0, 0, 0.2, 0.1),
+    "afternoon": Color(0, 0, 0, 0),
+    "evening": Color(.1, 0, .1, 0.1),
+    "night": Color(0, 0, 0.3, 0.25)
 }
 
 

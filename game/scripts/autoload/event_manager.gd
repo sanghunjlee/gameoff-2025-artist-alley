@@ -7,5 +7,8 @@ func _ready() -> void:
 
 func _on_time_updated() -> void:
     if TimeManager.get_current_day() % 7 == 0 and !con_happened:
-        SceneManager.change_scene_to(SceneManager.convention_scene)
-        con_happened = true
+        go_to_convention()
+
+func go_to_convention() -> void:
+    SceneManager.change_scene_to(GameState.scenes_data.convention_scene)
+    con_happened = true

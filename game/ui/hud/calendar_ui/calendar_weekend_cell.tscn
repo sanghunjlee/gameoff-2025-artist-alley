@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://deqr5cf0fc2ab" path="res://game/resources/panels/calendar_header_weekend_panel.tres" id="2_p6hox"]
 [ext_resource type="Script" uid="uid://bon43c5e8vlk5" path="res://game/ui/hud/calendar_ui/calendar_weekend_cell.gd" id="2_t8wr8"]
 
-[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("day_label")]
+[node name="CalendarWeekendCell" type="PanelContainer" node_paths=PackedStringArray("day_label")]
 offset_right = 23.0
 offset_bottom = 36.0
 size_flags_horizontal = 3

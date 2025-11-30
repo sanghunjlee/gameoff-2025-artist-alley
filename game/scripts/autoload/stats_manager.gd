@@ -53,7 +53,7 @@ func handle_task_action(task: GameState.PlayerTaskType):
 
     # Wait until player is at the task location
     GameState.player.navigation_agent.navigation_finished.connect((func():
-        GameState.is_on_task = true
+        GameState.is_on_task=true
     ), ConnectFlags.CONNECT_ONE_SHOT)
 
     await GameState.player.navigation_agent.navigation_finished
@@ -102,11 +102,11 @@ func can_consume_inspiration(amount: int) -> bool:
 func consume_inspiration() -> void:
     match GameState.current_task:
         GameState.PlayerTaskType.DRAW:
-            change_inspiration(draw_consumption)  
+            change_inspiration(draw_consumption)
 
 # Decrease inspiration because the show is too trashy 
 func good_or_bad_show() -> void:
-    var random_number : int = randi()
+    var random_number: int = randi()
     if random_number % 10 == 0:
         GameState.player.complain()
         change_inspiration(-1)
