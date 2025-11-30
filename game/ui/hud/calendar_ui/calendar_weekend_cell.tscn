@@ -10,7 +10,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("2_p6hox")
 script = ExtResource("2_t8wr8")
-day_label = NodePath("MarginContainer/DayLabel")
+day_label = NodePath("MarginContainer/WeekendDayLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -21,7 +21,8 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="DayLabel" type="Label" parent="MarginContainer"]
+[node name="WeekendDayLabel" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
