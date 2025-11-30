@@ -15,7 +15,7 @@ var wait: float = 0.0
 var draw_consumption: int = -1
 
 func _process(delta: float) -> void:
-    if GameState.time_state == GameState.TimeControlState.PAUSE:
+    if GameState.is_paused:
         return
 
     # cooldown to avoid spamming
