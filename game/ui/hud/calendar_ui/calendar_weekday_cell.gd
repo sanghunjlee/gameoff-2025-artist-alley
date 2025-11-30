@@ -13,4 +13,5 @@ func _ready() -> void:
     call_deferred("update_ui")
 
 func update_ui() -> void:
-    day_label.text = str(day)
+    if day_label != null:
+        day_label.text = str(day)
