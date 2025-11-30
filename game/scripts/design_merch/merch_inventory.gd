@@ -1,8 +1,10 @@
 class_name MerchInventory extends Resource
 
-signal inventory_updated()
+signal out_of_stock(index: int)
+signal inventory_updated(index: int)
 
 @export var stacks: Array[MerchStackResource] = []
+
 
 func find_merch(merch: MerchResource) -> int:
     ## Find the merch in the stacks and return the index
@@ -61,7 +63,7 @@ func add_merch(merch: MerchResource, amount: int):
     if index == -1:
         var stack = MerchStackResource.new(merch, amount)
         stacks.append(stack)
-        inventory_updated.emit()
+        inventory_updated.emit(stacks.size() - 1)
         return
     
     stacks[index].amount += amount
@@ -74,9 +76,10 @@ func remove_merch(merch: MerchResource, amount: int) -> int:
     
     if stacks[index].amount < amount:
         stacks[index].amount = 0
-        inventory_updated.emit()
+        inventory_updated.emit(index)
         return amount - stacks[index].amount
     
     stacks[index].amount -= amount
-    inventory_updated.emit()
+    
+    emit_signal("out_of_stock", index)
     return 0

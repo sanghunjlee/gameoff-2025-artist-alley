@@ -39,6 +39,8 @@ func initialize_display(merch_stacks_size: int) -> void:
 
         # set cell to its corresponding merch stack from inventory
         cell.merch_stack = _get_next_merch_stack(i)
+        cell.stack_index = i
+        print_debug("Created cell for stack index ", i, " at position ", cell.position)
 
         # add to scene and track
         add_child(cell)

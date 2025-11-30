@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
             wait_time -= delta * TimeManager.fast_forward_multiplier
     else:
         if current_work != null:
-            print("Merch completed: " + str(current_work))
+            #print("Merch completed: " + str(current_work))
             GameState.merch_inventory.add_merch(current_work.merch, current_work.amount)
             merch_completed.emit(current_work)
             MessageLogManager.append_log("'" + str(current_work) + "' is complete!")
@@ -51,10 +51,8 @@ func _process(delta: float) -> void:
                 GameState.player.complain()
 
 func order_merch(merch: MerchResource, amount: int):
-    print("Ordering merch: " + str(merch) + " x" + str(amount))
     var stack = MerchStackResource.new(merch, amount)
     merch_queue.append(stack)
-    print("Merch queued")
 
 func add_merch_to_inventory_with_design_type(design_type: DesignResource.DesignType) -> void:
     var merch = MerchResource.new()
@@ -63,7 +61,7 @@ func add_merch_to_inventory_with_design_type(design_type: DesignResource.DesignT
     merch.design = design
     #MerchManager.order_merch(merch, 100)
     GameState.merch_inventory.add_merch(merch, 1)
-    print_debug("inventory: ", GameState.merch_inventory.stacks)
+    #print_debug("inventory: ", GameState.merch_inventory.stacks)
 
 func remove_random_merch_by_design_types(designs: Array[DesignResource.DesignType], amount: int = 1) -> bool:
     ## Buy random merch from inventory matching design types
