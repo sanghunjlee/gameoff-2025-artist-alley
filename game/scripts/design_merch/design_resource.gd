@@ -40,19 +40,19 @@ func _set_icon(_value):
 func _get_icon():
     match type:
         DesignType.FURRY:
-            return null # TODO: Add icon
+            return preload("res://assets/icons/furry-icon.png")
         DesignType.MECHA:
-            return null # TODO: Add icon
+            return preload("res://assets/icons/mecha-icon.png")
         DesignType.YAOI:
             return preload("res://assets/icons/bl-icon.png")
         DesignType.YURI:
-            return null # TODO: Add icon
+            return preload("res://assets/icons/yuri-icon.png")
         DesignType.SHOUJO:
             return preload("res://assets/icons/shoujo-icon.png")
         DesignType.SHOUNEN:
             return preload("res://assets/icons/shounen-icon.png")
         DesignType.CUTE:
-            return null # TODO:   Add icon
+            return preload("res://assets/icons/cute-icon.png")
         DesignType.SPICY:
             return preload("res://assets/icons/spicy-icon.png")
         DesignType.SPOOKY:
