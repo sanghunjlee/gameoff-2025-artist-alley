@@ -47,7 +47,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-216, -8, 256, -8, 256,
 
 [node name="Convention" type="Node2D" node_paths=PackedStringArray("customers_node", "customer_spawn_timer", "customer_resource_loader", "booth_area", "customer_bound_left", "customer_bound_right")]
 script = ExtResource("1_ccsxj")
-TOTAL_CUSTOMERS_TO_SPAWN = 10
+TOTAL_CUSTOMERS_TO_SPAWN = 50
 convention_dialogue = ExtResource("2_5njts")
 customers_node = NodePath("CustomersNode")
 customer_spawn_timer = NodePath("CustomerSpawnTimer")

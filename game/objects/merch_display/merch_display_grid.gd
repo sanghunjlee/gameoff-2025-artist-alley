@@ -8,7 +8,6 @@ extends Node2D
 @onready var cells: Array[MerchDisplayCell] = []
 
 func _ready() -> void:
-    print_debug("inventory after adding yaoi merch: ", GameState.merch_inventory.stacks)
     initialize_display(GameState.merch_inventory.stacks.size())
 
 # initialize cells in a grid starting from bottom-left and building right and up.
@@ -18,8 +17,6 @@ func _ready() -> void:
 # xxx
 # x x
 func initialize_display(merch_stacks_size: int) -> void:
-    print_debug("Initializing merch display with ", merch_stacks_size, " stacks.")
-
     for i in merch_stacks_size: # +1 to account for skipped cell
         # copy the cell scene and make it visible
         var cell = merch_cell.duplicate()
@@ -29,10 +26,11 @@ func initialize_display(merch_stacks_size: int) -> void:
         cell.position = _get_grid_position(i)
 
         # set cell to its corresponding merch stack from inventory
-        cell.merch_stack = _get_next_merch_stack(i)
+        var merch_stack = _get_next_merch_stack(i)
         cell.stack_index = i
-        print_debug("Created cell for stack index ", i, " at position ", cell.position)
-
+        cell.merch_sprite.texture = merch_stack.merch.design.icon
+        cell.update_display()
+        
         # add to scene and track
         add_child(cell)
         cells.append(cell)
