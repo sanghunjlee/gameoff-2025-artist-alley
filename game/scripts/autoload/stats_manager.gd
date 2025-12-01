@@ -138,4 +138,5 @@ func reset_stats() -> void:
     DesignManager.cancel_work()
     GameState.design_inventory.clear_inventory()
     GameState.merch_inventory.clear_inventory()
+    MessageLogManager.clear_logs()
     

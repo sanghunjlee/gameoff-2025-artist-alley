@@ -14,3 +14,6 @@ func append_log(message: String, type: MLConstants.LogType = MLConstants.LogType
 
     log_list.append(l)
     log_changed.emit(l)
+
+func clear_logs():
+    log_list.clear()
