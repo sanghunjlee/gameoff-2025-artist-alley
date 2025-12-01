@@ -83,3 +83,7 @@ func remove_merch(merch: MerchResource, amount: int) -> int:
     
     emit_signal("out_of_stock", index)
     return 0
+
+func clear_inventory():
+    stacks.clear()
+    inventory_updated.emit()

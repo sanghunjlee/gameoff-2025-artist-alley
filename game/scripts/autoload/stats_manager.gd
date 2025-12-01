@@ -124,3 +124,15 @@ func time_to_draw() -> void:
         GameState.is_on_task = false
         DesignManager.cancel_work()
         GameState.player.complain()
+
+func reset_stats() -> void:
+    GameState.money = GameState.INITIAL_MONEY
+    GameState.inspiration_point = GameState.INITIAL_INSPIRATION_POINT
+    GameState.inspiration_level = GameState.INITIAL_INSPIRATION_LEVEL
+    GameState.time_count = GameState.INITIAL_TIME_COUNT
+    MerchManager.clear_queue()
+    MerchManager.cancel_merch()
+    DesignManager.cancel_work()
+    GameState.design_inventory.clear_inventory()
+    GameState.merch_inventory.clear_inventory()
+    

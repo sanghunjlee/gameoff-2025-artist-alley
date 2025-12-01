@@ -15,6 +15,10 @@ enum PlayerTaskType {
     SLEEP
 }
 
+const INITIAL_MONEY: int = 100
+const INITIAL_INSPIRATION_LEVEL: int = 0
+const INITIAL_INSPIRATION_POINT: int = 0
+const INITIAL_TIME_COUNT: int = 0
 
 # Time control state
 var time_state: TimeControlState = TimeControlState.PLAY:
@@ -37,8 +41,8 @@ var is_paused: bool:
 ## Currency Items
 # Inspiration
 # TODO: implement "insp calc funcs" to handle calculations related to inspiration level, point, limit
-var inspiration_level: int = 0
-var inspiration_point: int = 0:
+var inspiration_level: int = INITIAL_INSPIRATION_LEVEL
+var inspiration_point: int = INITIAL_INSPIRATION_POINT:
     set(value):
         # TODO: Replaced this to utilize "insp calc funcs"
         # inspiration_point = value % inspiration_limit
@@ -62,7 +66,7 @@ var design_inventory: DesignInventory = preload("res://game/resources/inventorie
 # Stat vars
 @onready var player_name = "ARTIST"
 
-@onready var money = 100:
+@onready var money = INITIAL_MONEY:
     set(value): # On money change, emit signal to update money UI
         if money != value:
             money = value
@@ -71,7 +75,7 @@ var design_inventory: DesignInventory = preload("res://game/resources/inventorie
             money = 0
             StatsManager.emit_signal("money_depleted")
 
-@onready var time_count = 0: # Used by TimeManager:
+@onready var time_count = INITIAL_TIME_COUNT: # Used by TimeManager:
     set(value): # On time_count change, emit signal to update time UI
         if time_count != value:
             time_count = value
