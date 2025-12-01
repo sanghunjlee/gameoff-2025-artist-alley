@@ -5,9 +5,13 @@
 [ext_resource type="StyleBox" uid="uid://deqr5cf0fc2ab" path="res://game/resources/panels/calendar_header_weekend_panel.tres" id="2_r1gkd"]
 
 [node name="CalendarUi" type="Control"]
-custom_minimum_size = Vector2(700, 500)
+custom_minimum_size = Vector2(1200, 500)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_1av3l")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -30,7 +34,7 @@ theme_override_styles/panel = ExtResource("1_w0fq0")
 [node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "MON"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -43,7 +47,7 @@ theme_override_styles/panel = ExtResource("1_w0fq0")
 [node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "TUE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -56,7 +60,7 @@ theme_override_styles/panel = ExtResource("1_w0fq0")
 [node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "WED"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -69,7 +73,7 @@ theme_override_styles/panel = ExtResource("1_w0fq0")
 [node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "THR"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -82,7 +86,7 @@ theme_override_styles/panel = ExtResource("1_w0fq0")
 [node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer5"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "FRI"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -94,7 +98,7 @@ theme_override_styles/panel = ExtResource("2_r1gkd")
 
 [node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer6"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "SAT"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -106,7 +110,7 @@ theme_override_styles/panel = ExtResource("2_r1gkd")
 
 [node name="Label" type="Label" parent="VBoxContainer/HeaderGridContainer/PanelContainer7"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "SUN"
 horizontal_alignment = 1
 vertical_alignment = 1

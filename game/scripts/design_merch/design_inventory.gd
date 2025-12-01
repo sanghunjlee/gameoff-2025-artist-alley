@@ -27,3 +27,7 @@ func remove_design(design: DesignResource):
     if index != -1:
         designs.remove_at(index)
         inventory_updated.emit()
+
+func clear_inventory():
+    designs.clear()
+    inventory_updated.emit()

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl1kk3safl2mm"]
+
+[ext_resource type="Script" uid="uid://devbw7at6j7r0" path="res://game/ui/month_name_label.gd" id="1_103a6"]
+
+[node name="MonthNameLabel" type="Label"]
+custom_minimum_size = Vector2(0, 64)
+theme_override_font_sizes/font_size = 64
+text = "MARCH"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_103a6")

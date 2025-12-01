@@ -35,6 +35,9 @@ func _process(delta: float) -> void:
                 time_to_draw()
             GameState.PlayerTaskType.WATCH_TV:
                 good_or_bad_show()
+            GameState.PlayerTaskType.SLEEP:
+                # Skip to the next convention, change float value later if needed
+                TimeManager.pass_day(TimeManager.get_days_until_next_convention(), 0.0)
 
 func handle_task_action(task: GameState.PlayerTaskType):
     # Skip if game is on pause
@@ -124,3 +127,15 @@ func time_to_draw() -> void:
         GameState.is_on_task = false
         DesignManager.cancel_work()
         GameState.player.complain()
+
+func reset_stats() -> void:
+    GameState.money = GameState.INITIAL_MONEY
+    GameState.inspiration_point = GameState.INITIAL_INSPIRATION_POINT
+    GameState.inspiration_level = GameState.INITIAL_INSPIRATION_LEVEL
+    GameState.time_count = GameState.INITIAL_TIME_COUNT
+    MerchManager.clear_queue()
+    MerchManager.cancel_merch()
+    DesignManager.cancel_work()
+    GameState.design_inventory.clear_inventory()
+    GameState.merch_inventory.clear_inventory()
+    
