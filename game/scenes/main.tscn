@@ -9,6 +9,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource("1_gp8w2")]
+visible = false
 
 [node name="Bedroom" parent="." instance=ExtResource("2_jyhfs")]
 

@@ -11,9 +11,11 @@ extends Node
 
 
 func _ready():
+    self.visible = true
     _update_tab_visibility()
 
 func _update_tab_visibility() -> void:
+    self.visible = true
     home_tab.visible = current_tab == 0
     calendar_tab.visible = current_tab == 1
     inventory_tab.visible = current_tab == 2
