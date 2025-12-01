@@ -59,11 +59,11 @@ func pass_day(num_days: int = 1, time: float = 0.0) -> void:
     GameState.time_count += total_skip_count
 
 func get_current_month() -> int:
-    # Returns 0-indexed month count
+    ## Returns 0-indexed month count
     return  (int((START_TIME_COUNT + GameState.time_count) / (24 * 28)) % 12)
 
 func get_current_day() -> int:
-    # Returns 1-indexed day count
+    ## Returns 1-indexed day count
     return  (int((START_TIME_COUNT + GameState.time_count) / 24) % 28) + 1
 
 func get_current_hour() -> int:
