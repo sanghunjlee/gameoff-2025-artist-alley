@@ -111,15 +111,22 @@ stream = ExtResource("9_c20ph")
 volume_db = -10.0
 autoplay = true
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_direction = 1
-offset_left = 97.0
-offset_top = -141.0
-offset_right = 200.0
-offset_bottom = -72.0
-size_flags_vertical = 4
+[node name="ConventionHUD" type="CanvasLayer" parent="."]
 
-[node name="MoneyInfo" parent="MarginContainer" instance=ExtResource("10_hdtkd")]
+[node name="MarginContainer" type="MarginContainer" parent="ConventionHUD"]
+custom_minimum_size = Vector2(300, 160)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="MoneyInfo" parent="ConventionHUD/MarginContainer" instance=ExtResource("10_hdtkd")]
 layout_mode = 2
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
