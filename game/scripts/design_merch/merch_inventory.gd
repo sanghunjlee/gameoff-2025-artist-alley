@@ -10,7 +10,7 @@ func find_merch(merch: MerchResource) -> int:
     ## Find the merch in the stacks and return the index
     ## Returns -1 if not found
     for i in range(len(stacks)):
-        if stacks[i].merch.design == merch.design:
+        if stacks[i].merch.design == merch.design and stacks[i].merch.type == merch.type:
             return i
 
     return -1
