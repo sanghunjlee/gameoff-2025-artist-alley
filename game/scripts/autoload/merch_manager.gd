@@ -73,6 +73,9 @@ func remove_random_merch_by_design_types(designs: Array[DesignResource.DesignTyp
     var buy_amount: int = amount
     for stack in available_stacks:
         var remaining = GameState.merch_inventory.remove_merch(stack.merch, buy_amount)
+        var actual_buy_amount = buy_amount - remaining
+        var total_cost = actual_buy_amount * stack.merch.base_value
+        StatsManager.add_money(total_cost)
         
         if remaining == 0:
             break
