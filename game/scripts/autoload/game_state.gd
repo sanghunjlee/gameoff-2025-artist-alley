@@ -15,10 +15,15 @@ enum PlayerTaskType {
     SLEEP
 }
 
+## Constants: Initial Value 
 const INITIAL_MONEY: int = 100
 const INITIAL_INSPIRATION_LEVEL: int = 0
 const INITIAL_INSPIRATION_POINT: int = 0
 const INITIAL_TIME_COUNT: int = 0
+const INITIAL_RENT_AMOUNT: int = 200
+
+## Constants: 
+const RENT_DUE_DAY: int = 26
 
 # Time control state
 var time_state: TimeControlState = TimeControlState.PLAY:
@@ -49,6 +54,9 @@ var inspiration_point: int = INITIAL_INSPIRATION_POINT:
         inspiration_point = value
         StatsManager.emit_signal("inspiration_updated")
 var inspiration_limit: int = 100
+
+# Apartment Rent
+var rent_amount: int = INITIAL_RENT_AMOUNT
 
 ## Task related vars
 var current_task: PlayerTaskType = PlayerTaskType.NONE
