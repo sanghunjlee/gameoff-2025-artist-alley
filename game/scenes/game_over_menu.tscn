@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0m7vr53xr4rj"]
+[gd_scene load_steps=5 format=3 uid="uid://b0m7vr53xr4rj"]
 
 [ext_resource type="Script" uid="uid://b0dsdkms7j885" path="res://game/scenes/game_over_menu.gd" id="1_2pgvm"]
 [ext_resource type="Texture2D" uid="uid://duh5dgs31f7ed" path="res://assets/images/game over page.png" id="1_04xam"]
 [ext_resource type="PackedScene" uid="uid://b4s8id5d8f8rv" path="res://game/ui/game_menu/restart_button.tscn" id="2_6y71n"]
+[ext_resource type="AudioStream" uid="uid://bnwm8r2pglon2" path="res://assets/sfx/spookie.ogg" id="4_v4hki"]
 
 [node name="GameOverMenu" type="Control"]
 layout_mode = 3
@@ -26,5 +27,9 @@ offset_top = 826.0
 offset_right = 832.0
 offset_bottom = 912.0
 mouse_default_cursor_shape = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_v4hki")
+autoplay = true
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
