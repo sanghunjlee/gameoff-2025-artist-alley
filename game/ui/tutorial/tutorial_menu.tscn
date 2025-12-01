@@ -24,7 +24,7 @@ region = Rect2(96, 16, 16, 16)
 atlas = SubResource("CompressedTexture2D_4c6oh")
 region = Rect2(0, 16, 32, 16)
 
-[node name="TutorialNote" type="Control"]
+[node name="TutorialMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 
@@ -62,9 +62,9 @@ texture = SubResource("AtlasTexture_0regm")
 [node name="PlayIcon" type="TextureRect" parent="PostItNote"]
 layout_mode = 0
 offset_left = 84.0
-offset_top = 337.0
+offset_top = 349.0
 offset_right = 105.0
-offset_bottom = 358.0
+offset_bottom = 370.0
 texture = ExtResource("2_0regm")
 
 [node name="PauseIcon" type="TextureRect" parent="PostItNote/PlayIcon"]
@@ -92,28 +92,29 @@ texture = SubResource("AtlasTexture_fc555")
 [node name="RichTextLabel" type="Label" parent="PostItNote"]
 layout_mode = 0
 offset_left = 190.0
-offset_top = 73.0
+offset_top = 60.0
 offset_right = 587.0
-offset_bottom = 101.0
+offset_bottom = 111.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "Watch TV (TEEVEE) To gain inspiration points."
+text = "Watch TV (TEEVEE) To gain inspiration points.
+Hint: Each Drawing needs 10 inspiration points."
 
 [node name="RichTextLabel" type="Label" parent="PostItNote/RichTextLabel"]
 layout_mode = 0
-offset_top = 53.0
+offset_top = 66.0
 offset_right = 400.0
-offset_bottom = 104.0
+offset_bottom = 117.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "use inspiration points to make designs (DWAW).
-Hint: Each drawing cost 10 Inspiration points."
+Hint: Cancelation will discard WIP."
 
 [node name="RichTextLabel2" type="Label" parent="PostItNote/RichTextLabel"]
 layout_mode = 0
-offset_top = 122.0
+offset_top = 134.0
 offset_right = 382.0
-offset_bottom = 173.0
+offset_bottom = 185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Use PC to order merch of select designs.
@@ -121,9 +122,9 @@ Hint: Making merch cost moneyz."
 
 [node name="RichTextLabel3" type="Label" parent="PostItNote/RichTextLabel"]
 layout_mode = 0
-offset_top = 191.0
+offset_top = 204.0
 offset_right = 429.0
-offset_bottom = 242.0
+offset_bottom = 255.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Sleep (EEP) to skip to the next convention.
@@ -131,9 +132,9 @@ Hint: pay attention to rent due date."
 
 [node name="RichTextLabel4" type="Label" parent="PostItNote/RichTextLabel"]
 layout_mode = 0
-offset_top = 258.0
+offset_top = 272.0
 offset_right = 396.0
-offset_bottom = 309.0
+offset_bottom = 323.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Use media control to play/resume, pause, 
