@@ -38,33 +38,39 @@ expand_mode = 2
 [node name="TvIcon" type="TextureRect" parent="PostItNote"]
 layout_mode = 0
 offset_left = 95.0
-offset_top = 65.0
-offset_right = 143.0
-offset_bottom = 114.0
-texture = SubResource("AtlasTexture_rx0xu")
-
-[node name="TabletIcon" type="TextureRect" parent="PostItNote"]
-layout_mode = 0
-offset_left = 95.0
 offset_top = 130.0
 offset_right = 143.0
 offset_bottom = 179.0
+texture = SubResource("AtlasTexture_rx0xu")
+
+[node name="TabletIcon" type="TextureRect" parent="PostItNote/TvIcon"]
+layout_mode = 0
+offset_top = 65.0
+offset_right = 48.0
+offset_bottom = 114.0
 texture = SubResource("AtlasTexture_u65t1")
 
-[node name="PcIcon" type="TextureRect" parent="PostItNote"]
+[node name="PcIcon" type="TextureRect" parent="PostItNote/TvIcon"]
 layout_mode = 0
-offset_left = 95.0
-offset_top = 197.0
-offset_right = 143.0
-offset_bottom = 246.0
+offset_top = 132.0
+offset_right = 48.0
+offset_bottom = 181.0
 texture = SubResource("AtlasTexture_0regm")
+
+[node name="BedIcon" type="TextureRect" parent="PostItNote/TvIcon"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 200.0
+offset_right = 76.0
+offset_bottom = 249.0
+texture = SubResource("AtlasTexture_fc555")
 
 [node name="PlayIcon" type="TextureRect" parent="PostItNote"]
 layout_mode = 0
-offset_left = 84.0
-offset_top = 349.0
-offset_right = 105.0
-offset_bottom = 370.0
+offset_left = 88.0
+offset_top = 77.0
+offset_right = 109.0
+offset_bottom = 98.0
 texture = ExtResource("2_0regm")
 
 [node name="PauseIcon" type="TextureRect" parent="PostItNote/PlayIcon"]
@@ -81,20 +87,12 @@ offset_right = 69.0
 offset_bottom = 21.0
 texture = ExtResource("4_mnosq")
 
-[node name="BedIcon" type="TextureRect" parent="PostItNote"]
-layout_mode = 0
-offset_left = 75.0
-offset_top = 265.0
-offset_right = 171.0
-offset_bottom = 314.0
-texture = SubResource("AtlasTexture_fc555")
-
 [node name="RichTextLabel" type="Label" parent="PostItNote"]
 layout_mode = 0
-offset_left = 190.0
-offset_top = 60.0
-offset_right = 587.0
-offset_bottom = 111.0
+offset_left = 185.0
+offset_top = 124.0
+offset_right = 582.0
+offset_bottom = 175.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Watch TV (TEEVEE) To gain inspiration points.
@@ -130,11 +128,12 @@ theme_override_font_sizes/font_size = 20
 text = "Sleep (EEP) to skip to the next convention.
 Hint: pay attention to rent due date."
 
-[node name="RichTextLabel4" type="Label" parent="PostItNote/RichTextLabel"]
+[node name="RichTextLabel4" type="Label" parent="PostItNote"]
 layout_mode = 0
-offset_top = 272.0
-offset_right = 396.0
-offset_bottom = 323.0
+offset_left = 185.0
+offset_top = 59.0
+offset_right = 581.0
+offset_bottom = 110.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Use media control to play/resume, pause, 
