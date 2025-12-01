@@ -77,7 +77,7 @@ func _on_velocity_computed(suggested_velocity: Vector2) -> void:
 
 # After having looked at booth
 func _on_time_to_spend_at_booth_timer_timeout() -> void:
-    var has_bought = MerchManager.remove_random_merch_by_design_types(customer_data.liked_design_types)
+    var has_bought = MerchManager.purchase_random_merch_by_design_types(customer_data.liked_design_types)
     if has_bought:
         emote_component.play_emote("happy")
     else:

@@ -75,7 +75,7 @@ func remove_merch(merch: MerchResource, amount: int) -> int:
     if index == -1:
         return amount
     
-    if stacks[index].amount < amount:
+    if stacks[index].amount <= amount:
         var removed = stacks.pop_at(index)
         inventory_updated.emit()
         out_of_stock.emit(index)

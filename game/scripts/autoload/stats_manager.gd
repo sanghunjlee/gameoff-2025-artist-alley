@@ -13,7 +13,8 @@ signal money_depleted
 # Signal emitted when inspiration is updated
 signal inspiration_updated
 
-var cooldown: float = 1.0
+var tv_cooldown: float = 1.0
+var draw_cooldown: float = 1.0
 var wait: float = 0.0
 var draw_consumption: int = -1
 
@@ -21,23 +22,39 @@ func _process(delta: float) -> void:
     if GameState.is_paused:
         return
 
-    # cooldown to avoid spamming
     if wait > 0.0:
-        wait -= delta
+        if GameState.time_state == GameState.TimeControlState.PLAY:
+            wait -= delta
+        elif GameState.time_state == GameState.TimeControlState.FAST:
+            wait -= delta * TimeManager.fast_forward_multiplier
         return
-    
-    wait = cooldown
 
     # handle task
     if GameState.is_on_task:
         match GameState.current_task:
             GameState.PlayerTaskType.DRAW:
+                # cooldown between each drawing
+                wait = draw_cooldown
                 time_to_draw()
+
             GameState.PlayerTaskType.WATCH_TV:
+                # cooldown between each TV sess
+                wait = tv_cooldown
                 good_or_bad_show()
+
             GameState.PlayerTaskType.SLEEP:
                 # Skip to the next convention, change float value later if needed
-                TimeManager.pass_day(TimeManager.get_days_until_next_convention(), 0.0)
+                # Skip to the rent day if the next convention is after 
+                GameState.is_on_task = false
+                var current_day = TimeManager.get_current_day()
+                var days_until_rent_due = GameState.RENT_DUE_DAY - current_day
+                var days_until_next_con = TimeManager.get_days_until_next_convention()
+                if days_until_rent_due < days_until_next_con:
+                    TimeManager.pass_day(days_until_rent_due, 0.0)
+                else:
+                    TimeManager.pass_day(days_until_next_con, 0.0)
+            _:
+                GameState.is_on_task = false
 
 func handle_task_action(task: GameState.PlayerTaskType):
     # Skip if game is on pause
@@ -59,6 +76,7 @@ func handle_task_action(task: GameState.PlayerTaskType):
 
     # Wait until player is at the task location
     GameState.player.navigation_agent.navigation_finished.connect((func():
+        wait = 0.0
         GameState.is_on_task=true
     ), ConnectFlags.CONNECT_ONE_SHOT)
 
@@ -113,11 +131,7 @@ func consume_inspiration() -> void:
 # Decrease inspiration because the show is too trashy 
 func good_or_bad_show() -> void:
     var random_number: int = randi()
-    var inspiration_change: int
-    if(GameState.time_state == GameState.TimeControlState.FAST):
-        inspiration_change = 5
-    else:
-        inspiration_change = 1
+    var inspiration_change: int = 1
     if random_number % 10 == 0:
         GameState.player.complain()
         change_inspiration(-inspiration_change)

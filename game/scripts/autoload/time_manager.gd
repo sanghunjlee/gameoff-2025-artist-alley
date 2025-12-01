@@ -92,4 +92,3 @@ func get_days_until_next_convention() -> int:
     var current_day = get_current_day()
     var weekday = current_day % 7
     return 7 - weekday
-    

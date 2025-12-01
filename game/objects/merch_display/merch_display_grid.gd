@@ -27,7 +27,7 @@ func initialize_display(merch_stacks_size: int) -> void:
 
         # set cell to its corresponding merch stack from inventory
         var merch_stack = _get_next_merch_stack(i)
-        cell.stack_index = i
+        cell.merch_stack = merch_stack
         cell.merch_sprite.texture = merch_stack.merch.design.icon
         cell.update_display()
         

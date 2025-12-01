@@ -1,25 +1,28 @@
 class_name MerchDisplayCell extends Node2D
 
-var stack_index: int = -1
+var merch_stack: MerchStackResource = null
+var is_out: bool = false
+
 @export var merch_sprite: Sprite2D
 @export var base_sprite: Sprite2D
 @export var out_of_stock_sprite: Sprite2D
 
 func _ready() -> void:
     # Connect to inventory updates
-    GameState.merch_inventory.connect("out_of_stock", Callable(self, "_on_out_of_stock"))
+    GameState.merch_inventory.inventory_updated.connect(_on_inventory_updated)
+    update_display()
 
 func update_display() -> void:
-    if stack_index == -1 or GameState.merch_inventory.stacks[stack_index].amount <= 0:
-        out_of_stock_sprite.visible = true
-        return
+    out_of_stock_sprite.visible = is_out
+    if not merch_sprite.visible:
+        merch_sprite.visible = true
 
-    # if detected update to this cell's merch stack
-    out_of_stock_sprite.visible = false
-    merch_sprite.visible = true
-
-func _on_out_of_stock(index: int) -> void:
-    # print_debug("MerchDisplayCell detected out_of_stock for index: ", index)
-    # print_debug("Current cell stack_index: ", stack_index)
-    if index == stack_index:
+func _on_inventory_updated() -> void:
+    if merch_stack == null:
+        return 
+    
+    var index = GameState.merch_inventory.find_merch(merch_stack.merch)    
+    if index == -1:
+        # Probably out of stock
+        is_out = true
         update_display()
