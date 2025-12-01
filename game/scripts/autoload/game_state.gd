@@ -15,10 +15,15 @@ enum PlayerTaskType {
     SLEEP
 }
 
+## Constants: Initial Value 
 const INITIAL_MONEY: int = 100
 const INITIAL_INSPIRATION_LEVEL: int = 0
 const INITIAL_INSPIRATION_POINT: int = 0
 const INITIAL_TIME_COUNT: int = 0
+const INITIAL_RENT_AMOUNT: int = 200
+
+## Constants: 
+const RENT_DUE_DAY: int = 26
 
 # Time control state
 var time_state: TimeControlState = TimeControlState.PLAY:
@@ -29,7 +34,7 @@ var time_state: TimeControlState = TimeControlState.PLAY:
 
 # eg. main, title, game_over, convention...
 var scenes_data: ScenesData = preload("res://game/resources/scenes/ScenesData.tres")
-var current_scene: PackedScene = scenes_data.initial_scene
+var current_scene: PackedScene
 
 # Easier check for pause state
 var is_paused: bool:
@@ -50,6 +55,9 @@ var inspiration_point: int = INITIAL_INSPIRATION_POINT:
         StatsManager.emit_signal("inspiration_updated")
 var inspiration_limit: int = 100
 
+# Apartment Rent
+var rent_amount: int = INITIAL_RENT_AMOUNT
+
 ## Task related vars
 var current_task: PlayerTaskType = PlayerTaskType.NONE
 var is_on_task = false
@@ -62,6 +70,9 @@ var design_inventory: DesignInventory = preload("res://game/resources/inventorie
 
 # Node reference
 @onready var player: Player = null
+
+func _ready():
+    current_scene = scenes_data.title_scene
 
 # Stat vars
 @onready var player_name = "ARTIST"

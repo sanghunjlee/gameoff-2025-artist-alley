@@ -37,7 +37,7 @@ var design_group: ButtonGroup = ButtonGroup.new()
 
 func _ready() -> void:
     if not Engine.is_editor_hint():
-        if inventory != null:
+        if inventory != null and not inventory.inventory_updated.is_connected(update_ui):
             inventory.inventory_updated.connect(update_ui)
     if title_bar != null:
         title_bar.visible = show_title

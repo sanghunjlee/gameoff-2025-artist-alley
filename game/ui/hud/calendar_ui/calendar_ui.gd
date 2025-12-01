@@ -44,13 +44,22 @@ func populate_events() -> void:
         return
 
     for child in cell_grid_container.get_children():
-        if "day" in child and child.day % 7 == 6:
-            if child.has_method("add_event"):
-                print_debug("Adding event for:", child.day)
+        if "day" in child:
+            if child.day % 7 == 6:
+                if child.has_method("add_event"):
+                    print_debug("Adding event for:", child.day)
+                    var current_month = 0
+                    if not Engine.is_editor_hint():
+                        current_month = TimeManager.get_current_month()
+                    
+                    var con_date = InGameDateTime.new(0, current_month , child.day)
+                    var con_event = CalendarEvent.new("Convention", con_date)
+                    child.add_event(con_event)
+            if child.day + 1 == GameState.RENT_DUE_DAY:
                 var current_month = 0
                 if not Engine.is_editor_hint():
                     current_month = TimeManager.get_current_month()
                 
-                var con_date = InGameDateTime.new(0, current_month , child.day)
-                var con_event = CalendarEvent.new("Convention", con_date)
-                child.add_event(con_event)
+                var rent_due_date = InGameDateTime.new(0, current_month, GameState.RENT_DUE_DAY)
+                var rent_event = CalendarEvent.new("Rent Due", rent_due_date)
+                child.add_event(rent_event)

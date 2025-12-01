@@ -40,6 +40,10 @@ window/size/viewport_width=1440
 window/size/viewport_height=960
 window/stretch/mode="viewport"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
@@ -50,7 +54,7 @@ theme/custom_font="uid://dubdjkwl2ye3s"
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://game/dialogue/my_dialogue.dialogue", "res://game/resources/dialogue/convention_dialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://game/dialogue/my_dialogue.dialogue", "res://game/resources/dialogue/convention_dialogue.dialogue", "res://game/dialogue/rent_due_dialogue.dialogue")
 
 [rendering]
 

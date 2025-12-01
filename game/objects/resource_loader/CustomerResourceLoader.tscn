@@ -1,21 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0t56ywbuhkjx"]
+[gd_scene load_steps=2 format=3 uid="uid://d0t56ywbuhkjx"]
 
 [ext_resource type="Script" uid="uid://bmhce4yjqvxiv" path="res://game/objects/resource_loader/customer_resource_loader.gd" id="1_454jv"]
-[ext_resource type="Script" uid="uid://bpu541p4vnin" path="res://game/scripts/customer/customer_resource.gd" id="2_de5dx"]
-[ext_resource type="Resource" uid="uid://dark56c1mfb4r" path="res://game/resources/customers/kid_customer.tres" id="3_xcr07"]
-[ext_resource type="Resource" uid="uid://cr5ibwd4j0rs8" path="res://game/resources/customers/fujoshi_customer.tres" id="4_27br2"]
-[ext_resource type="Resource" uid="uid://y1wncy6qxu7v" path="res://game/resources/customers/furry_customer.tres" id="5_mkyic"]
-[ext_resource type="Resource" uid="uid://dl7gvk4u4h3xb" path="res://game/resources/customers/goth_customer.tres" id="6_7tegu"]
-[ext_resource type="Resource" uid="uid://dct5ftt5v47n7" path="res://game/resources/customers/girly_girl_customer.tres" id="7_fkpvk"]
-[ext_resource type="Resource" uid="uid://bvog16mo3g3f7" path="res://game/resources/customers/lady_lover_customer.tres" id="8_e8fxw"]
 
 [node name="CustomerResourceLoader" type="Node"]
 script = ExtResource("1_454jv")
-dict = Dictionary[int, ExtResource("2_de5dx")]({
-1: ExtResource("3_xcr07"),
-2: ExtResource("4_27br2"),
-3: ExtResource("5_mkyic"),
-4: ExtResource("6_7tegu"),
-5: ExtResource("7_fkpvk"),
-6: ExtResource("8_e8fxw")
-})
