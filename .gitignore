@@ -4,3 +4,6 @@
 
 # Ignore vscode settings
 .vscode/settings.json
+
+# Build
+build/

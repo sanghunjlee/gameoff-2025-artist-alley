@@ -39,7 +39,6 @@ func update_today_texture() -> void:
 
     var current_day = TimeManager.get_current_day()
     if day == current_day - 1:
-        print_debug("showing aura for: ", day)
         today_texture_rect.visible = true
     else:
         today_texture_rect.visible = false

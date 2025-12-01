@@ -1,12 +1,12 @@
 class_name CustomerResourceLoader extends Node
 
 @onready var dict: Dictionary[CustomerResource.CustomerType, CustomerResource] = {
-    CustomerResource.CustomerType.KID: preload("res://game/resources/customers/kid_customer.tres"),
-    CustomerResource.CustomerType.FUJOSHI: preload("res://game/resources/customers/fujoshi_customer.tres"),
-    CustomerResource.CustomerType.FURRY: preload("res://game/resources/customers/furry_customer.tres"),
-    CustomerResource.CustomerType.GOTH: preload("res://game/resources/customers/goth_customer.tres"),
-    CustomerResource.CustomerType.GIRLY_GIRL: preload("res://game/resources/customers/girly_girl_customer.tres"),
-    CustomerResource.CustomerType.LADY_LOVER: preload("res://game/resources/customers/lady_lover_customer.tres")
+    CustomerResource.CustomerType.KID: load("res://game/resources/customers/kid_customer.tres"),
+    CustomerResource.CustomerType.FUJOSHI: load("res://game/resources/customers/fujoshi_customer.tres"),
+    CustomerResource.CustomerType.FURRY: load("res://game/resources/customers/furry_customer.tres"),
+    CustomerResource.CustomerType.GOTH: load("res://game/resources/customers/goth_customer.tres"),
+    CustomerResource.CustomerType.GIRLY_GIRL: load("res://game/resources/customers/girly_girl_customer.tres"),
+    CustomerResource.CustomerType.LADY_LOVER: load("res://game/resources/customers/lady_lover_customer.tres")
 }
 
 func get_random_customer_type() -> CustomerResource.CustomerType:
