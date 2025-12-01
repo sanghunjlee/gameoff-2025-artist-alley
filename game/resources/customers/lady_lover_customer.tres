@@ -10,6 +10,6 @@ region = Rect2(0, 32, 32, 16)
 [resource]
 script = ExtResource("1_ssq4s")
 customer_type_name = "lady_lover"
-liked_design_types = Array[int]([8, 4])
+liked_design_types = Array[int]([8, 4, 6])
 sprite_sheet = SubResource("AtlasTexture_od8hl")
 metadata/_custom_type_script = "uid://bpu541p4vnin"
