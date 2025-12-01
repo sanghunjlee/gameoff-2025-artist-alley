@@ -57,6 +57,7 @@ var inspiration_limit: float = 100.0
 
 # Apartment Rent
 var rent_amount: int = INITIAL_RENT_AMOUNT
+var is_rent_collected: bool = false
 
 ## Task related vars
 var current_task: PlayerTaskType = PlayerTaskType.NONE

@@ -1,11 +1,25 @@
 ~ start
-~ cant_pay
 Landlord: The rent is due today. If you can't pay, you are kicked out!
+=> END
+
+~ pay_rent
+Landlord: So do you have the rent?
+- Yes!
+	Landlord: Good.
+- No, not today
+	Landlord: I see your money, you liar. 
+Landlord: I'll take my money.
+do StatsManager.spend_money(GameState.rent_amount)
+do MessageLogManager.append_log("You paid $:" + str(GameState.rent_amount) + " for your apartment")
+=> END
+
+~ cant_pay_rent
 Landlord: So do you have the rent?
 - Yes...?
-	do StatsManager.spend_money(GameState.money)
 	Landlord: Why are you lying! You have no money!!
 - I'm borke :'(
-	do StatsManager.spend_money(GameState.money)
 	Landlord: No extension! Get out of the APT!!!
+Landlord: And I'll take whatever money you have right now.
+do StatsManager.spend_money(GameState.rent_amount)
+Landlord: Now, get out!
 => END

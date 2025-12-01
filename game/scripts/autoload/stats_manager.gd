@@ -56,9 +56,9 @@ func _process(delta: float) -> void:
             _:
                 GameState.is_on_task = false
 
-func handle_task_action(task: GameState.PlayerTaskType):
+func handle_task_action(task: GameState.PlayerTaskType, force: bool = false):
     # Skip if game is on pause
-    if GameState.is_paused:
+    if !force and GameState.is_paused:
         return
     
     if GameState.current_task == task:
@@ -78,7 +78,7 @@ func handle_task_action(task: GameState.PlayerTaskType):
         DesignManager.cancel_work()
 
     # Tell player to do task
-    if GameState.player:
+    if !GameState.is_paused and GameState.player:
         var did_do_task = GameState.player.do_task(task)
 
         # Wait until player is at the task location
@@ -160,9 +160,11 @@ func _on_skip_to_convention() -> void:
     # Skip to the rent day if the next convention is after 
     GameState.is_on_task = false
     var current_day = TimeManager.get_current_day()
-    var days_until_rent_due = GameState.RENT_DUE_DAY - current_day
     var days_until_next_con = TimeManager.get_days_until_next_convention()
-    if days_until_rent_due < days_until_next_con:
-        TimeManager.pass_day(days_until_rent_due, 0.0)
+    
+    if !GameState.is_rent_collected:
+        var days_until_rent_due = GameState.RENT_DUE_DAY - current_day
+        if days_until_rent_due < days_until_next_con:
+            TimeManager.pass_day(days_until_rent_due, 0.0)
     else:
         TimeManager.pass_day(days_until_next_con, 0.0)
