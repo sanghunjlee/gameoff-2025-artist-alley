@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc7rjd0413knw"]
+[gd_scene load_steps=5 format=3 uid="uid://cc7rjd0413knw"]
 
 [ext_resource type="Texture2D" uid="uid://dywnm44fl3lhr" path="res://assets/images/main action button.png" id="1_gomvw"]
 [ext_resource type="Script" uid="uid://cqpy8482fkquf" path="res://game/ui/hud/action_button.gd" id="2_ascbu"]
+[ext_resource type="Texture2D" uid="uid://465xakd31muc" path="res://assets/images/main action button yellow.png" id="3_cgxa0"]
+[ext_resource type="Texture2D" uid="uid://nmcm0vc6knon" path="res://assets/images/main action button orange.png" id="3_kpcwq"]
 
 [node name="ActionButton" type="TextureButton"]
 offset_right = 245.0
 offset_bottom = 81.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_gomvw")
+texture_pressed = ExtResource("3_cgxa0")
+texture_hover = ExtResource("3_kpcwq")
 stretch_mode = 5
 script = ExtResource("2_ascbu")
 

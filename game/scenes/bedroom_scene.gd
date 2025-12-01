@@ -29,7 +29,7 @@ func _ready() -> void:
 
 func turn_on_object(sprite: AnimatedSprite2D) -> void:
     sprite.animation = "in_use"
-    #sprite.play()
+    sprite.play()
 
 func turn_off_object(sprite: AnimatedSprite2D) -> void:
     sprite.animation = "not_in_use"
