@@ -10,7 +10,7 @@ func find_merch(merch: MerchResource) -> int:
     ## Find the merch in the stacks and return the index
     ## Returns -1 if not found
     for i in range(len(stacks)):
-        if stacks[i].merch == merch:
+        if stacks[i].merch.design == merch.design:
             return i
 
     return -1
@@ -67,6 +67,7 @@ func add_merch(merch: MerchResource, amount: int):
         return
     
     stacks[index].amount += amount
+    inventory_updated.emit()
 
 func remove_merch(merch: MerchResource, amount: int) -> int:
     ## Removes merch certain amount and returns remaining
@@ -75,13 +76,13 @@ func remove_merch(merch: MerchResource, amount: int) -> int:
         return amount
     
     if stacks[index].amount < amount:
-        stacks[index].amount = 0
+        var removed = stacks.pop_at(index)
         inventory_updated.emit()
-        return amount - stacks[index].amount
+        out_of_stock.emit(index)
+        return amount - removed.amount
     
     stacks[index].amount -= amount
-    
-    emit_signal("out_of_stock", index)
+    inventory_updated.emit()    
     return 0
 
 func clear_inventory():
