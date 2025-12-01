@@ -113,11 +113,16 @@ func consume_inspiration() -> void:
 # Decrease inspiration because the show is too trashy 
 func good_or_bad_show() -> void:
     var random_number: int = randi()
+    var inspiration_change: int
+    if(GameState.time_state == GameState.TimeControlState.FAST):
+        inspiration_change = 5
+    else:
+        inspiration_change = 1
     if random_number % 10 == 0:
         GameState.player.complain()
-        change_inspiration(-1)
+        change_inspiration(-inspiration_change)
     else:
-        change_inspiration(1)
+        change_inspiration(inspiration_change)
 
 func time_to_draw() -> void:
     if can_consume_inspiration(draw_consumption):
