@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://crmtg6pj2syl"
+path="res://.godot/imported/rent_due_dialogue.dialogue-dc67357ed2334e7f104a542022460620.tres"
+
+[deps]
+
+source_file="res://game/dialogue/rent_due_dialogue.dialogue"
+dest_files=["res://.godot/imported/rent_due_dialogue.dialogue-dc67357ed2334e7f104a542022460620.tres"]
+
+[params]
+
+defaults=true

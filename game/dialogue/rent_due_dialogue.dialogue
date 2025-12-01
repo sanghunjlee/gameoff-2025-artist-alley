@@ -1,0 +1,11 @@
+~ start
+~ cant_pay
+Landlord: The rent is due today. If you can't pay, you are kicked out!
+Landlord: So do you have the rent?
+- Yes...?
+	do StatsManager.spend_money(GameState.money)
+	Landlord: Why are you lying! You have no money!!
+- I'm borke :'(
+	do StatsManager.spend_money(GameState.money)
+	Landlord: No extension! Get out of the APT!!!
+=> END
