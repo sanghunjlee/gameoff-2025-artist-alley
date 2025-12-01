@@ -19,12 +19,14 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
 text = "Money: "
 
 [node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("2_2pg0f")
 patch_margin_left = 4
 patch_margin_top = 4
@@ -49,7 +51,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.81, 0.64678496, 0.056699995, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "$"
 vertical_alignment = 1
 
@@ -58,7 +60,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "1000"
 horizontal_alignment = 2
 vertical_alignment = 1

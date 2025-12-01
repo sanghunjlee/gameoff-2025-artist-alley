@@ -10,31 +10,27 @@ size_flags_vertical = 3
 theme_override_constants/separation = 4
 script = ExtResource("1_7gg4r")
 
-[node name="PCButton" parent="." instance=ExtResource("2_673ll")]
-layout_mode = 2
-size_flags_vertical = 3
-stretch_mode = 5
-action_name = "Use PC"
-
 [node name="TVButton" parent="." instance=ExtResource("2_673ll")]
 layout_mode = 2
 size_flags_vertical = 3
-stretch_mode = 5
 action_name = "teevee"
-
-[node name="SleepButton" parent="." instance=ExtResource("2_673ll")]
-layout_mode = 2
-size_flags_vertical = 3
-stretch_mode = 5
-action_name = "Eep"
 
 [node name="DrawButton" parent="." instance=ExtResource("2_673ll")]
 layout_mode = 2
 size_flags_vertical = 3
-stretch_mode = 5
 action_name = "Dwaw"
 
-[connection signal="pressed" from="PCButton" to="." method="_on_pc_button_pressed"]
+[node name="PCButton" parent="." instance=ExtResource("2_673ll")]
+layout_mode = 2
+size_flags_vertical = 3
+action_name = "Use PC"
+
+[node name="SleepButton" parent="." instance=ExtResource("2_673ll")]
+layout_mode = 2
+size_flags_vertical = 3
+action_name = "Eep"
+
 [connection signal="pressed" from="TVButton" to="." method="_on_tv_button_pressed"]
-[connection signal="pressed" from="SleepButton" to="." method="_on_sleep_button_pressed"]
 [connection signal="pressed" from="DrawButton" to="." method="_on_draw_button_pressed"]
+[connection signal="pressed" from="PCButton" to="." method="_on_pc_button_pressed"]
+[connection signal="pressed" from="SleepButton" to="." method="_on_sleep_button_pressed"]
