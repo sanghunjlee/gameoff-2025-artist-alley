@@ -11,10 +11,13 @@ func _ready() -> void:
     MerchManager.merch_completed.connect(on_merch_completed)
     MerchManager.merch_canceled.connect(on_merch_canceled)
 
+    if MerchManager.current_order != null:
+        on_merch_start(MerchManager.current_order.order)
+
 func _process(_delta: float) -> void:
     if is_merch_processing:
-        if progress_bar and MerchManager.current_work != null:
-            progress_bar.value = MerchManager.current_work.process_time - MerchManager.wait_time
+        if progress_bar and MerchManager.current_order != null:
+            progress_bar.value = MerchManager.current_order.order.process_time - MerchManager.wait_time
 
 func on_merch_start(merch: MerchStackResource):
     if progress_bar:

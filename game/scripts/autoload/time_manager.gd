@@ -48,7 +48,11 @@ func force_pause_time() -> void:
     GameState.time_state = GameState.TimeControlState.FORCE_PAUSE
 
 func pass_hour() -> void:
-    GameState.time_count += 1
+    var passed_time = 1.0
+    GameState.time_count += passed_time
+
+    # Check and complete merch during passing
+    MerchManager.check_and_force_process_orders(passed_time)
 
 func pass_day(num_days: int = 1, time: float = 0.0) -> void:
     # Skip <num_days> many days, and to the specified <time> time (default to 0)
@@ -57,6 +61,9 @@ func pass_day(num_days: int = 1, time: float = 0.0) -> void:
     var skip_day_count = (num_days * 24.0)
     var total_skip_count = skip_day_count + skip_time_count
     GameState.time_count += total_skip_count
+    
+    # Check and complete merch during passing
+    MerchManager.check_and_force_process_orders(total_skip_count)
 
 func get_current_month() -> int:
     ## Returns 0-indexed month count

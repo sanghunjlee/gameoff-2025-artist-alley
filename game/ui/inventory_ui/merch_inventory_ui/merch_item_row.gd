@@ -18,8 +18,9 @@ func update_ui() -> void:
     if merch_stack == null:
         return
 
+    if icon_rect == null or name_label == null or amount_label == null:
+        return
+        
     icon_rect.texture = merch_stack.merch.design.icon
     name_label.text = str(merch_stack.merch)
     amount_label.text = str(merch_stack.amount)
-
-    

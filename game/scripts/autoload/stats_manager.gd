@@ -161,10 +161,12 @@ func _on_skip_to_convention() -> void:
     GameState.is_on_task = false
     var current_day = TimeManager.get_current_day()
     var days_until_next_con = TimeManager.get_days_until_next_convention()
-    
+
     if !GameState.is_rent_collected:
         var days_until_rent_due = GameState.RENT_DUE_DAY - current_day
         if days_until_rent_due < days_until_next_con:
             TimeManager.pass_day(days_until_rent_due, 0.0)
+        else:
+            TimeManager.pass_day(days_until_next_con, 0.0)
     else:
         TimeManager.pass_day(days_until_next_con, 0.0)

@@ -30,4 +30,3 @@ func _on_progress_button_pressed():
 
 func _on_close_button_pressed():
     close_window()
-
