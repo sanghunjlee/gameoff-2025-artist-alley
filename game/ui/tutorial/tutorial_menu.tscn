@@ -111,7 +111,7 @@ Hint: Cancelation will discard WIP."
 [node name="RichTextLabel2" type="Label" parent="PostItNote/RichTextLabel"]
 layout_mode = 0
 offset_top = 134.0
-offset_right = 382.0
+offset_right = 401.0
 offset_bottom = 185.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
@@ -120,13 +120,14 @@ Hint: Making merch cost moneyz."
 
 [node name="RichTextLabel3" type="Label" parent="PostItNote/RichTextLabel"]
 layout_mode = 0
-offset_top = 204.0
-offset_right = 429.0
-offset_bottom = 255.0
+offset_top = 198.0
+offset_right = 401.0
+offset_bottom = 276.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Sleep (EEP) to skip to the next convention.
-Hint: pay attention to rent due date."
+Hint: Check Calendar tab for convention date.
+Bonus: pay attention to rent due date."
 
 [node name="RichTextLabel4" type="Label" parent="PostItNote"]
 layout_mode = 0

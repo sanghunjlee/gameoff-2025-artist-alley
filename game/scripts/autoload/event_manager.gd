@@ -28,8 +28,8 @@ func go_to_game_over() -> void:
 func do_rent_collection_day() -> void:
     TimeManager.force_pause_time()
     if GameState.money >= GameState.rent_amount:
-        StatsManager.spend_money(GameState.money)
-        MessageLogManager.append_log("You paid $%d for your apartment")
+        StatsManager.spend_money(GameState.rent_amount)
+        MessageLogManager.append_log("You paid $:" + str(GameState.rent_amount) + " for your apartment")
         is_rent_collected = true
         TimeManager.play_time()
     else:
