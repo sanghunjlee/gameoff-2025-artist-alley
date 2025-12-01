@@ -35,6 +35,10 @@ func _process(delta: float) -> void:
                 time_to_draw()
             GameState.PlayerTaskType.WATCH_TV:
                 good_or_bad_show()
+            GameState.PlayerTaskType.SLEEP:
+                handle_task_action(GameState.PlayerTaskType.NONE)
+                # Skip to the next convention, change float value later if needed
+                TimeManager.pass_day(TimeManager.get_days_until_next_convention(), 0.0)
 
 func handle_task_action(task: GameState.PlayerTaskType):
     # Skip if game is on pause
