@@ -33,6 +33,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 size_flags_horizontal = 3
+rounded = true
 nine_patch_stretch = true
 stretch_margin_left = 8
 stretch_margin_top = 4

@@ -25,7 +25,7 @@ enum DesignType {
 
 ## Time that takes to create the design
 ## In real time seconds
-@export var process_time: float = 5.0
+@export var process_time: float = 10.0
 
 ## Readonly
 var icon: Texture:
@@ -84,6 +84,7 @@ static func random() -> DesignResource:
     ])
 
     var design = DesignResource.new(random_title, random_type)
+    design.process_time += randf_range(-2, 2)
 
     return design
 

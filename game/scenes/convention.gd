@@ -72,3 +72,5 @@ func end_convention() -> void:
     await DialogueManager.dialogue_ended
     TimeManager.pass_day()
     SceneManager.change_scene_to(SceneManager.main_scene)
+    TimeManager.play_time()
+    StatsManager.handle_task_action(GameState.PlayerTaskType.NONE) # Need to do this after time is unpaused

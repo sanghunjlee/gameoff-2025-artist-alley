@@ -61,7 +61,7 @@ func move_toward_target(_delta):
     velocity = direction * adjusted_speed
     move_and_slide()
 
-func do_task(task: GameState.PlayerTaskType) -> void:
+func do_task(task: GameState.PlayerTaskType) -> bool:
     if task != current_task:
         current_task = task
         
@@ -85,9 +85,12 @@ func do_task(task: GameState.PlayerTaskType) -> void:
                 message_bubble.show_message("Yawn...")
                 target_position = bedroom_scene.bed_position
             _:
-                return # Invalid task
+                return false # Invalid task
 
         navigation_agent.target_position = target_position
+
+        return true
+    return false
 
 # Reset sprites to initial default state
 func reset_sprites() -> void:

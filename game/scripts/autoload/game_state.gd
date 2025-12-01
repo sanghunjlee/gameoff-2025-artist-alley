@@ -18,7 +18,7 @@ enum PlayerTaskType {
 ## Constants: Initial Value 
 const INITIAL_MONEY: int = 100
 const INITIAL_INSPIRATION_LEVEL: int = 0
-const INITIAL_INSPIRATION_POINT: int = 0
+const INITIAL_INSPIRATION_POINT: float = 0.0
 const INITIAL_TIME_COUNT: int = 0
 const INITIAL_RENT_AMOUNT: int = 200
 
@@ -47,13 +47,13 @@ var is_paused: bool:
 # Inspiration
 # TODO: implement "insp calc funcs" to handle calculations related to inspiration level, point, limit
 var inspiration_level: int = INITIAL_INSPIRATION_LEVEL
-var inspiration_point: int = INITIAL_INSPIRATION_POINT:
+var inspiration_point: float = INITIAL_INSPIRATION_POINT:
     set(value):
         # TODO: Replaced this to utilize "insp calc funcs"
         # inspiration_point = value % inspiration_limit
         inspiration_point = value
         StatsManager.emit_signal("inspiration_updated")
-var inspiration_limit: int = 100
+var inspiration_limit: float = 100.0
 
 # Apartment Rent
 var rent_amount: int = INITIAL_RENT_AMOUNT

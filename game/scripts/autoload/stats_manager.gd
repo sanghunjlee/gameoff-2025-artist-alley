@@ -72,15 +72,17 @@ func handle_task_action(task: GameState.PlayerTaskType):
         DesignManager.cancel_work()
 
     # Tell player to do task
-    GameState.player.do_task(task)
+    if GameState.player:
+        var did_do_task = GameState.player.do_task(task)
 
-    # Wait until player is at the task location
-    GameState.player.navigation_agent.navigation_finished.connect((func():
-        wait = 0.0
-        GameState.is_on_task=true
-    ), ConnectFlags.CONNECT_ONE_SHOT)
+        # Wait until player is at the task location
+        if did_do_task:
+            GameState.player.navigation_agent.navigation_finished.connect((func():
+                wait = 0.0
+                GameState.is_on_task=true
+            ), ConnectFlags.CONNECT_ONE_SHOT)
 
-    await GameState.player.navigation_agent.navigation_finished
+            await GameState.player.navigation_agent.navigation_finished
 
     # Emit signal so that ui can update
     task_changed.emit()
@@ -97,55 +99,43 @@ func spend_money(amount: int) -> void:
 
 func level_up_inspiration() -> void:
     GameState.inspiration_level += 1
-    GameState.inspiration_limit = int(100 * exp(0.5 * GameState.inspiration_level))
+    GameState.inspiration_limit = roundf(100 * exp(0.5 * GameState.inspiration_level))
     MessageLogManager.append_log("'Inspiration limit increased to " + str(GameState.inspiration_limit) + "'")
 
-func increase_inspiration() -> void:
+func increase_inspiration(delta: float) -> void:
     if GameState.inspiration_point < GameState.inspiration_limit:
-        GameState.inspiration_point += 1
-        MessageLogManager.append_log("'Current Inspiration: " + str(GameState.inspiration_point) + "'")
+        GameState.inspiration_point += delta
+        # MessageLogManager.append_log("'Current Inspiration: " + str(GameState.inspiration_point) + "'")
     else:
-        MessageLogManager.append_log("'Reached inspiration limit'")
+        # MessageLogManager.append_log("'Reached inspiration limit'")
+        pass
 
-# Change the inspiration points by a certain amount
-func change_inspiration(amount: int) -> void:
-    if amount < 0 and !can_consume_inspiration(abs(amount)):
-        return
-    elif GameState.inspiration_point + amount <= 0:
-        GameState.inspiration_point = 0
-    elif GameState.inspiration_point + amount >= GameState.inspiration_limit:
-        GameState.inspiration_point = GameState.inspiration_limit
-        MessageLogManager.append_log("'Reached inspiration limit'")
+func decrease_inspiration(delta: float) -> float:
+    if GameState.inspiration_point > delta:
+        GameState.inspiration_point -= delta
+        return 0.0
     else:
-        GameState.inspiration_point += amount
+        var remaining = delta - GameState.inspiration_point
+        GameState.inspiration_point = 0.0
+        return remaining
 
-func can_consume_inspiration(amount: int) -> bool:
-    return GameState.inspiration_point >= abs(amount)
-
-# Consume inspiration acoording to the task
-func consume_inspiration() -> void:
-    match GameState.current_task:
-        GameState.PlayerTaskType.DRAW:
-            change_inspiration(draw_consumption)
 
 # Decrease inspiration because the show is too trashy 
 func good_or_bad_show() -> void:
-    var random_number: int = randi()
-    var inspiration_change: int = 1
-    if random_number % 10 == 0:
+    var inspiration_change: float = 1.0
+    if randi() % 10 == 0:
         GameState.player.complain()
-        change_inspiration(-inspiration_change)
+        decrease_inspiration(abs(inspiration_change))
     else:
-        change_inspiration(inspiration_change)
+        increase_inspiration(abs(inspiration_change))
 
 func time_to_draw() -> void:
-    if can_consume_inspiration(draw_consumption):
-        if DesignManager.design_queue.size() < 5:
-            DesignManager.make_random_design()
-    else:
-        GameState.is_on_task = false
-        DesignManager.cancel_work()
-        GameState.player.complain()
+    if DesignManager.design_queue.size() < 5:
+        DesignManager.make_random_design()
+    # else:
+    #     GameState.is_on_task = false
+    #     DesignManager.cancel_work()
+    #     GameState.player.complain()
 
 func reset_stats() -> void:
     GameState.money = GameState.INITIAL_MONEY

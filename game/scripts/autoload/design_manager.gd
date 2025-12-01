@@ -21,18 +21,31 @@ func _process(delta: float) -> void:
         return
 
     if wait_time > 0.0:
+
         # If there is a wait, wait
+        var adjusted_delta = 0.0
         if GameState.time_state == GameState.TimeControlState.PLAY:
-            wait_time -= delta
+            adjusted_delta = delta
         elif GameState.time_state == GameState.TimeControlState.FAST:
-            wait_time -= delta * TimeManager.fast_forward_multiplier
+            adjusted_delta = delta * TimeManager.fast_forward_multiplier
+
+        var remaining = 0.0
+        if current_work != null:
+            if GameState.inspiration_point <= 0.0:
+                GameState.is_on_task = false
+                cancel_work()
+                GameState.player.complain()
+                return
+            remaining = StatsManager.decrease_inspiration(adjusted_delta)
+            
+        wait_time -= adjusted_delta - remaining
+
     else:
         # If there is a current work, complete it
         if current_work != null:
             print('design made:', current_work)
             GameState.design_inventory.add_design(current_work)
             design_completed.emit(current_work)
-            StatsManager.consume_inspiration() # might need to change to a signal later
             MessageLogManager.append_log("'" + str(current_work) + "' is complete!")
             current_work = null
 
