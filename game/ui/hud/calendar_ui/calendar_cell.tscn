@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4cm5fqddauvo"]
+
+[ext_resource type="StyleBox" uid="uid://b0qwkgnp4slkk" path="res://game/resources/panels/calendar_header_weekday_panel.tres" id="1_i1cpf"]
+[ext_resource type="Script" uid="uid://u36eostk2ug1" path="res://game/ui/hud/calendar_ui/calendar_cell.gd" id="2_nahjl"]
+[ext_resource type="Texture2D" uid="uid://gwoipo0jns6l" path="res://assets/images/logo.png" id="3_nahjl"]
+
+[node name="CalendarCell" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_nahjl")
+
+[node name="BgPanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_i1cpf")
+
+[node name="MarginContainer2" type="MarginContainer" parent="BgPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BgPanelContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BgPanelContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="BgPanelContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="DayLabel" type="Label" parent="BgPanelContainer/MarginContainer2/VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="BgPanelContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment_horizontal = 2
+
+[node name="TodayTextureRect" type="TextureRect" parent="BgPanelContainer/MarginContainer2/VBoxContainer/HBoxContainer/AspectRatioContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_nahjl")
+
+[node name="EventContainer" type="VBoxContainer" parent="BgPanelContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
