@@ -9,7 +9,7 @@ func _on_time_updated() -> void:
         go_to_convention()
 
 func go_to_convention() -> void:
-    SceneManager.change_scene_to(GameState.scenes_data.convention_scene)
+    SceneManager.change_scene_to(SceneManager.convention_scene)
 
 func go_to_game_over() -> void:
-    SceneManager.change_scene_to(GameState.scenes_data.game_over_scene)
+    SceneManager.change_scene_to(SceneManager.game_over_scene)

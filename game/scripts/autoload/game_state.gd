@@ -25,7 +25,7 @@ var time_state: TimeControlState = TimeControlState.PLAY:
 
 # eg. main, title, game_over, convention...
 var scenes_data: ScenesData = preload("res://game/resources/scenes/ScenesData.tres")
-var current_scene: PackedScene = scenes_data.initial_scene
+var current_scene: PackedScene
 
 # Easier check for pause state
 var is_paused: bool:
@@ -58,6 +58,9 @@ var design_inventory: DesignInventory = preload("res://game/resources/inventorie
 
 # Node reference
 @onready var player: Player = null
+
+func _ready():
+    current_scene = scenes_data.title_scene
 
 # Stat vars
 @onready var player_name = "ARTIST"

@@ -1,6 +1,13 @@
 class_name CustomerResourceLoader extends Node
 
-@export var dict: Dictionary[CustomerResource.CustomerType, CustomerResource] = {}
+@onready var dict: Dictionary[CustomerResource.CustomerType, CustomerResource] = {
+    CustomerResource.CustomerType.KID: preload("res://game/resources/customers/kid_customer.tres"),
+    CustomerResource.CustomerType.FUJOSHI: preload("res://game/resources/customers/fujoshi_customer.tres"),
+    CustomerResource.CustomerType.FURRY: preload("res://game/resources/customers/furry_customer.tres"),
+    CustomerResource.CustomerType.GOTH: preload("res://game/resources/customers/goth_customer.tres"),
+    CustomerResource.CustomerType.GIRLY_GIRL: preload("res://game/resources/customers/girly_girl_customer.tres"),
+    CustomerResource.CustomerType.LADY_LOVER: preload("res://game/resources/customers/lady_lover_customer.tres")
+}
 
 func get_random_customer_type() -> CustomerResource.CustomerType:
     var types = dict.keys()

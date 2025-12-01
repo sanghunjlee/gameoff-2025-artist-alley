@@ -71,4 +71,4 @@ func end_convention() -> void:
     DialogueManager.show_dialogue_balloon(convention_dialogue, "end_convention")
     await DialogueManager.dialogue_ended
     TimeManager.pass_day()
-    SceneManager.change_scene_to(GameState.scenes_data.main_scene)
+    SceneManager.change_scene_to(SceneManager.main_scene)
