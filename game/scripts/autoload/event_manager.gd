@@ -14,6 +14,7 @@ func _on_time_updated() -> void:
         go_to_convention()
 
 func go_to_convention() -> void:
+    StatsManager.handle_task_action(GameState.PlayerTaskType.NONE)
     SceneManager.change_scene_to(GameState.scenes_data.convention_scene)
 
 func go_to_game_over() -> void:
