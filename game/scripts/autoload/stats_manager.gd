@@ -9,7 +9,7 @@ signal player_exited_bed
 signal task_changed
 
 # Signal emitted when money is updated
-signal money_updated
+signal money_updated(new_money: int, change: int)
 
 # Signal emitted when money is depleted
 signal money_depleted

@@ -80,8 +80,8 @@ func _ready():
 @onready var money = INITIAL_MONEY:
     set(value): # On money change, emit signal to update money UI
         if money != value:
+            StatsManager.emit_signal("money_updated", value, value - money)
             money = value
-            StatsManager.emit_signal("money_updated")
         if money <= 0:
             money = 0
             StatsManager.emit_signal("money_depleted")

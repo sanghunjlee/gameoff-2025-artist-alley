@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://ddwcsdwcy65tc"]
+[gd_scene load_steps=18 format=4 uid="uid://ddwcsdwcy65tc"]
 
 [ext_resource type="Script" uid="uid://cutgptby43iag" path="res://game/scenes/convention.gd" id="1_ccsxj"]
 [ext_resource type="PackedScene" uid="uid://cqe6c6l0jpokp" path="res://game/objects/customer/customer.tscn" id="1_nftnu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://di6po5x8ulb8h" path="res://assets/images/welcum.png" id="5_xg0o0"]
 [ext_resource type="PackedScene" uid="uid://d0t56ywbuhkjx" path="res://game/objects/resource_loader/CustomerResourceLoader.tscn" id="6_2qn4r"]
 [ext_resource type="AudioStream" uid="uid://dufg6l5bxj1ik" path="res://assets/sfx/sleepy_town.ogg" id="9_c20ph"]
+[ext_resource type="PackedScene" uid="uid://dxwfmbtcexvn0" path="res://game/ui/hud/money_info.tscn" id="10_hdtkd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rpvfi"]
 texture = ExtResource("3_wgpxs")
@@ -66,7 +67,7 @@ tile_map_data = PackedByteArray("AAADAP//AAAAAAEAAAAEAP//AAABAAEAAAAFAP//AAACAAE
 tile_set = SubResource("TileSet_wgpxs")
 
 [node name="welcum" type="Sprite2D" parent="."]
-position = Vector2(24, -112)
+position = Vector2(-81, -111)
 texture = ExtResource("5_xg0o0")
 
 [node name="Booth" parent="." instance=ExtResource("3_rpvfi")]
@@ -109,5 +110,11 @@ y_sort_enabled = true
 stream = ExtResource("9_c20ph")
 volume_db = -10.0
 autoplay = true
+
+[node name="MoneyInfo" parent="." instance=ExtResource("10_hdtkd")]
+offset_left = 164.0
+offset_top = -114.0
+offset_right = 164.0
+offset_bottom = -114.0
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwwrp77p2snjc"]
+[gd_scene load_steps=11 format=3 uid="uid://dwwrp77p2snjc"]
 
 [ext_resource type="Texture2D" uid="uid://b7j3kegguldih" path="res://assets/images/con asset sprite sheet.png" id="1_jhdrf"]
+[ext_resource type="Script" uid="uid://c4jc2xi8srl22" path="res://game/objects/booths/player_booth.gd" id="1_lyeos"]
 [ext_resource type="PackedScene" uid="uid://che4nxnn2512o" path="res://game/objects/merch_display/MerchDisplayGrid.tscn" id="2_p8bmv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c53w0"]
@@ -57,6 +58,7 @@ texture = ExtResource("1_jhdrf")
 sources/0 = SubResource("TileSetAtlasSource_jhdrf")
 
 [node name="PlayerBooth" type="Node2D"]
+script = ExtResource("1_lyeos")
 
 [node name="BoothingPlayer" type="AnimatedSprite2D" parent="."]
 position = Vector2(24, -24)
@@ -71,3 +73,15 @@ tile_set = SubResource("TileSet_c53w0")
 
 [node name="MerchDisplayGrid" parent="." instance=ExtResource("2_p8bmv")]
 position = Vector2(0, -16)
+
+[node name="MoneyLabel" type="Label" parent="."]
+visible = false
+offset_left = 4.0
+offset_top = -60.0
+offset_right = 44.0
+offset_bottom = -41.0
+theme_override_colors/font_color = Color(0.83667135, 0.61590874, 0.15768552, 1)
+theme_override_colors/font_outline_color = Color(0.13, 0.03172, 0.024699999, 1)
+theme_override_constants/outline_size = 13
+text = "$-1"
+horizontal_alignment = 1
