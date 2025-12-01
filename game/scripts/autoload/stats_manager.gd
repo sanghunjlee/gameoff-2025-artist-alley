@@ -1,6 +1,10 @@
 # Manage player stats such as money and skills
 extends Node
 
+signal skip_to_convention
+signal player_laid_in_bed
+signal player_exited_bed
+
 # Signal emitted when task is changed
 signal task_changed
 
@@ -17,6 +21,9 @@ var tv_cooldown: float = 1.0
 var draw_cooldown: float = 1.0
 var wait: float = 0.0
 var draw_consumption: int = -1
+
+func _ready() -> void:
+    connect("skip_to_convention", _on_skip_to_convention)
 
 func _process(delta: float) -> void:
     if GameState.is_paused:
@@ -43,16 +50,9 @@ func _process(delta: float) -> void:
                 good_or_bad_show()
 
             GameState.PlayerTaskType.SLEEP:
-                # Skip to the next convention, change float value later if needed
-                # Skip to the rent day if the next convention is after 
+                emit_signal("player_laid_in_bed")
                 GameState.is_on_task = false
-                var current_day = TimeManager.get_current_day()
-                var days_until_rent_due = GameState.RENT_DUE_DAY - current_day
-                var days_until_next_con = TimeManager.get_days_until_next_convention()
-                if days_until_rent_due < days_until_next_con:
-                    TimeManager.pass_day(days_until_rent_due, 0.0)
-                else:
-                    TimeManager.pass_day(days_until_next_con, 0.0)
+                
             _:
                 GameState.is_on_task = false
 
@@ -60,6 +60,9 @@ func handle_task_action(task: GameState.PlayerTaskType):
     # Skip if game is on pause
     if GameState.is_paused:
         return
+
+    if GameState.current_task == GameState.PlayerTaskType.SLEEP and task != GameState.PlayerTaskType.SLEEP:
+        emit_signal("player_exited_bed")
 
     GameState.is_on_task = false
     GameState.current_task = task
@@ -78,7 +81,7 @@ func handle_task_action(task: GameState.PlayerTaskType):
         # Wait until player is at the task location
         if did_do_task:
             GameState.player.navigation_agent.navigation_finished.connect((func():
-                wait = 0.0
+                wait=0.0
                 GameState.is_on_task=true
             ), ConnectFlags.CONNECT_ONE_SHOT)
 
@@ -149,3 +152,14 @@ func reset_stats() -> void:
     GameState.merch_inventory.clear_inventory()
     MessageLogManager.clear_logs()
     
+func _on_skip_to_convention() -> void:
+    # Skip to the next convention, change float value later if needed
+    # Skip to the rent day if the next convention is after 
+    GameState.is_on_task = false
+    var current_day = TimeManager.get_current_day()
+    var days_until_rent_due = GameState.RENT_DUE_DAY - current_day
+    var days_until_next_con = TimeManager.get_days_until_next_convention()
+    if days_until_rent_due < days_until_next_con:
+        TimeManager.pass_day(days_until_rent_due, 0.0)
+    else:
+        TimeManager.pass_day(days_until_next_con, 0.0)

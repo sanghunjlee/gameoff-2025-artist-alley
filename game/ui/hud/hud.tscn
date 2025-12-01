@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dhc0iavj0wyu1" path="res://game/ui/hud/hud.gd" id="1_l7e5k"]
 [ext_resource type="PackedScene" uid="uid://dg7n6n8xjwkxp" path="res://game/ui/hud/home_tab.tscn" id="2_8mv14"]
 [ext_resource type="PackedScene" uid="uid://pjmnjrq11ioy" path="res://game/ui/hud/inventory_tab.tscn" id="3_8mv14"]
-[ext_resource type="PackedScene" path="res://game/ui/hud/calendar_tab.tscn" id="4_c644b"]
+[ext_resource type="PackedScene" uid="uid://4w1xapc7osus" path="res://game/ui/hud/calendar_tab.tscn" id="4_c644b"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_l7e5k")
@@ -37,6 +37,18 @@ offset_left = 644.0
 offset_top = 7.0
 offset_right = 951.0
 offset_bottom = 57.0
+
+[node name="SleepCountdownLabel" type="Label" parent="."]
+visible = false
+offset_left = 344.0
+offset_top = 818.0
+offset_right = 956.0
+offset_bottom = 873.0
+theme_override_font_sizes/font_size = 48
+text = "skipping to con in x seconds..."
+
+[node name="SleepTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="pressed" from="HomeTabButton" to="." method="_on_home_tab_selected"]
 [connection signal="pressed" from="CalendarTabButton" to="." method="_on_calendar_tab_selected"]
