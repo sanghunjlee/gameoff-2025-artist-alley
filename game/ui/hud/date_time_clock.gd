@@ -40,14 +40,34 @@ func _update_time_control_buttons():
 
 
 func _on_time_updated():
+    var month: int = TimeManager.get_current_month()
     var day: int = TimeManager.get_current_day()
     var hour: int = TimeManager.get_current_hour()
     var time: float = TimeManager.get_current_time()
 
-
-    if date_label.text != str(day):
-        date_label.text = str(day)
-        await date_label.draw
+    if month_label != null:
+        var monthname: String = [
+            "JAN",
+            "FEB",
+            "MAR",
+            "APR",
+            "MAY",
+            "JUN",
+            "JUL",
+            "AUG",
+            "SEP",
+            "OCT",
+            "NOV",
+            "DEC"
+        ][month]
+        if month_label.text != monthname:
+            month_label.text = monthname
+            await month_label.draw
+    
+    if date_label != null:
+        if date_label.text != str(day):
+            date_label.text = str(day)
+            await date_label.draw
     
     var r = (hour + (time - hour)) * PI / 12
     hour_hand.rotation = r
