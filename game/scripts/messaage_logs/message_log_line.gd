@@ -11,4 +11,4 @@ func _init(message_param: String, type_param: MLConstants.LogType):
 
 func _to_string():
     
-    return "%s: %s" % [self.timestamp, self.message]  
+    return "%s" % [self.message]  
