@@ -60,8 +60,11 @@ func handle_task_action(task: GameState.PlayerTaskType):
     # Skip if game is on pause
     if GameState.is_paused:
         return
+    
+    if GameState.current_task == task:
+        return
 
-    if GameState.current_task == GameState.PlayerTaskType.SLEEP and task != GameState.PlayerTaskType.SLEEP:
+    if GameState.current_task == GameState.PlayerTaskType.SLEEP:
         emit_signal("player_exited_bed")
 
     GameState.is_on_task = false
