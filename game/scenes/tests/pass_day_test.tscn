@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvxgldjaf8pqv"]
+
+[ext_resource type="Script" uid="uid://brlofcr2g6fgr" path="res://game/scenes/tests/pass_day_test.gd" id="1_8yy0w"]
+[ext_resource type="PackedScene" uid="uid://q0ggh5y0bofo" path="res://game/ui/hud/date_time_clock.tscn" id="1_x2m6s"]
+
+[node name="PassDayTest" type="Node2D"]
+script = ExtResource("1_8yy0w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 240.0
+offset_bottom = 294.0
+
+[node name="DateTimeClock" parent="VBoxContainer" instance=ExtResource("1_x2m6s")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day"
+
+[node name="DaySpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 1.0
+rounded = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Time"
+
+[node name="TimeSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Pass Day(s)"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Pass Day(s) till next con"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
