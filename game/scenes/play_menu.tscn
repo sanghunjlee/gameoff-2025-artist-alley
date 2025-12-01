@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy0a0dny1ynjl"]
+[gd_scene load_steps=9 format=3 uid="uid://dy0a0dny1ynjl"]
 
 [ext_resource type="Script" uid="uid://cliu6rx0puh31" path="res://game/scenes/play_menu.gd" id="1_s25ik"]
 [ext_resource type="Texture2D" uid="uid://dlcvw5a4xsjnf" path="res://assets/images/aa title highlight frame.png" id="2_2b28y"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://5uj1m7aqitvq" path="res://game/ui/game_menu/play_button.tscn" id="4_i454b"]
 [ext_resource type="Texture2D" uid="uid://dqyb6hc63repu" path="res://assets/images/play button highlighted.png" id="5_56igy"]
 [ext_resource type="AudioStream" uid="uid://codv2q68kk7d2" path="res://assets/sfx/towny.ogg" id="6_2b28y"]
+[ext_resource type="PackedScene" uid="uid://b6tn7wh5arnjc" path="res://game/ui/tutorial/tutorial_menu.tscn" id="7_i36gd"]
+[ext_resource type="Texture2D" uid="uid://cla6pmt77t6ji" path="res://assets/images/question_mark.png" id="8_i454b"]
 
 [node name="PlayMenu" type="Control"]
 layout_mode = 3
@@ -66,6 +68,25 @@ theme_override_font_sizes/font_size = 24
 text = "made with <3 and godot"
 horizontal_alignment = 2
 
+[node name="PreGameStrats" parent="." instance=ExtResource("7_i36gd")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -23.0
+offset_right = -23.0
+
+[node name="QuestionButtion" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 827.0
+offset_right = 124.0
+offset_bottom = 938.0
+texture_normal = ExtResource("8_i454b")
+stretch_mode = 5
+
 [connection signal="mouse_entered" from="PlayButton" to="." method="_on_play_button_mouse_entered"]
 [connection signal="mouse_exited" from="PlayButton" to="." method="_on_play_button_mouse_exited"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="QuestionButtion" to="." method="_on_question_buttion_mouse_entered"]
+[connection signal="mouse_exited" from="QuestionButtion" to="." method="_on_question_buttion_mouse_exited"]

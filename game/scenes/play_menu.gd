@@ -11,11 +11,20 @@ func _process(delta: float) -> void:
 
 func _on_play_button_mouse_exited() -> void:
     $BackgroundDefault.visible = true
+    $PreGameStrats.visible = false
 
 func _on_play_button_mouse_entered() -> void:
     $BackgroundDefault.visible = false
+    $PreGameStrats.visible = true
 
 
 func _on_play_button_pressed() -> void:
     SceneManager.change_scene_to(SceneManager.main_scene)
     TimeManager.play_time()
+
+func _on_question_buttion_mouse_entered() -> void:
+    $PreGameStrats.visible = true
+
+
+func _on_question_buttion_mouse_exited() -> void:
+    $PreGameStrats.visible = false
