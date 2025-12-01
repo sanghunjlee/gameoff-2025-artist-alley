@@ -26,7 +26,7 @@ const INITIAL_RENT_AMOUNT: int = 200
 const RENT_DUE_DAY: int = 26
 
 # Time control state
-var time_state: TimeControlState = TimeControlState.PLAY:
+var time_state: TimeControlState = TimeControlState.FORCE_PAUSE:
     set(value):
         if value != time_state:
             time_state = value

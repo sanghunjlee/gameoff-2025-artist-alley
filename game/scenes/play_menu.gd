@@ -18,3 +18,4 @@ func _on_play_button_mouse_entered() -> void:
 
 func _on_play_button_pressed() -> void:
     SceneManager.change_scene_to(SceneManager.main_scene)
+    TimeManager.play_time()
