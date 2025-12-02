@@ -1,8 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dwikafu48grp7"]
+[gd_scene load_steps=21 format=3 uid="uid://dwikafu48grp7"]
 
 [ext_resource type="Script" uid="uid://cusqw0exonyw8" path="res://game/ui/hud/merch_order_form.gd" id="1_r2xux"]
 [ext_resource type="Texture2D" uid="uid://cgf8c2el0q56x" path="res://assets/icons/x-white-icon.png" id="2_3kik8"]
+[ext_resource type="StyleBox" uid="uid://6dllyw28jnk4" path="res://game/resources/panels/red_button_normal_style.tres" id="2_ghel3"]
 [ext_resource type="PackedScene" uid="uid://dd0srykimujq5" path="res://game/ui/inventory_ui/design_inventory_ui/design_inventory_ui.tscn" id="2_r2xux"]
+[ext_resource type="StyleBox" uid="uid://bnyx7ani6ic2f" path="res://game/resources/panels/red_button_pressed_style.tres" id="3_r0urf"]
+[ext_resource type="StyleBox" uid="uid://brnexqc3n5ccg" path="res://game/resources/panels/red_button_hover_style.tres" id="4_igudl"]
 [ext_resource type="StyleBox" uid="uid://dfm2djfxlvve7" path="res://game/resources/panels/blue_button_normal_style.tres" id="4_is3xs"]
 [ext_resource type="StyleBox" uid="uid://dynha8mlr1m5y" path="res://game/resources/panels/blue_button_pressed_style.tres" id="5_ghel3"]
 [ext_resource type="StyleBox" uid="uid://d1gs4tq2wpecc" path="res://game/resources/panels/blue_button_hover_style.tres" id="6_r0urf"]
@@ -38,59 +41,8 @@ border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjhff"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 0.13333333, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11858136, 0.11858142, 0.1185813, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpejx"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.5, 0.06666666, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11858136, 0.11858142, 0.1185813, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndqjw"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.75, 0.099999994, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11858136, 0.11858142, 0.1185813, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
-anti_aliasing = false
+[sub_resource type="Theme" id="Theme_ghel3"]
+default_font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kik8"]
 content_margin_left = 8.0
@@ -109,10 +61,18 @@ anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_3w406"]
 LineEdit/colors/font_color = Color(0, 0, 0, 1)
-LineEdit/font_sizes/font_size = 20
+LineEdit/font_sizes/font_size = 32
 LineEdit/styles/focus = null
 LineEdit/styles/normal = SubResource("StyleBoxFlat_3kik8")
 LineEdit/styles/read_only = null
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ghel3"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+color = Color(0.5, 0.5, 0.5, 1)
+thickness = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quqhw"]
 content_margin_left = 8.0
@@ -174,10 +134,10 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -185,7 +145,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="MerchOrderForm" type="Control"]
-custom_minimum_size = Vector2(400, 480)
+custom_minimum_size = Vector2(720, 800)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 400.0
@@ -219,70 +179,98 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r2xux")
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/TitleBar"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_bottom = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/TitleBar/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_constants/margin_left = 12
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
 text = "Merch Order Form"
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer/AspectRatioContainer"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_qjhff")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wpejx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ndqjw")
+theme_override_styles/normal = ExtResource("2_ghel3")
+theme_override_styles/pressed = ExtResource("3_r0urf")
+theme_override_styles/hover = ExtResource("4_igudl")
 icon = ExtResource("2_3kik8")
+icon_alignment = 1
+expand_icon = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 8
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 text = "To order merch, select a design and specify how many you would like!"
 horizontal_alignment = 3
 autowrap_mode = 3
 
+[node name="Label3" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "You can only order upto 100 items."
+autowrap_mode = 3
+
 [node name="DesignInventoryUI" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_r2xux")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 240)
 layout_mode = 2
 is_selectable = true
 show_title = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 alignment = 2
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 text = "Merch Type"
 
 [node name="MerchTypeMenuButton" type="MenuButton" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 28)
+custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
+theme = SubResource("Theme_ghel3")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("4_is3xs")
 theme_override_styles/pressed = ExtResource("5_ghel3")
 theme_override_styles/hover = ExtResource("6_r0urf")
@@ -290,17 +278,18 @@ flat = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 alignment = 2
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 text = "Amount"
 
 [node name="AmountSpinBox" type="SpinBox" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
 theme = SubResource("Theme_3w406")
 theme_override_colors/up_icon_modulate = Color(0, 0, 0, 1)
@@ -311,27 +300,29 @@ theme_override_colors/down_icon_modulate = Color(0, 0, 0, 1)
 theme_override_colors/down_hover_icon_modulate = Color(0.19607843, 0.19607843, 0.19607843, 1)
 theme_override_colors/down_pressed_icon_modulate = Color(0.33333334, 0.33333334, 0.33333334, 1)
 theme_override_colors/down_disabled_icon_modulate = Color(0.8175213, 0.8175213, 0.81752115, 1)
+theme_override_constants/field_and_buttons_separation = 4
+theme_override_constants/buttons_width = 32
 min_value = 1.0
 value = 1.0
 alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2, 2)
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-color = Color(0.15, 0.15, 0.15, 1)
+theme_override_styles/separator = SubResource("StyleBoxLine_ghel3")
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 alignment = 2
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 text = "Total Cost"
 
 [node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("7_luu5o")
 
@@ -346,7 +337,7 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.047058824, 0.41568628, 0.047058824, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 text = "$ "
 vertical_alignment = 1
 
@@ -355,33 +346,41 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="OrderButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="OrderButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("4_is3xs")
 theme_override_styles/pressed = ExtResource("5_ghel3")
 theme_override_styles/hover = ExtResource("6_r0urf")
 text = "Place Order"
 
-[node name="CancelButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="CancelButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_quqhw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7rnc6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e28ys")
@@ -398,5 +397,5 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_chpdx")
 
 [connection signal="pressed" from="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer/AspectRatioContainer/Button" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/OrderButton" to="." method="_on_order_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/OrderButton" to="." method="_on_order_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

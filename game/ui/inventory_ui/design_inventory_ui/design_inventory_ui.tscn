@@ -18,6 +18,7 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_peqv3"]
 content_margin_left = 0.0
@@ -25,13 +26,14 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(1.5209317e-05, 0.43748084, 0.8103323, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
+anti_aliasing = false
 
 [sub_resource type="ImageTexture" id="ImageTexture_jh6v0"]
 
@@ -121,15 +123,16 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+anti_aliasing = false
 
 [node name="DesignInventoryUI" type="Control"]
 custom_minimum_size = Vector2(100, 200)
@@ -141,7 +144,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_ochss")
-is_selectable = null
 inventory = ExtResource("2_jh6v0")
 
 [node name="Panel" type="Panel" parent="."]
@@ -170,13 +172,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_peqv3")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/TitleBar"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/TitleBar/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 48
 text = "Design"
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
@@ -199,18 +201,18 @@ vertical_scroll_mode = 4
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="DesignContainer" type="GridContainer" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 16
-columns = 8
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 4
 
 [node name="Panel" type="Panel" parent="Panel"]
 layout_mode = 1

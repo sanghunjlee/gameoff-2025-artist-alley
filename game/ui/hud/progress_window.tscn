@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://be82qp78f8svq" path="res://game/ui/hud/progress_window.gd" id="1_13q0x"]
 [ext_resource type="Texture2D" uid="uid://cgf8c2el0q56x" path="res://assets/icons/x-white-icon.png" id="2_pptto"]
+[ext_resource type="StyleBox" uid="uid://6dllyw28jnk4" path="res://game/resources/panels/red_button_normal_style.tres" id="2_u0lsj"]
 [ext_resource type="PackedScene" uid="uid://uj20t2kx7eus" path="res://game/ui/hud/pc_progress_row.tscn" id="3_pptto"]
+[ext_resource type="StyleBox" uid="uid://bnyx7ani6ic2f" path="res://game/resources/panels/red_button_pressed_style.tres" id="3_ub1hb"]
+[ext_resource type="StyleBox" uid="uid://brnexqc3n5ccg" path="res://game/resources/panels/red_button_hover_style.tres" id="4_a2vah"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjmwj"]
 content_margin_left = 0.0
@@ -10,10 +13,10 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -26,66 +29,13 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(1.5209317e-05, 0.43748084, 0.8103323, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2xux"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 0.13333333, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11858136, 0.11858142, 0.1185813, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chpdx"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.5, 0.06666666, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11858136, 0.11858142, 0.1185813, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjhff"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.75, 0.099999994, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11858136, 0.11858142, 0.1185813, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
 anti_aliasing = false
 
 [sub_resource type="ImageTexture" id="ImageTexture_jh6v0"]
@@ -176,22 +126,23 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+anti_aliasing = false
 
 [node name="ProgressWindow" type="Control"]
 custom_minimum_size = Vector2(400, 300)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 800.0
+offset_bottom = 500.0
 script = ExtResource("1_13q0x")
 
 [node name="Panel" type="Panel" parent="."]
@@ -220,36 +171,44 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gy2t3")
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/TitleBar"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_bottom = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/TitleBar/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_constants/margin_left = 12
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
 text = "Order Progress"
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer/AspectRatioContainer"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_r2xux")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_chpdx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qjhff")
+theme_override_styles/normal = ExtResource("2_u0lsj")
+theme_override_styles/pressed = ExtResource("3_ub1hb")
+theme_override_styles/hover = ExtResource("4_a2vah")
 icon = ExtResource("2_pptto")
+icon_alignment = 1
+expand_icon = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2

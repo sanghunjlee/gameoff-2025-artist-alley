@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ca4hadl4pxbp4" path="res://game/ui/hud/pc_screen.gd" id="1_qjhff"]
 [ext_resource type="Texture2D" uid="uid://bjrblud6b73tb" path="res://assets/icons/cart-icon.png" id="2_gy2t3"]
+[ext_resource type="StyleBox" uid="uid://6dllyw28jnk4" path="res://game/resources/panels/red_button_normal_style.tres" id="2_quqhw"]
 [ext_resource type="Texture2D" uid="uid://cgf8c2el0q56x" path="res://assets/icons/x-white-icon.png" id="2_wpejx"]
+[ext_resource type="StyleBox" uid="uid://bnyx7ani6ic2f" path="res://game/resources/panels/red_button_pressed_style.tres" id="3_7rnc6"]
 [ext_resource type="Texture2D" uid="uid://do7bnw8xi6lpd" path="res://assets/icons/progress-icon.png" id="3_r2xux"]
+[ext_resource type="StyleBox" uid="uid://brnexqc3n5ccg" path="res://game/resources/panels/red_button_hover_style.tres" id="4_7rnc6"]
 [ext_resource type="PackedScene" uid="uid://dwikafu48grp7" path="res://game/ui/hud/merch_order_form.tscn" id="4_chpdx"]
 [ext_resource type="PackedScene" uid="uid://1wfs241sv7a7" path="res://game/ui/hud/progress_window.tscn" id="6_wpejx"]
 
@@ -29,66 +32,13 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(1.5209317e-05, 0.43748084, 0.8103323, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2xux"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 0.13333333, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11858136, 0.11858142, 0.1185813, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chpdx"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.5, 0.06666666, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11858136, 0.11858142, 0.1185813, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjhff"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.75, 0.099999994, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11858136, 0.11858142, 0.1185813, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
 anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2xux"]
@@ -99,20 +49,23 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+anti_aliasing = false
 
 [node name="PCScreen" type="Control"]
-custom_minimum_size = Vector2(300, 200)
+custom_minimum_size = Vector2(800, 600)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 800.0
+offset_bottom = 600.0
 script = ExtResource("1_qjhff")
 
 [node name="Panel" type="Panel" parent="."]
@@ -142,9 +95,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gy2t3")
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/TitleBar"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_bottom = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/TitleBar/MarginContainer"]
 layout_mode = 2
@@ -158,33 +111,38 @@ theme_override_font_sizes/font_size = 24
 layout_mode = 2
 
 [node name="Button" type="Button" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer/AspectRatioContainer"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_r2xux")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_chpdx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qjhff")
+theme_override_styles/normal = ExtResource("2_quqhw")
+theme_override_styles/pressed = ExtResource("3_7rnc6")
+theme_override_styles/hover = ExtResource("4_7rnc6")
 icon = ExtResource("2_wpejx")
+icon_alignment = 1
+expand_icon = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
 columns = 4
 
 [node name="OrderButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_r2xux")
 text = "Order Merch"
 icon = ExtResource("2_gy2t3")
@@ -194,14 +152,14 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="ProgressButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_r2xux")
 text = "Progress"
 icon = ExtResource("3_r2xux")
@@ -224,19 +182,20 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wpejx")
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_left = 18.0
-offset_top = 12.0
-offset_right = 418.0
-offset_bottom = 452.0
+offset_left = 100.0
+offset_top = -84.0
+offset_right = 680.0
+offset_bottom = 716.0
 
 [node name="ProgressWindow" parent="." instance=ExtResource("6_wpejx")]
 unique_name_in_owner = true
 visible = false
+custom_minimum_size = Vector2(800, 500)
 layout_mode = 0
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 412.0
-offset_bottom = 312.0
+offset_left = 16.0
+offset_top = 26.0
+offset_right = 816.0
+offset_bottom = 526.0
 
 [connection signal="pressed" from="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer/AspectRatioContainer/Button" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/GridContainer/OrderButton" to="." method="_on_order_button_pressed"]

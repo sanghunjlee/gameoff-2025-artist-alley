@@ -50,8 +50,6 @@ theme_override_constants/margin_bottom = 2
 [node name="DesignInventoryUI" parent="InventoryBackground/MarginContainer/HBoxContainer/MarginContainer" instance=ExtResource("1_xhu0g")]
 layout_mode = 2
 size_flags_vertical = 3
-is_selectable = false
-columns = 8
 
 [node name="MarginContainer2" type="MarginContainer" parent="InventoryBackground/MarginContainer/HBoxContainer"]
 layout_mode = 2

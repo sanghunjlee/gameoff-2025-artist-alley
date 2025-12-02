@@ -16,13 +16,22 @@ func _ready():
             play_button.button_pressed = true
 
 func _on_play_button_toggled(toggled_on: bool):
+    if GameState.time_state == GameState.TimeControlState.FORCE_PAUSE:
+        return
+
     if toggled_on:
         GameState.time_state = GameState.TimeControlState.PLAY
 
 func _on_pause_button_toggled(toggled_on: bool):
+    if GameState.time_state == GameState.TimeControlState.FORCE_PAUSE:
+        return
+        
     if toggled_on:
         GameState.time_state = GameState.TimeControlState.PAUSE
     
 func _on_fast_button_toggled(toggled_on: bool):
+    if GameState.time_state == GameState.TimeControlState.FORCE_PAUSE:
+        return
+
     if toggled_on:
         GameState.time_state = GameState.TimeControlState.FAST

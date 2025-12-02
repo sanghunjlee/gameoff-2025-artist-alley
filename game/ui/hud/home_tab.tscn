@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://q0ggh5y0bofo" path="res://game/ui/hud/date_time_clock.tscn" id="1_tmwwy"]
 [ext_resource type="PackedScene" uid="uid://dstcm70jjmg6b" path="res://game/ui/hud/action_buttons.tscn" id="2_dfsxb"]
 [ext_resource type="PackedScene" uid="uid://hvccchi61w6c" path="res://game/ui/hud/inspiration_info.tscn" id="2_xxsk4"]
-[ext_resource type="PackedScene" path="res://game/ui/hud/log_panel.tscn" id="3_y12al"]
+[ext_resource type="PackedScene" uid="uid://b00cv3x2m1xis" path="res://game/ui/hud/log_panel.tscn" id="3_y12al"]
 [ext_resource type="PackedScene" uid="uid://dxwfmbtcexvn0" path="res://game/ui/hud/money_info.tscn" id="6_4j515"]
 [ext_resource type="PackedScene" uid="uid://cc3hdt2k6cx4o" path="res://game/ui/hud/pc_screen.tscn" id="7_p666g"]
 [ext_resource type="Texture2D" uid="uid://cla6pmt77t6ji" path="res://assets/images/question_mark.png" id="8_5jn4r"]
@@ -88,7 +88,6 @@ layout_mode = 2
 theme_override_constants/margin_bottom = 80
 
 [node name="PCScreen" parent="CenterContainer/MarginContainer" instance=ExtResource("7_p666g")]
-visible = false
 layout_mode = 2
 
 [node name="HelpButton" type="TextureButton" parent="."]
@@ -104,6 +103,7 @@ script = ExtResource("9_1wc3v")
 
 [node name="TutorialNote" parent="HelpButton" instance=ExtResource("10_57o0u")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
