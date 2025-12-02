@@ -58,8 +58,3 @@ func _on_player_exited_bed() -> void:
     sleep_countdown_label.visible = false
     sleep_count = 5
     print_debug("player exited bed, stopping sleep timer.")
-
-
-func _on_button_pressed():
-    var random_design = DesignResource.random()
-    GameState.design_inventory.add_design(random_design)
