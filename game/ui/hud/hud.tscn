@@ -1,9 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dweikuwue1r0y"]
+[gd_scene load_steps=14 format=3 uid="uid://dweikuwue1r0y"]
 
 [ext_resource type="Script" uid="uid://dhc0iavj0wyu1" path="res://game/ui/hud/hud.gd" id="1_l7e5k"]
 [ext_resource type="PackedScene" uid="uid://dg7n6n8xjwkxp" path="res://game/ui/hud/home_tab.tscn" id="2_8mv14"]
 [ext_resource type="PackedScene" uid="uid://pjmnjrq11ioy" path="res://game/ui/hud/inventory_tab.tscn" id="3_8mv14"]
 [ext_resource type="PackedScene" uid="uid://4w1xapc7osus" path="res://game/ui/hud/calendar_tab.tscn" id="4_c644b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c644b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8jqp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4egda"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymgic"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fw58w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s3dv2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uoejn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xv8no"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gsgr"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_l7e5k")
@@ -25,18 +43,30 @@ offset_left = 20.0
 offset_top = 7.0
 offset_right = 326.0
 offset_bottom = 56.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c644b")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d8jqp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4egda")
 
 [node name="CalendarTabButton" type="Button" parent="."]
 offset_left = 331.0
 offset_top = 7.0
 offset_right = 637.0
 offset_bottom = 57.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ymgic")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fw58w")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s3dv2")
 
 [node name="InventoryTabButton" type="Button" parent="."]
 offset_left = 644.0
 offset_top = 7.0
 offset_right = 951.0
 offset_bottom = 57.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uoejn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xv8no")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gsgr")
 
 [node name="SleepCountdownLabel" type="Label" parent="."]
 visible = false
