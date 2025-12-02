@@ -76,7 +76,6 @@ offset_left = -23.0
 offset_right = -23.0
 
 [node name="QuestionButtion" type="TextureButton" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 20.0
 offset_top = 827.0
