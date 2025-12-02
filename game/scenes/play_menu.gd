@@ -11,11 +11,11 @@ func _process(delta: float) -> void:
 
 func _on_play_button_mouse_exited() -> void:
     $BackgroundDefault.visible = true
-    $PreGameStrats.visible = false
+    #$PreGameStrats.visible = false
 
 func _on_play_button_mouse_entered() -> void:
     $BackgroundDefault.visible = false
-    $PreGameStrats.visible = true
+    #$PreGameStrats.visible = true
 
 
 func _on_play_button_pressed() -> void:
