@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Artist Alley"
+config/description="👩‍🎨 Tamagotchi a starting artist to become the artist alley mogul 👩‍🎨
+
+Your little artist friend is having a hard time making it as an artist. With overwhelming amount of rent, bills, and student loans, they are struggling to make money selling art merchandise at the artist alley. Help your little artist friend navigate the artist alley life—from gathering inspirations to tabling at conventions."
+config/version="0.1.1"
 run/main_scene="uid://dy0a0dny1ynjl"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://gwoipo0jns6l"
 
 [autoload]
 
